@@ -93,10 +93,6 @@
 
 
 
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -144,6 +140,7 @@
       font-size: 1.1rem;
       color: #ccc;
       margin-top: 10px;
+      word-wrap: break-word;
     }
 
     .section {
@@ -177,6 +174,7 @@
     a {
       color: #00ffff;
       text-decoration: none;
+      word-break: break-word;
     }
 
     a:hover {
@@ -210,10 +208,20 @@
 
     @media screen and (max-width: 768px) {
       .resume-container {
-        padding: 25px;
+        padding: 25px 15px;
       }
       .resume-header h1 {
         font-size: 2.2rem;
+      }
+      .resume-header p {
+        font-size: 0.95rem;
+      }
+      .section h2 {
+        font-size: 1.4rem;
+      }
+      .section p,
+      .section ul {
+        font-size: 0.95rem;
       }
     }
   </style>
