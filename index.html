@@ -1,524 +1,294 @@
-<!-- <!DOCTYPE html> 
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Coming Soon - Hamza Naseem</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      padding: 20px;
-    }
-    .card {
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-      border-radius: 20px;
-      padding: 40px;
-      max-width: 400px;
-      text-align: center;
-      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-    }
-    h1 {
-      font-size: 2rem;
-      margin-bottom: 10px;
-    }
-    h2 {
-      font-size: 1.2rem;
-      color: #ccc;
-      margin-bottom: 20px;
-    }
-    .email, .socials {
-      margin: 10px 0;
-    }
-    a {
-      color: #00ffff;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-    .socials a {
-      margin: 0 10px;
-      font-size: 1.2rem;
-    }
-    .resume-button {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 12px 25px;
-      background: #00ffff;
-      color: #000;
-      font-weight: bold;
-      border-radius: 30px;
-      text-decoration: none;
-      transition: all 0.3s ease;
-    }
-    .resume-button:hover {
-      background: #fff;
-      color: #302b63;
-      transform: scale(1.05);
-    }
-  </style>
-</head>
-<body>
-  <div class="card">
-    <h1>🚀Coming Soon</h1>
-    <h2>Hamza Naseem</h2>
-    <p class="title">Agentic AI Backend Developer</p>
-    <div class="email">
-      📧 <a href="mailto:hamza@imhamza.com">hamza@imhamza.com</a>
-    </div>
-    <div class="socials">
-      🔗 
-      <a href="https://linkedin.com/in/hamzanasiem" target="_blank">LinkedIn</a> |
-      <a href="https://github.com/hamzanasiem" target="_blank">GitHub</a>
-    </div>
-    <a href="https://github.com/HamzaNasiem/Resume/raw/main/Hamza_Naseem_Resume%20(3).pdf" class="resume-button" target="_blank">📄 Download Resume</a>
-  </div>
-</body>
-</html> -->
-
-
-<!-- 
-
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hamza Naseem - Resume</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-      color: #ffffff;
-      padding: 40px 20px;
-      display: flex;
-      justify-content: center;
-    }
-
-    .resume-container {
-      max-width: 1000px;
-      width: 100%;
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(20px);
-      border-radius: 20px;
-      padding: 50px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-      transition: all 0.3s ease;
-    }
-
-    .resume-header {
-      text-align: center;
-      margin-bottom: 40px;
-    }
-
-    .resume-header h1 {
-      font-size: 2.8rem;
-      color: #00ffff;
-    }
-
-    .resume-header p {
-      font-size: 1.1rem;
-      color: #ccc;
-      margin-top: 10px;
-      word-wrap: break-word;
-    }
-
-    .section {
-      margin-bottom: 35px;
-    }
-
-    .section h2 {
-      font-size: 1.6rem;
-      color: #00ffff;
-      margin-bottom: 15px;
-      border-bottom: 2px solid rgba(0, 255, 255, 0.3);
-      padding-bottom: 5px;
-    }
-
-    .section p,
-    .section ul {
-      font-size: 1rem;
-      line-height: 1.8;
-      color: #eee;
-    }
-
-    .section ul {
-      list-style-type: square;
-      padding-left: 25px;
-    }
-
-    .section li {
-      margin-bottom: 12px;
-    }
-
-    a {
-      color: #00ffff;
-      text-decoration: none;
-      word-break: break-word;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
-    .highlight {
-      font-weight: 600;
-      color: #ffffff;
-    }
-
-    .profile-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 15px;
-    }
-
-    .profile-links a {
-      background-color: rgba(0, 255, 255, 0.15);
-      padding: 10px 18px;
-      border-radius: 25px;
-      font-size: 0.95rem;
-      transition: all 0.3s ease;
-    }
-
-    .profile-links a:hover {
-      background-color: #00ffff;
-      color: #000;
-    }
-
-    @media screen and (max-width: 768px) {
-      .resume-container {
-        padding: 25px 15px;
-      }
-      .resume-header h1 {
-        font-size: 2.2rem;
-      }
-      .resume-header p {
-        font-size: 0.95rem;
-      }
-      .section h2 {
-        font-size: 1.4rem;
-      }
-      .section p,
-      .section ul {
-        font-size: 0.95rem;
-      }
-    }
-  </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hamza Naseem | Agentic AI & Backend Engineer</title>
+    <meta name="description" content="Portfolio of Hamza Naseem - Agentic AI Developer and Backend Engineer specializing in FastAPI, Docker, and Microservices.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        dark: '#0a0a0a',
+                        card: '#171717',
+                        accent: '#38bdf8', // Light Blue/Cyan pop
+                        text: '#a3a3a3',
+                        heading: '#ededed'
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            background-color: #050505;
+            color: #a3a3a3;
+            background-image: radial-gradient(circle at 50% 0%, #1a1a2e 0%, transparent 70%);
+        }
+        .glass-card {
+            background: rgba(23, 23, 23, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s ease;
+        }
+        .glass-card:hover {
+            border-color: rgba(56, 189, 248, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px -10px rgba(56, 189, 248, 0.1);
+        }
+        .skill-pill {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.2s;
+        }
+        .skill-pill:hover {
+            background: rgba(56, 189, 248, 0.1);
+            border-color: #38bdf8;
+            color: #38bdf8;
+        }
+    </style>
 </head>
-<body>
-  <div class="resume-container">
-    <div class="resume-header">
-      <h1>👤 Hamza Naseem</h1>
-      <p>Agentic AI Developer | Backend Engineer | FastAPI Microservices | Docker | Full-Stack Solutions</p>
-      <p>📧 <a href="https://mail.google.com/mail/?view=cm&to=ziaee.pk@gmail.com" target="_blank">ziaee.pk@gmail.com</a> | 📞 <a href="https://wa.me/923172532350" target="_blank">+92-317-2532350</a> | 🌐 <a href="http://imhamza.com" target="_blank">imhamza.com</a></p>
+<body class="antialiased selection:bg-accent selection:text-black">
+
+    <div class="max-w-4xl mx-auto px-6 py-20 lg:py-24">
+        
+        <header class="mb-20">
+            <h1 class="text-5xl lg:text-6xl font-bold text-heading tracking-tight mb-4">
+                Hamza Naseem
+            </h1>
+            <h2 class="text-xl lg:text-2xl text-accent font-medium mb-6 flex items-center gap-2">
+                Agentic AI Developer & Backend Engineer
+            </h2>
+            <p class="text-lg leading-relaxed max-w-2xl text-gray-400 mb-8">
+                Building scalable, event-driven microservices and next-gen AI systems. 
+                Specializing in <span class="text-white">FastAPI</span>, <span class="text-white">Docker</span>, and <span class="text-white">OpenAI SDK</span> to solve complex problems.
+            </p>
+            
+            <div class="flex flex-wrap gap-4">
+                <a href="mailto:ziaee.pk@gmail.com" class="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 hover:bg-white/10 text-white transition-colors border border-white/10">
+                    <i data-lucide="mail" class="w-4 h-4"></i> Email Me
+                </a>
+                <a href="https://github.com/HamzaNasiem" target="_blank" class="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 hover:bg-white/10 text-white transition-colors border border-white/10">
+                    <i data-lucide="github" class="w-4 h-4"></i> GitHub
+                </a>
+                <a href="http://linkedin.com/in/hamzanasiem" target="_blank" class="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 hover:bg-white/10 text-white transition-colors border border-white/10">
+                    <i data-lucide="linkedin" class="w-4 h-4"></i> LinkedIn
+                </a>
+                <a href="https://github.com/HamzaNasiem/Resume/raw/main/Hamza_Naseem_Resume%20(3).pdf" target="_blank" class="flex items-center gap-2 px-4 py-2 rounded-full bg-accent text-black font-semibold hover:bg-cyan-400 transition-colors">
+                    <i data-lucide="file-text" class="w-4 h-4"></i> Resume
+                </a>
+            </div>
+        </header>
+
+        <main class="grid grid-cols-1 md:grid-cols-3 gap-12">
+            
+            <div class="md:col-span-2 space-y-16">
+                
+                <section>
+                    <h3 class="text-sm font-bold uppercase tracking-widest text-white mb-6 flex items-center gap-2">
+                        <span class="w-2 h-2 bg-accent rounded-full"></span> About
+                    </h3>
+                    <div class="prose prose-invert text-gray-400">
+                        <p>
+                            Experienced Backend & Agentic AI Developer with a strong foundation in Python and microservices. 
+                            I specialize in building scalable, event-driven systems using FastAPI, Docker, and the OpenAI SDK.
+                            I offer full-stack capability when needed, with a passion for clean architecture and efficient deployment.
+                        </p>
+                    </div>
+                </section>
+
+                <section>
+                    <h3 class="text-sm font-bold uppercase tracking-widest text-white mb-8 flex items-center gap-2">
+                        <span class="w-2 h-2 bg-accent rounded-full"></span> Work Experience
+                    </h3>
+                    <div class="space-y-8">
+                        
+                        <div class="relative pl-8 border-l border-white/10 pb-2">
+                            <div class="absolute -left-[5px] top-2 w-2.5 h-2.5 bg-accent rounded-full ring-4 ring-dark"></div>
+                            <div class="flex justify-between items-baseline flex-wrap gap-2 mb-2">
+                                <h4 class="text-white font-semibold text-lg">Soft Pioneers Pvt LTD</h4>
+                                <span class="text-xs font-mono text-gray-500">2023 - Present</span>
+                            </div>
+                            <p class="text-accent text-sm mb-3">Backend and AI Developer</p>
+                            <p class="text-sm leading-relaxed">
+                                Building AI-powered microservices, integrating OpenAI APIs, deploying on Azure using Docker & CI/CD. Designed internal AI tools and backend services.
+                            </p>
+                        </div>
+
+                        <div class="relative pl-8 border-l border-white/10 pb-2">
+                            <div class="absolute -left-[5px] top-2 w-2.5 h-2.5 bg-gray-600 rounded-full ring-4 ring-dark"></div>
+                            <div class="flex justify-between items-baseline flex-wrap gap-2 mb-2">
+                                <h4 class="text-white font-semibold text-lg">Panaversity</h4>
+                                <span class="text-xs font-mono text-gray-500">Jun 2024 - Feb 2025</span>
+                            </div>
+                            <p class="text-accent text-sm mb-3">Full-Stack Developer & Team Lead</p>
+                            <p class="text-sm leading-relaxed">
+                                Managed a team to develop a full-stack education platform with backend microservices and responsive admin dashboards.
+                            </p>
+                        </div>
+
+                        <div class="relative pl-8 border-l border-white/10 pb-2">
+                            <div class="absolute -left-[5px] top-2 w-2.5 h-2.5 bg-gray-600 rounded-full ring-4 ring-dark"></div>
+                            <div class="flex justify-between items-baseline flex-wrap gap-2 mb-2">
+                                <h4 class="text-white font-semibold text-lg">Upwork / LinkedIn</h4>
+                                <span class="text-xs font-mono text-gray-500">2022 - Present</span>
+                            </div>
+                            <p class="text-accent text-sm mb-3">Backend Developer & Freelancer</p>
+                            <p class="text-sm leading-relaxed">
+                                Delivered 20+ projects, including custom APIs, AI-integrations, and dashboards using FastAPI, Docker, and Next.js.
+                            </p>
+                        </div>
+                        
+                         <div class="relative pl-8 border-l border-white/10">
+                            <div class="absolute -left-[5px] top-2 w-2.5 h-2.5 bg-gray-600 rounded-full ring-4 ring-dark"></div>
+                            <div class="flex justify-between items-baseline flex-wrap gap-2 mb-2">
+                                <h4 class="text-white font-semibold text-lg">Internee.pk</h4>
+                                <span class="text-xs font-mono text-gray-500">Jan - Apr 2024</span>
+                            </div>
+                            <p class="text-accent text-sm mb-3">Backend Intern</p>
+                            <p class="text-sm leading-relaxed">
+                                Built REST APIs and applied unit testing practices using Postman, FastAPI, and SQLModel.
+                            </p>
+                        </div>
+
+                    </div>
+                </section>
+
+                <section>
+                    <h3 class="text-sm font-bold uppercase tracking-widest text-white mb-8 flex items-center gap-2">
+                        <span class="w-2 h-2 bg-accent rounded-full"></span> Featured Projects
+                    </h3>
+                    <div class="grid grid-cols-1 gap-6">
+                        
+                        <a href="https://github.com/HamzaNasiem/ecommerce-mart-api" target="_blank" class="glass-card p-6 rounded-xl block group">
+                            <div class="flex justify-between items-start mb-4">
+                                <div class="p-2 bg-blue-500/10 rounded-lg text-blue-400">
+                                    <i data-lucide="shopping-cart" class="w-6 h-6"></i>
+                                </div>
+                                <i data-lucide="arrow-up-right" class="w-5 h-5 text-gray-600 group-hover:text-accent transition-colors"></i>
+                            </div>
+                            <h4 class="text-white font-bold text-lg mb-2 group-hover:text-accent transition-colors">E-Commerce Microservices</h4>
+                            <p class="text-sm mb-4">Event-driven architecture using Kafka, PostgreSQL. Handles Auth, Payment, and Inventory.</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-xs px-2 py-1 bg-white/5 rounded text-gray-300">Kafka</span>
+                                <span class="text-xs px-2 py-1 bg-white/5 rounded text-gray-300">FastAPI</span>
+                                <span class="text-xs px-2 py-1 bg-white/5 rounded text-gray-300">PostgreSQL</span>
+                            </div>
+                        </a>
+
+                        <a href="https://github.com/HamzaNasiem/fastapi-openAI-SDK-nextjs-docker" target="_blank" class="glass-card p-6 rounded-xl block group">
+                            <div class="flex justify-between items-start mb-4">
+                                <div class="p-2 bg-green-500/10 rounded-lg text-green-400">
+                                    <i data-lucide="bot" class="w-6 h-6"></i>
+                                </div>
+                                <i data-lucide="arrow-up-right" class="w-5 h-5 text-gray-600 group-hover:text-accent transition-colors"></i>
+                            </div>
+                            <h4 class="text-white font-bold text-lg mb-2 group-hover:text-accent transition-colors">AI Chatbot & Agentic API</h4>
+                            <p class="text-sm mb-4">FastAPI backend integrated with OpenAI SDK and A2A framework, deployed on Azure.</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-xs px-2 py-1 bg-white/5 rounded text-gray-300">OpenAI</span>
+                                <span class="text-xs px-2 py-1 bg-white/5 rounded text-gray-300">Docker</span>
+                                <span class="text-xs px-2 py-1 bg-white/5 rounded text-gray-300">Azure</span>
+                            </div>
+                        </a>
+
+                        <a href="https://github.com/HamzaNasiem/user_management_and_authentication" target="_blank" class="glass-card p-6 rounded-xl block group">
+                            <div class="flex justify-between items-start mb-4">
+                                <div class="p-2 bg-purple-500/10 rounded-lg text-purple-400">
+                                    <i data-lucide="users" class="w-6 h-6"></i>
+                                </div>
+                                <i data-lucide="arrow-up-right" class="w-5 h-5 text-gray-600 group-hover:text-accent transition-colors"></i>
+                            </div>
+                            <h4 class="text-white font-bold text-lg mb-2 group-hover:text-accent transition-colors">Secure User Auth System</h4>
+                            <p class="text-sm mb-4">Production-ready authentication system with JWT, OTP, and user role management.</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-xs px-2 py-1 bg-white/5 rounded text-gray-300">JWT</span>
+                                <span class="text-xs px-2 py-1 bg-white/5 rounded text-gray-300">Security</span>
+                                <span class="text-xs px-2 py-1 bg-white/5 rounded text-gray-300">OAuth2</span>
+                            </div>
+                        </a>
+
+                    </div>
+                </section>
+
+            </div>
+
+            <div class="space-y-12">
+                
+                <section>
+                    <h3 class="text-sm font-bold uppercase tracking-widest text-white mb-6">Tech Stack</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-pill px-3 py-1.5 rounded-md text-sm text-gray-300">Python</span>
+                        <span class="skill-pill px-3 py-1.5 rounded-md text-sm text-gray-300">FastAPI</span>
+                        <span class="skill-pill px-3 py-1.5 rounded-md text-sm text-gray-300">Docker</span>
+                        <span class="skill-pill px-3 py-1.5 rounded-md text-sm text-gray-300">OpenAI SDK</span>
+                        <span class="skill-pill px-3 py-1.5 rounded-md text-sm text-gray-300">LangChain</span>
+                        <span class="skill-pill px-3 py-1.5 rounded-md text-sm text-gray-300">PostgreSQL</span>
+                        <span class="skill-pill px-3 py-1.5 rounded-md text-sm text-gray-300">Kafka</span>
+                        <span class="skill-pill px-3 py-1.5 rounded-md text-sm text-gray-300">Azure</span>
+                        <span class="skill-pill px-3 py-1.5 rounded-md text-sm text-gray-300">GitHub Actions</span>
+                        <span class="skill-pill px-3 py-1.5 rounded-md text-sm text-gray-300">Microservices</span>
+                    </div>
+                </section>
+
+                <section class="p-6 rounded-2xl bg-white/5 border border-white/10">
+                    <h3 class="text-sm font-bold uppercase tracking-widest text-white mb-6 flex items-center gap-2">
+                        <i data-lucide="graduation-cap" class="w-4 h-4 text-accent"></i> Education
+                    </h3>
+                    <ul class="space-y-6">
+                        <li>
+                            <div class="text-white font-medium">Cloud Native & Agentic AI</div>
+                            <div class="text-xs text-gray-500">PIAIC (2023 - Present)</div>
+                        </li>
+                        <li>
+                            <div class="text-white font-medium">GenAI Healthcare</div>
+                            <div class="text-xs text-gray-500">FJDC.AI (2023 - 2024)</div>
+                        </li>
+                        <li>
+                            <div class="text-white font-medium">Web Development Diploma</div>
+                            <div class="text-xs text-gray-500">Aptech (2021 - 2022)</div>
+                        </li>
+                        <li>
+                            <div class="text-white font-medium">Intermediate (CS)</div>
+                            <div class="text-xs text-gray-500">Allama Iqbal Open University</div>
+                        </li>
+                    </ul>
+                </section>
+
+                <section class="text-center p-6 rounded-2xl bg-gradient-to-b from-blue-900/20 to-transparent border border-blue-500/20">
+                    <h3 class="text-white font-semibold mb-2">Let's Work Together</h3>
+                    <p class="text-sm text-gray-400 mb-4">Open for US/Remote Opportunities.</p>
+                    <a href="mailto:ziaee.pk@gmail.com" class="inline-block w-full py-2.5 rounded-lg bg-accent text-black font-bold hover:bg-white transition-colors">
+                        Hire Me
+                    </a>
+                </section>
+
+            </div>
+        </main>
+        
+        <footer class="mt-24 pt-8 border-t border-white/10 text-center text-sm text-gray-600">
+            <p>&copy; 2025 Hamza Naseem. All rights reserved.</p>
+        </footer>
+
     </div>
 
-    <div class="section">
-      <h2>🧠 Summary</h2>
-      <p>
-        Experienced Backend & Agentic AI Developer with a strong foundation in Python and microservices. Specializes in building scalable, event-driven systems using FastAPI, Docker, and OpenAI SDK. Offers full-stack capability when needed, with a passion for clean architecture and efficient deployment.
-      </p>
-    </div>
-
-    <div class="section">
-      <h2>🛠 Skills</h2>
-      <ul>
-        <li><span class="highlight">Programming:</span> Python, FastAPI, REST APIs, SQLModel, JavaScript (Basic)</li>
-        <li><span class="highlight">Agentic AI:</span> OpenAI SDK, LangChain, A2A, RAG Pipelines, Graph Agents</li>
-        <li><span class="highlight">Backend & Microservices:</span> Docker, Dapr, gRPC, Kafka, Pub/Sub, Kong API Gateway</li>
-        <li><span class="highlight">DevOps & Cloud:</span> GitHub Actions, Azure, Docker Compose</li>
-        <li><span class="highlight">Databases:</span> PostgreSQL, SQLite</li>
-      </ul>
-    </div>
-
-    <div class="section">
-      <h2>💼 Experience</h2>
-      <ul>
-        <li><span class="highlight">Backend and AI Developer – Soft Pioneers Pvt LTD (2023 - Present)</span> — Building AI-powered microservices, integrating OpenAI APIs, deploying on Azure using Docker & CI/CD; designed internal AI tools and backend services.</li>
-        <li><span class="highlight">Full-Stack Developer & Team Lead – Panaversity (June 2024 - Feb 2025)</span> — Managed team to develop full-stack education platform with backend microservices and responsive admin dashboards.</li>
-        <li><span class="highlight">Backend Developer & Freelancer – Upwork/LinkedIn (2022 - Present)</span> — Delivered 20+ projects, including custom APIs, AI-integrations, dashboards using FastAPI, Docker, and Next.js.</li>
-        <li><span class="highlight">Backend Intern – Internee.pk (Jan - Apr 2024)</span> — Built REST APIs and applied unit testing practices using Postman, FastAPI, and SQLModel.</li>
-        <li><span class="highlight">Technical Admin – Educational Institute (2019 – Present)</span> — Oversaw all digital operations, developed web apps, and automated student/staff communication systems.</li>
-      </ul>
-    </div>
-
-    <div class="section">
-      <h2>📂 Projects</h2>
-      <ul>
-        <li><span class="highlight">E-Commerce APIs:</span> Event-driven microservices (Kafka, PostgreSQL), Auth, Payment, Inventory – <a href="https://github.com/HamzaNasiem/ecommerce-mart-api" target="_blank">GitHub</a></li>
-        <li><span class="highlight">AI Chatbot:</span> FastAPI backend with OpenAI SDK, A2A framework, deployed on Azure – <a href="https://github.com/HamzaNasiem/fastapi-openAI-SDK-nextjs-docker" target="_blank">GitHub</a></li>
-        <li><span class="highlight">User Management:</span> Built authentication system with JWT, OTP, user roles – <a href="https://github.com/HamzaNasiem/user_management_and_authentication" target="_blank">GitHub</a></li>
-        <li><span class="highlight">Todo API:</span> CRUD application with FastAPI & SQLModel, clean architecture – <a href="https://github.com/HamzaNasiem/todo_FastAPI" target="_blank">GitHub</a></li>
-      </ul>
-    </div>
-
-    <div class="section">
-      <h2>🎓 Education</h2>
-      <ul>
-        <li><span class="highlight">Intermediate (CS)</span> – Allama Iqbal Open University (In Progress)</li>
-        <li><span class="highlight">Cloud Native & Agentic AI</span> – PIAIC (2023 - Present)</li>
-        <li><span class="highlight">Web Development Diploma</span> – Aptech (2021 - 2022)</li>
-        <li><span class="highlight">GenAI Healthcare</span> – FJDC.AI (2023 - 2024)</li>
-      </ul>
-    </div>
-
-    <div class="section">
-      <h2>🔗 Profiles</h2>
-      <div class="profile-links">
-        <a href="http://imhamza.com" target="_blank">🌐 imhamza.com</a>
-        <a href="http://linkedin.com/in/hamzanasiem" target="_blank">💼 LinkedIn</a>
-        <a href="https://www.upwork.com/freelancers/~019849218606c59fa6" target="_blank">🧑‍💻 Upwork</a>
-        <a href="http://github.com/HamzaNasiem" target="_blank">💻 GitHub</a>
-      </div>
-    </div>
-  </div>
-</body>
-</html> -->
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hamza Naseem - Resume</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-      color: #ffffff;
-      padding: 40px 20px;
-      display: flex;
-      justify-content: center;
-    }
-
-    .resume-container {
-      max-width: 1000px;
-      width: 100%;
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(20px);
-      border-radius: 20px;
-      padding: 50px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-      transition: all 0.3s ease;
-    }
-
-    .resume-header {
-      text-align: center;
-      margin-bottom: 40px;
-    }
-
-    .resume-header h1 {
-      font-size: 2.8rem;
-      color: #00ffff;
-    }
-
-    .resume-header p {
-      font-size: 1.1rem;
-      color: #ccc;
-      margin-top: 10px;
-      word-wrap: break-word;
-    }
-
-    .resume-button {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 12px 25px;
-      background: #00ffff;
-      color: #000;
-      font-weight: bold;
-      border-radius: 30px;
-      text-decoration: none;
-      transition: all 0.3s ease;
-    }
-
-    .resume-button:hover {
-      background: #fff;
-      color: #302b63;
-      transform: scale(1.05);
-    }
-
-    .section {
-      margin-bottom: 35px;
-    }
-
-    .section h2 {
-      font-size: 1.6rem;
-      color: #00ffff;
-      margin-bottom: 15px;
-      border-bottom: 2px solid rgba(0, 255, 255, 0.3);
-      padding-bottom: 5px;
-    }
-
-    .section p,
-    .section ul {
-      font-size: 1rem;
-      line-height: 1.8;
-      color: #eee;
-    }
-
-    .section ul {
-      list-style-type: square;
-      padding-left: 25px;
-    }
-
-    .section li {
-      margin-bottom: 12px;
-    }
-
-    a {
-      color: #00ffff;
-      text-decoration: none;
-      word-break: break-word;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
-    .highlight {
-      font-weight: 600;
-      color: #ffffff;
-    }
-
-    .profile-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 15px;
-    }
-
-    .profile-links a {
-      background-color: rgba(0, 255, 255, 0.15);
-      padding: 10px 18px;
-      border-radius: 25px;
-      font-size: 0.95rem;
-      transition: all 0.3s ease;
-    }
-
-    .profile-links a:hover {
-      background-color: #00ffff;
-      color: #000;
-    }
-
-    @media screen and (max-width: 768px) {
-      .resume-container {
-        padding: 25px 15px;
-      }
-
-      .resume-header h1 {
-        font-size: 2.2rem;
-      }
-
-      .resume-header p {
-        font-size: 0.95rem;
-      }
-
-      .section h2 {
-        font-size: 1.4rem;
-      }
-
-      .section p,
-      .section ul {
-        font-size: 0.95rem;
-      }
-    }
-  </style>
-</head>
-<body>
-  <div class="resume-container">
-    <div class="resume-header">
-      <h1>👤 Hamza Naseem</h1>
-      <p>Agentic AI Developer | Backend Engineer | FastAPI Microservices | Docker | Full-Stack Solutions</p>
-      <p>📧 <a href="https://mail.google.com/mail/?view=cm&to=ziaee.pk@gmail.com" target="_blank">ziaee.pk@gmail.com</a> | 📞 <a href="https://wa.me/923172532350" target="_blank">+92-317-2532350</a> | 🌐 <a href="http://imhamza.com" target="_blank">imhamza.com</a></p>
-      <a href="https://github.com/HamzaNasiem/Resume/raw/main/Hamza_Naseem_Resume%20(3).pdf" class="resume-button" target="_blank">📄 Download Resume</a>
-    </div>
-
-    <div class="section">
-      <h2>🧠 Summary</h2>
-      <p>
-        Experienced Backend & Agentic AI Developer with a strong foundation in Python and microservices. Specializes in building scalable, event-driven systems using FastAPI, Docker, and OpenAI SDK. Offers full-stack capability when needed, with a passion for clean architecture and efficient deployment.
-      </p>
-    </div>
-
-    <div class="section">
-      <h2>🛠 Skills</h2>
-      <ul>
-        <li><span class="highlight">Programming:</span> Python, FastAPI, REST APIs, SQLModel, JavaScript (Basic)</li>
-        <li><span class="highlight">Agentic AI:</span> OpenAI SDK, LangChain, A2A, RAG Pipelines, Graph Agents</li>
-        <li><span class="highlight">Backend & Microservices:</span> Docker, Dapr, gRPC, Kafka, Pub/Sub, Kong API Gateway</li>
-        <li><span class="highlight">DevOps & Cloud:</span> GitHub Actions, Azure, Docker Compose</li>
-        <li><span class="highlight">Databases:</span> PostgreSQL, SQLite</li>
-      </ul>
-    </div>
-
-    <div class="section">
-      <h2>💼 Experience</h2>
-      <ul>
-        <li><span class="highlight">Backend and AI Developer – Soft Pioneers Pvt LTD (2023 - Present)</span> — Building AI-powered microservices, integrating OpenAI APIs, deploying on Azure using Docker & CI/CD; designed internal AI tools and backend services.</li>
-        <li><span class="highlight">Full-Stack Developer & Team Lead – Panaversity (June 2024 - Feb 2025)</span> — Managed team to develop full-stack education platform with backend microservices and responsive admin dashboards.</li>
-        <li><span class="highlight">Backend Developer & Freelancer – Upwork/LinkedIn (2022 - Present)</span> — Delivered 20+ projects, including custom APIs, AI-integrations, dashboards using FastAPI, Docker, and Next.js.</li>
-        <li><span class="highlight">Backend Intern – Internee.pk (Jan - Apr 2024)</span> — Built REST APIs and applied unit testing practices using Postman, FastAPI, and SQLModel.</li>
-        <li><span class="highlight">Technical Admin – Educational Institute (2019 – Present)</span> — Oversaw all digital operations, developed web apps, and automated student/staff communication systems.</li>
-      </ul>
-    </div>
-
-    <div class="section">
-      <h2>📂 Projects</h2>
-      <ul>
-        <li><span class="highlight">E-Commerce APIs:</span> Event-driven microservices (Kafka, PostgreSQL), Auth, Payment, Inventory – <a href="https://github.com/HamzaNasiem/ecommerce-mart-api" target="_blank">GitHub</a></li>
-        <li><span class="highlight">AI Chatbot:</span> FastAPI backend with OpenAI SDK, A2A framework, deployed on Azure – <a href="https://github.com/HamzaNasiem/fastapi-openAI-SDK-nextjs-docker" target="_blank">GitHub</a></li>
-        <li><span class="highlight">User Management:</span> Built authentication system with JWT, OTP, user roles – <a href="https://github.com/HamzaNasiem/user_management_and_authentication" target="_blank">GitHub</a></li>
-        <li><span class="highlight">Todo API:</span> CRUD application with FastAPI & SQLModel, clean architecture – <a href="https://github.com/HamzaNasiem/todo_FastAPI" target="_blank">GitHub</a></li>
-      </ul>
-    </div>
-
-    <div class="section">
-      <h2>🎓 Education</h2>
-      <ul>
-        <li><span class="highlight">Intermediate (CS)</span> – Allama Iqbal Open University (In Progress)</li>
-        <li><span class="highlight">Cloud Native & Agentic AI</span> – PIAIC (2023 - Present)</li>
-        <li><span class="highlight">Web Development Diploma</span> – Aptech (2021 - 2022)</li>
-        <li><span class="highlight">GenAI Healthcare</span> – FJDC.AI (2023 - 2024)</li>
-      </ul>
-    </div>
-
-    <div class="section">
-      <h2>🔗 Profiles</h2>
-      <div class="profile-links">
-        <a href="http://imhamza.com" target="_blank">🌐 imhamza.com</a>
-        <a href="http://linkedin.com/in/hamzanasiem" target="_blank">💼 LinkedIn</a>
-        <a href="https://www.upwork.com/freelancers/~019849218606c59fa6" target="_blank">🧑‍💻 Upwork</a>
-        <a href="http://github.com/HamzaNasiem" target="_blank">💻 GitHub</a>
-      </div>
-    </div>
-  </div>
+    <script>
+        lucide.createIcons();
+    </script>
 </body>
 </html>

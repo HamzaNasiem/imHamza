@@ -1,0 +1,7 @@
+# Application Cache aur User Data Files
+# Ye files project ka hissa nahi hain
+AppData/
+.vscode/
+
+# Operating System Files
+Thumbs.db
