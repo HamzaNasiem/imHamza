@@ -1,300 +1,1416 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hamza Naseem | Agentic AI & Backend Engineer</title>
-    <meta name="description" content="Portfolio of Hamza Naseem - Agentic AI Developer and Backend Engineer specializing in FastAPI, Docker, and Microservices.">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hamza Naseem</title>
+  <meta name="description" content="AI Voice Agent Developer. I build 24/7 AI receptionists for US clinics & service businesses. Founder of Bytelytic · Stanford Section Leader · Published AI Researcher.">
+  <meta property="og:title" content="Hamza Naseem">
+  <meta property="og:description" content="I build AI voice agents that answer your clinic's calls 24/7. Founder of Bytelytic · Stanford Section Leader.">
+  <meta property="og:url" content="https://imhamza.com">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://imhamza.com">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    /* ── DESIGN TOKENS (lifted from Paolo's palette) ── */
+    :root {
+      --bg:          oklch(0.992 0.002 250);
+      --bg-elevated: oklch(0.975 0.002 250);
+      --bg-overlay:  oklch(0.955 0.003 250);
+      --bg-inset:    oklch(0.945 0.003 250);
+      --fg:          oklch(0.165 0.004 250);
+      --fg-muted:    oklch(0.42  0.004 250);
+      --fg-subtle:   oklch(0.55  0.004 250);
+      --fg-faint:    oklch(0.72  0.004 250);
+      --fg-ghost:    oklch(0.83  0.003 250);
+      --rule:        oklch(0.86  0.003 250);
+      --rule-subtle: oklch(0.92  0.003 250);
+      --green:       oklch(0.52  0.15  155);
+      --blue:        #2563eb;
+      --col:         760px;
+      --g:           24px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+      overflow-y: scroll;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button { cursor: pointer; font-family: inherit; }
+
+    /* ── TOP BAR ── */
+    .topbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 var(--g);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--fg-muted);
+      border-bottom: 1px solid var(--rule);
+      background: var(--bg);
+      z-index: 200;
+      letter-spacing: -0.01em;
+    }
+    .tb-center { display: flex; align-items: center; gap: 6px; }
+    .tb-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--green);
+      animation: tb-pulse 2s ease-in-out infinite;
+    }
+    @keyframes tb-pulse {
+      0%,100% { opacity: 1; }
+      50%      { opacity: 0.4; }
+    }
+
+    /* ── BOTTOM SOCIAL BAR ── */
+    .btmbar {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 28px;
+      border-top: 1px solid var(--rule);
+      background: var(--bg);
+      z-index: 200;
+    }
+    .btmbar a {
+      font-size: 12px;
+      color: var(--fg-muted);
+      transition: color 0.15s;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .btmbar a:hover { color: var(--fg); }
+
+    /* ── MAIN LAYOUT ── */
+    main {
+      max-width: var(--col);
+      margin: 0 auto;
+      padding: calc(36px + 72px) var(--g) calc(36px + 72px);
+    }
+
+    /* ── HERO ── */
+    .hero-name {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-style: italic;
+      font-size: clamp(72px, 11vw, 100px);
+      line-height: 0.92;
+      letter-spacing: -0.025em;
+      color: var(--fg);
+      margin-bottom: 44px;
+    }
+    .hero-intro { max-width: 540px; margin-bottom: 28px; }
+    .hero-intro p {
+      font-size: 15px;
+      line-height: 1.72;
+      color: var(--fg);
+      margin-bottom: 14px;
+    }
+    .hero-intro p:last-child { margin-bottom: 0; }
+    .hero-intro a { color: var(--blue); }
+    .hero-intro a:hover { text-decoration: underline; }
+    .hero-hints {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px 20px;
+      margin-top: 28px;
+      font-size: 12px;
+      color: var(--fg-subtle);
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .hero-hints .sep { color: var(--fg-ghost); }
+    .hero-hints a { color: var(--fg-subtle); }
+    .hero-hints a:hover { color: var(--fg); }
+    kbd {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      padding: 1px 5px;
+      border: 1px solid var(--rule);
+      border-radius: 3px;
+      background: var(--bg-elevated);
+      color: var(--fg-muted);
+    }
+
+    /* ── SECTION ── */
+    section {
+      margin-top: 60px;
+      padding-top: 20px;
+      border-top: 1px solid var(--rule);
+    }
+    .sh {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+    .sh-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--fg);
+    }
+    .sh-count {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--fg-ghost);
+    }
+    .sec-sub {
+      font-size: 14px;
+      color: var(--fg-muted);
+      margin-bottom: 20px;
+      line-height: 1.65;
+    }
+    .sec-sub a { color: var(--blue); }
+    .sec-sub a:hover { text-decoration: underline; }
+
+    /* ── BADGES ── */
+    .badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      font-weight: 500;
+      padding: 1px 6px;
+      border-radius: 3px;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .b-live   { background: rgba(37,99,235,0.07); color:#2563eb; border:1px solid rgba(37,99,235,0.18); }
+    .b-paper  { background: rgba(124,58,237,0.07); color:#7c3aed; border:1px solid rgba(124,58,237,0.18); }
+    .b-hack   { background: rgba(22,163,74,0.07);  color:#16a34a; border:1px solid rgba(22,163,74,0.18); }
+    .b-oss    { background: var(--bg-inset); color:var(--fg-muted); border:1px solid var(--rule); }
+    .b-wip    { background: rgba(202,138,4,0.07);  color:#ca8a04; border:1px solid rgba(202,138,4,0.18); }
+    .b-agentic{ background: rgba(220,38,38,0.07);  color:#dc2626; border:1px solid rgba(220,38,38,0.18); }
+
+    /* ── WORK LIST ── */
+    .work-list { display: flex; flex-direction: column; }
+    .work-item {
+      display: grid;
+      grid-template-columns: 60px 1fr 16px;
+      align-items: start;
+      gap: 14px;
+      padding: 11px 8px;
+      border-bottom: 1px solid var(--rule-subtle);
+      border-radius: 5px;
+      margin: 0 -8px;
+      transition: background 0.15s, opacity 0.15s;
+      color: inherit;
+    }
+    .work-list:hover .work-item { opacity: 0.35; }
+    .work-list .work-item:hover { opacity: 1; background: var(--bg-elevated); }
+    .work-item:last-child { border-bottom: none; }
     
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <script src="https://unpkg.com/lucide@latest"></script>
-    
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    },
-                    colors: {
-                        dark: '#0a0a0a',
-                        card: '#171717',
-                        accent: '#38bdf8', // Light Blue/Cyan pop
-                        text: '#a3a3a3',
-                        heading: '#ededed'
-                    }
-                }
-            }
-        }
-    </script>
-    
-    <style>
-        body {
-            background-color: #050505;
-            color: #a3a3a3;
-            background-image: radial-gradient(circle at 50% 0%, #1a1a2e 0%, transparent 70%);
-        }
-        .glass-card {
-            background: rgba(23, 23, 23, 0.6);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            transition: all 0.3s ease;
-        }
-        .glass-card:hover {
-            border-color: rgba(56, 189, 248, 0.3);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 40px -10px rgba(56, 189, 248, 0.1);
-        }
-        .skill-pill {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.2s;
-        }
-        .skill-pill:hover {
-            background: rgba(56, 189, 248, 0.1);
-            border-color: #38bdf8;
-            color: #38bdf8;
-        }
-    </style>
+    .work-date {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--fg-muted);
+    }
+    .work-mid {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .work-logo {
+      width: 24px;
+      height: 24px;
+      border: 1px solid var(--rule);
+      border-radius: 6px;
+      background: var(--bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--fg);
+    }
+    .work-logo svg {
+      width: 14px;
+      height: 14px;
+    }
+    .work-name { font-size: 14px; font-weight: 500; color: var(--fg); }
+    .work-desc { font-size: 13px; color: var(--fg-muted); }
+    .work-arrow {
+      color: var(--fg-ghost);
+      font-size: 12px;
+      padding-top: 3px;
+      transition: color 0.13s, transform 0.13s;
+    }
+    .work-item:hover .work-arrow { color: var(--fg-subtle); transform: translate(1px,-1px); }
+
+    /* ── EXPERIENCE ── */
+    .exp-list { display: flex; flex-direction: column; gap: 28px; }
+    .exp-item {
+      display: grid;
+      grid-template-columns: 148px 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+    .exp-dates {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--fg-muted);
+      line-height: 1.8;
+      padding-top: 1px;
+    }
+    .exp-now { color: var(--green); }
+    .exp-title { font-size: 14px; font-weight: 500; color: var(--fg); margin-bottom: 3px; }
+    .exp-title a { color: var(--blue); }
+    .exp-title a:hover { text-decoration: underline; }
+    .exp-desc { font-size: 13px; color: var(--fg-muted); line-height: 1.65; }
+
+    /* ── HEATMAP ── */
+    .hmap-wrap { overflow-x: auto; }
+    .hmap-tabs {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+    .hmap-tab {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      padding: 4px 10px;
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      background: var(--bg);
+      color: var(--fg-muted);
+      cursor: pointer;
+      transition: all 0.13s;
+    }
+    .hmap-tab.active { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+    .hmap-months {
+      display: flex;
+      margin-left: 26px;
+      margin-bottom: 4px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      color: var(--fg-muted);
+    }
+    .hmap-row { display: flex; gap: 2px; }
+    .hmap-days {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9px;
+      color: var(--fg-muted);
+      padding-right: 4px;
+      padding-top: 1px;
+    }
+    .hmap-days span { height: 11px; display: block; line-height: 11px; text-align: right; }
+    #hmap-grid {
+      display: grid;
+      grid-template-columns: repeat(53, 11px);
+      grid-template-rows: repeat(7, 11px);
+      grid-auto-flow: column;
+      gap: 2px;
+      min-height: 89px;
+      min-width: 687px;
+    }
+    .hc {
+      width: 11px; height: 11px;
+      border-radius: 2px;
+      background: var(--rule-subtle);
+    }
+    .hc[data-l="1"] { background: oklch(0.84 0.025 250); }
+    .hc[data-l="2"] { background: oklch(0.68 0.055 250); }
+    .hc[data-l="3"] { background: oklch(0.50 0.08  250); }
+    .hc[data-l="4"] { background: oklch(0.32 0.09  250); }
+    .hmap-legend {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      margin-top: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      color: var(--fg-muted);
+    }
+    .hmap-legend .hc { flex-shrink: 0; }
+    .hmap-stat {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--fg-muted);
+      margin-top: 10px;
+    }
+
+    /* ── CREDENTIALS ── */
+    .creds-list { display: flex; flex-direction: column; }
+    .cred-item {
+      display: grid;
+      grid-template-columns: 52px 1fr;
+      gap: 14px;
+      align-items: baseline;
+      padding: 11px 8px;
+      border-bottom: 1px solid var(--rule-subtle);
+      border-radius: 5px;
+      margin: 0 -8px;
+      transition: background 0.13s;
+    }
+    .cred-item:last-child { border-bottom: none; }
+    .cred-item:hover { background: var(--bg-elevated); }
+    .cred-year { font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--fg-muted); }
+    .cred-body { display:flex; align-items:baseline; flex-wrap:wrap; gap:6px; }
+    .cred-name { font-size:14px; font-weight:500; color:var(--fg); }
+    .cred-name a { color:var(--blue); }
+    .cred-name a:hover { text-decoration:underline; }
+    .cred-desc { font-size:13px; color:var(--fg-muted); }
+
+    /* ── TERMINAL / STACK ── */
+    .terminal {
+      background: var(--bg-inset);
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      overflow: hidden;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+    }
+    .term-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 9px 16px;
+      background: var(--bg-overlay);
+      border-bottom: 1px solid var(--rule);
+    }
+    .term-dots { display: flex; gap: 6px; }
+    .td { width: 10px; height: 10px; border-radius: 50%; }
+    .td-r { background: #ff5f57; }
+    .td-y { background: #febc2e; }
+    .td-g { background: #28c840; }
+    .term-title { font-size: 11px; color: var(--fg-subtle); }
+    .term-sz    { font-size: 10px; color: var(--fg-ghost); }
+    .term-body  { padding: 18px 20px; }
+    .term-prompt {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      margin-bottom: 14px;
+    }
+    .t-$ { color: var(--fg-subtle); }
+    .t-cmd { color: var(--fg); }
+    .t-arg { color: var(--blue); }
+    .stack-tabs {
+      display: flex;
+      border-bottom: 1px solid var(--rule);
+      margin-bottom: 18px;
+    }
+    .stab {
+      font-size: 11px;
+      padding: 6px 14px;
+      color: var(--fg-muted);
+      border-bottom: 2px solid transparent;
+      margin-bottom: -1px;
+      cursor: pointer;
+      transition: all 0.13s;
+    }
+    .stab.active { color: var(--blue); border-bottom-color: var(--blue); }
+    .spanel { display: none; }
+    .spanel.active { display: block; }
+    .srow {
+      display: grid;
+      grid-template-columns: 88px 1fr;
+      gap: 16px;
+      padding: 5px 0;
+    }
+    .t-k { color: var(--fg-subtle); }
+    .t-v { color: var(--fg); }
+    .t-v a { color: var(--blue); }
+    .t-c { color: var(--fg-ghost); margin-left: 6px; }
+
+    /* ── LINKEDIN POSTS ── */
+    .li-posts { display: flex; flex-direction: column; gap: 12px; }
+    .li-post {
+      display: block;
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      padding: 18px 20px;
+      color: inherit;
+      transition: background 0.13s, border-color 0.13s;
+      background: var(--bg);
+    }
+    .li-post:hover { background: var(--bg-elevated); border-color: var(--rule-strong, var(--fg-ghost)); }
+    .li-post-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    .li-avatar {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: var(--fg);
+      color: var(--bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      flex-shrink: 0;
+    }
+    .li-name { font-size: 13px; font-weight: 500; color: var(--fg); }
+    .li-meta {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      color: var(--fg-muted);
+      margin-top: 2px;
+    }
+    .li-in-logo {
+      margin-left: auto;
+      background: var(--blue);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      width: 24px; height: 24px;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .li-post-body { font-size: 13px; color: var(--fg); line-height: 1.65; margin-bottom: 10px; }
+    .li-post-body p { margin-bottom: 8px; }
+    .li-post-body p:last-child { margin-bottom: 0; }
+    .li-post-body strong { color: var(--fg); font-weight: 600; }
+    .li-post-tags {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      color: var(--blue);
+      margin-bottom: 12px;
+      letter-spacing: 0.01em;
+    }
+    .li-post-actions {
+      display: flex;
+      justify-content: space-between;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      color: var(--fg-muted);
+      padding-top: 10px;
+      border-top: 1px solid var(--rule-subtle);
+    }
+
+    /* ── WRITING ── */
+    .wlist { display: flex; flex-direction: column; }
+    .witem {
+      display: grid;
+      grid-template-columns: 74px 1fr 16px;
+      align-items: baseline;
+      gap: 14px;
+      padding: 11px 8px;
+      border-bottom: 1px solid var(--rule-subtle);
+      border-radius: 5px;
+      margin: 0 -8px;
+      transition: background 0.13s;
+      color: inherit;
+    }
+    .witem:last-child { border-bottom: none; }
+    .witem:hover { background: var(--bg-elevated); }
+    .w-date { font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--fg-muted); }
+    .w-title { font-size:14px; font-weight:500; color:var(--fg); }
+    .w-arr { font-size:12px; color:var(--fg-ghost); transition:all 0.13s; }
+    .witem:hover .w-arr { color:var(--fg-subtle); transform:translate(1px,-1px); }
+
+    /* ── FOOTER ── */
+    footer {
+      margin-top: 72px;
+      padding-top: 24px;
+      border-top: 1px solid var(--rule);
+      display: flex;
+      justify-content: center;
+    }
+    .ft-links { 
+      display: flex; 
+      gap: 24px; 
+      align-items: center; 
+      flex-wrap: wrap; 
+      justify-content: center; 
+    }
+    .ft-links a { 
+      display: flex; 
+      align-items: center; 
+      gap: 8px; 
+      font-size: 14px; 
+      font-weight: 500;
+      color: var(--fg); 
+      text-decoration: none;
+      transition: opacity 0.15s;
+    }
+    .ft-links a svg {
+      width: 16px;
+      height: 16px;
+      color: var(--fg-muted);
+      transition: color 0.15s;
+    }
+    .ft-links:hover a { opacity: 0.4; }
+    .ft-links a:hover { opacity: 1; }
+    .ft-links a:hover svg { color: var(--fg); }
+
+    /* ── CMD PALETTE ── */
+    .cmd-wrap {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.25);
+      backdrop-filter: blur(3px);
+      z-index: 300;
+      align-items: flex-start;
+      justify-content: center;
+      padding-top: 100px;
+    }
+    .cmd-wrap.open { display: flex; }
+    .cmd-box {
+      width: 480px;
+      max-width: calc(100vw - 40px);
+      background: var(--bg);
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.12), 0 4px 16px rgba(0,0,0,0.08);
+    }
+    .cmd-input-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 13px 16px;
+      border-bottom: 1px solid var(--rule);
+    }
+    .cmd-icon { color: var(--fg-muted); font-size: 14px; }
+    .cmd-inp {
+      flex: 1;
+      background: none;
+      border: none;
+      outline: none;
+      font-size: 14px;
+      color: var(--fg);
+      font-family: 'Inter', sans-serif;
+    }
+    .cmd-inp::placeholder { color: var(--fg-faint); }
+    .cmd-items { padding: 6px; }
+    .cmd-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 10px;
+      border-radius: 5px;
+      font-size: 13px;
+      color: var(--fg);
+      cursor: pointer;
+      transition: background 0.1s;
+    }
+    .cmd-item:hover { background: var(--bg-elevated); }
+    .cmd-item-ic { color: var(--fg-muted); width: 16px; text-align: center; }
+    .cmd-item-desc { font-size: 12px; color: var(--fg-muted); margin-left: auto; }
+    .cmd-footer {
+      padding: 8px 16px;
+      border-top: 1px solid var(--rule);
+      display: flex;
+      gap: 16px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      color: var(--fg-ghost);
+    }
+    .cmd-footer kbd { font-size: 9px; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 620px) {
+      .exp-item  { grid-template-columns: 1fr; gap: 2px; }
+      .work-item { grid-template-columns: 1fr 16px; }
+      .work-date { display: none; }
+      .hero-name { font-size: 64px; }
+      footer { flex-direction: column; }
+      .bt-label { display: none; }
+    }
+  </style>
 </head>
-<body class="antialiased selection:bg-accent selection:text-black">
+<body>
 
-    <div class="max-w-4xl mx-auto px-6 py-20 lg:py-24">
-        
-        <header class="mb-20">
-            <h1 class="text-5xl lg:text-6xl font-bold text-heading tracking-tight mb-4">
-                Hamza Naseem
-            </h1>
-            <h2 class="text-xl lg:text-2xl text-accent font-medium mb-6 flex items-center gap-2">
-                Agentic AI Developer & Backend Engineer
-            </h2>
-            <p class="text-lg leading-relaxed max-w-2xl text-gray-400 mb-8">
-                Building scalable, event-driven microservices and next-gen AI systems. 
-                Specializing in <span class="text-white">FastAPI</span>, <span class="text-white">Docker</span>, and <span class="text-white">OpenAI SDK</span> to solve complex problems.
-            </p>
-            
-            <div class="flex flex-wrap gap-4">
-                <a href="mailto:ziaee.pk@gmail.com" class="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 hover:bg-white/10 text-white transition-colors border border-white/10">
-                    <i data-lucide="mail" class="w-4 h-4"></i> Email Me
-                </a>
-                <a href="https://github.com/HamzaNasiem" target="_blank" class="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 hover:bg-white/10 text-white transition-colors border border-white/10">
-                    <i data-lucide="github" class="w-4 h-4"></i> GitHub
-                </a>
-                <a href="http://linkedin.com/in/hamzanasiem" target="_blank" class="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 hover:bg-white/10 text-white transition-colors border border-white/10">
-                    <i data-lucide="linkedin" class="w-4 h-4"></i> LinkedIn
-                </a>
-                <a href="https://hamza-naseem.medium.com/" target="_blank" class="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 hover:bg-white/10 text-white transition-colors border border-white/10">
-                    <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 fill-current">
-                        <path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.41-3.38 6.41s-3.38-2.87-3.38-6.41 1.51-6.41 3.38-6.41 3.38 2.87 3.38 6.41zM24 12c0 3.17-.53 5.75-1.19 5.75s-1.19-2.58-1.19-5.75.53-5.75 1.19-5.75S24 8.83 24 12z"/>
-                    </svg> 
-                    Medium
-                </a>
-                <a href="https://github.com/HamzaNasiem/Resume/raw/main/Hamza_Naseem_Resume%20(3).pdf" target="_blank" class="flex items-center gap-2 px-4 py-2 rounded-full bg-accent text-black font-semibold hover:bg-cyan-400 transition-colors">
-                    <i data-lucide="file-text" class="w-4 h-4"></i> Resume
-                </a>
-            </div>
-        </header>
+<!-- ── TOP BAR ── -->
+<div class="topbar">
+  <span>EST. 2022 · v2.0 · May '26</span>
+  <div class="tb-center">
+    <span class="tb-dot"></span>
+    <span id="top-clock">--:--:-- PKT</span>
+  </div>
+  <span>Karachi, PK</span>
+</div>
 
-        <main class="grid grid-cols-1 md:grid-cols-3 gap-12">
-            
-            <div class="md:col-span-2 space-y-16">
-                
-                <section>
-                    <h3 class="text-sm font-bold uppercase tracking-widest text-white mb-6 flex items-center gap-2">
-                        <span class="w-2 h-2 bg-accent rounded-full"></span> About
-                    </h3>
-                    <div class="prose prose-invert text-gray-400">
-                        <p>
-                            Experienced Backend & Agentic AI Developer with a strong foundation in Python and microservices. 
-                            I specialize in building scalable, event-driven systems using FastAPI, Docker, and the OpenAI SDK.
-                            I offer full-stack capability when needed, with a passion for clean architecture and efficient deployment.
-                        </p>
-                    </div>
-                </section>
+<!-- ── BOTTOM SOCIAL BAR ── -->
+<div class="btmbar">
+  <a href="mailto:ziaee.pk@gmail.com" id="btm-email">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+    <span class="bt-label">Email</span>
+  </a>
+  <a href="https://github.com/HamzaNasiem" target="_blank" id="btm-gh">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>
+    <span class="bt-label">GitHub</span>
+  </a>
+  <a href="https://linkedin.com/in/hamzanasiem" target="_blank" id="btm-li">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+    <span class="bt-label">LinkedIn</span>
+  </a>
+  <a href="https://bytelytic.com" target="_blank" id="btm-byl">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+    <span class="bt-label">Bytelytic</span>
+  </a>
+  <a href="https://hamza-naseem.medium.com/" target="_blank" id="btm-med">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.41-3.38 6.41s-3.38-2.87-3.38-6.41 1.51-6.41 3.38-6.41 3.38 2.87 3.38 6.41zM24 12c0 3.17-.53 5.75-1.19 5.75s-1.19-2.58-1.19-5.75.53-5.75 1.19-5.75S24 8.83 24 12z"/></svg>
+    <span class="bt-label">Medium</span>
+  </a>
+  <a href="https://github.com/HamzaNasiem/Resume/raw/main/Hamza_Naseem_Resume%20(3).pdf" target="_blank" id="btm-res">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+    <span class="bt-label">Résumé</span>
+  </a>
+</div>
 
-                <section>
-                    <h3 class="text-sm font-bold uppercase tracking-widest text-white mb-8 flex items-center gap-2">
-                        <span class="w-2 h-2 bg-accent rounded-full"></span> Work Experience
-                    </h3>
-                    <div class="space-y-8">
-                        
-                        <div class="relative pl-8 border-l border-white/10 pb-2">
-                            <div class="absolute -left-[5px] top-2 w-2.5 h-2.5 bg-accent rounded-full ring-4 ring-dark"></div>
-                            <div class="flex justify-between items-baseline flex-wrap gap-2 mb-2">
-                                <h4 class="text-white font-semibold text-lg">Soft Pioneers Pvt LTD</h4>
-                                <span class="text-xs font-mono text-gray-500">2023 - Present</span>
-                            </div>
-                            <p class="text-accent text-sm mb-3">Backend and AI Developer</p>
-                            <p class="text-sm leading-relaxed">
-                                Building AI-powered microservices, integrating OpenAI APIs, deploying on Azure using Docker & CI/CD. Designed internal AI tools and backend services.
-                            </p>
-                        </div>
+<!-- ── MAIN ── -->
+<main>
 
-                        <div class="relative pl-8 border-l border-white/10 pb-2">
-                            <div class="absolute -left-[5px] top-2 w-2.5 h-2.5 bg-gray-600 rounded-full ring-4 ring-dark"></div>
-                            <div class="flex justify-between items-baseline flex-wrap gap-2 mb-2">
-                                <h4 class="text-white font-semibold text-lg">Panaversity</h4>
-                                <span class="text-xs font-mono text-gray-500">Jun 2024 - Feb 2025</span>
-                            </div>
-                            <p class="text-accent text-sm mb-3">Full-Stack Developer & Team Lead</p>
-                            <p class="text-sm leading-relaxed">
-                                Managed a team to develop a full-stack education platform with backend microservices and responsive admin dashboards.
-                            </p>
-                        </div>
+  <!-- HERO -->
+  <div class="hero-name">Hamza<br>Naseem.</div>
 
-                        <div class="relative pl-8 border-l border-white/10 pb-2">
-                            <div class="absolute -left-[5px] top-2 w-2.5 h-2.5 bg-gray-600 rounded-full ring-4 ring-dark"></div>
-                            <div class="flex justify-between items-baseline flex-wrap gap-2 mb-2">
-                                <h4 class="text-white font-semibold text-lg">Upwork / LinkedIn</h4>
-                                <span class="text-xs font-mono text-gray-500">2022 - Present</span>
-                            </div>
-                            <p class="text-accent text-sm mb-3">Backend Developer & Freelancer</p>
-                            <p class="text-sm leading-relaxed">
-                                Delivered 20+ projects, including custom APIs, AI-integrations, and dashboards using FastAPI, Docker, and Next.js.
-                            </p>
-                        </div>
-                        
-                         <div class="relative pl-8 border-l border-white/10">
-                            <div class="absolute -left-[5px] top-2 w-2.5 h-2.5 bg-gray-600 rounded-full ring-4 ring-dark"></div>
-                            <div class="flex justify-between items-baseline flex-wrap gap-2 mb-2">
-                                <h4 class="text-white font-semibold text-lg">Internee.pk</h4>
-                                <span class="text-xs font-mono text-gray-500">Jan - Apr 2024</span>
-                            </div>
-                            <p class="text-accent text-sm mb-3">Backend Intern</p>
-                            <p class="text-sm leading-relaxed">
-                                Built REST APIs and applied unit testing practices using Postman, FastAPI, and SQLModel.
-                            </p>
-                        </div>
+  <div class="hero-intro">
+    <p>Hi, I'm Hamza. I build <a href="https://bytelytic.com" target="_blank">AI voice agents</a> that answer your clinic's calls 24/7 — booking appointments, sending reminders, and handling patient recall without a human receptionist.</p>
+    <p>I'm drawn to problems where AI can eliminate repetitive human work. I ship systems that generate value while you sleep — and I care deeply about making them <em>deterministically</em> correct, not just probably right.</p>
+  </div>
 
-                    </div>
-                </section>
+  <div class="hero-hints">
+    <span>Press <kbd>R</kbd> for résumé</span>
+    <span class="sep">·</span>
+    <span><kbd>Ctrl</kbd> + <kbd>K</kbd> for everything</span>
+  </div>
 
-                <section>
-                    <h3 class="text-sm font-bold uppercase tracking-widest text-white mb-8 flex items-center gap-2">
-                        <span class="w-2 h-2 bg-accent rounded-full"></span> Featured Projects
-                    </h3>
-                    <div class="grid grid-cols-1 gap-6">
-                        
-                        <a href="https://github.com/HamzaNasiem/ecommerce-mart-api" target="_blank" class="glass-card p-6 rounded-xl block group">
-                            <div class="flex justify-between items-start mb-4">
-                                <div class="p-2 bg-blue-500/10 rounded-lg text-blue-400">
-                                    <i data-lucide="shopping-cart" class="w-6 h-6"></i>
-                                </div>
-                                <i data-lucide="arrow-up-right" class="w-5 h-5 text-gray-600 group-hover:text-accent transition-colors"></i>
-                            </div>
-                            <h4 class="text-white font-bold text-lg mb-2 group-hover:text-accent transition-colors">E-Commerce Microservices</h4>
-                            <p class="text-sm mb-4">Event-driven architecture using Kafka, PostgreSQL. Handles Auth, Payment, and Inventory.</p>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="text-xs px-2 py-1 bg-white/5 rounded text-gray-300">Kafka</span>
-                                <span class="text-xs px-2 py-1 bg-white/5 rounded text-gray-300">FastAPI</span>
-                                <span class="text-xs px-2 py-1 bg-white/5 rounded text-gray-300">PostgreSQL</span>
-                            </div>
-                        </a>
+  <!-- INTRO VIDEO PLACEHOLDER -->
+  <div class="hero-video-container" style="margin-top: 40px; max-width: 640px; border-radius: 8px; overflow: hidden; border: 1px solid var(--rule); background: var(--bg-elevated); aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; position: relative;">
+    <!-- TODO: Replace the content of this div with your actual <video> tag once recorded -->
+    <div style="text-align: center; color: var(--fg-muted);">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 8px; opacity: 0.5;"><polygon points="23 7 16 12 23 17 23 7"></polygon><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>
+      <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px;">Intro Video Placeholder</div>
+      <div style="font-size: 12px; margin-top: 4px; color: var(--fg-ghost);">Replace this block with your &lt;video&gt; tag</div>
+    </div>
+  </div>
 
-                        <a href="https://github.com/HamzaNasiem/fastapi-openAI-SDK-nextjs-docker" target="_blank" class="glass-card p-6 rounded-xl block group">
-                            <div class="flex justify-between items-start mb-4">
-                                <div class="p-2 bg-green-500/10 rounded-lg text-green-400">
-                                    <i data-lucide="bot" class="w-6 h-6"></i>
-                                </div>
-                                <i data-lucide="arrow-up-right" class="w-5 h-5 text-gray-600 group-hover:text-accent transition-colors"></i>
-                            </div>
-                            <h4 class="text-white font-bold text-lg mb-2 group-hover:text-accent transition-colors">AI Chatbot & Agentic API</h4>
-                            <p class="text-sm mb-4">FastAPI backend integrated with OpenAI SDK and A2A framework, deployed on Azure.</p>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="text-xs px-2 py-1 bg-white/5 rounded text-gray-300">OpenAI</span>
-                                <span class="text-xs px-2 py-1 bg-white/5 rounded text-gray-300">Docker</span>
-                                <span class="text-xs px-2 py-1 bg-white/5 rounded text-gray-300">Azure</span>
-                            </div>
-                        </a>
+  <!-- 01 · CREDENTIALS -->
+  <section id="credentials">
+    <div class="sh">
+      <span class="sh-label">01 · Credentials</span>
+      <span class="sh-count">5</span>
+    </div>
+    <p class="sec-sub">Stanford, published research, and the work that earned the credibility.</p>
+    <div class="creds-list">
 
-                        <a href="https://github.com/HamzaNasiem/user_management_and_authentication" target="_blank" class="glass-card p-6 rounded-xl block group">
-                            <div class="flex justify-between items-start mb-4">
-                                <div class="p-2 bg-purple-500/10 rounded-lg text-purple-400">
-                                    <i data-lucide="users" class="w-6 h-6"></i>
-                                </div>
-                                <i data-lucide="arrow-up-right" class="w-5 h-5 text-gray-600 group-hover:text-accent transition-colors"></i>
-                            </div>
-                            <h4 class="text-white font-bold text-lg mb-2 group-hover:text-accent transition-colors">Secure User Auth System</h4>
-                            <p class="text-sm mb-4">Production-ready authentication system with JWT, OTP, and user role management.</p>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="text-xs px-2 py-1 bg-white/5 rounded text-gray-300">JWT</span>
-                                <span class="text-xs px-2 py-1 bg-white/5 rounded text-gray-300">Security</span>
-                                <span class="text-xs px-2 py-1 bg-white/5 rounded text-gray-300">OAuth2</span>
-                            </div>
-                        </a>
+      <div class="cred-item">
+        <span class="cred-year">2026</span>
+        <div class="cred-body">
+          <span class="cred-name"><a href="https://codeinplace.stanford.edu" target="_blank">Stanford University</a> — Section Leader</span>
+          <span class="cred-desc">Code in Place 2026 · selected to teach Python to 20+ global students</span>
+        </div>
+      </div>
 
-                    </div>
-                </section>
+      <div class="cred-item">
+        <span class="cred-year">2026</span>
+        <div class="cred-body">
+          <span class="cred-name"><a href="https://github.com/HamzaNasiem/LogicGuard" target="_blank">LogicGuard</a> — Published Research</span>
+          <span class="cred-desc">Neuro-symbolic AI · 100% precision · zero false positives · BFS graph validator on Ibn Sina's syllogistic logic</span>
+        </div>
+      </div>
 
-            </div>
+      <div class="cred-item">
+        <span class="cred-year">2022</span>
+        <div class="cred-body">
+          <span class="cred-name">Co-Founder — <a href="https://bytelytic.com" target="_blank">Bytelytic</a></span>
+          <span class="cred-desc">AI Development Studio · building AI systems for US/UK clients</span>
+        </div>
+      </div>
 
-            <div class="space-y-12">
-                
-                <section>
-                    <h3 class="text-sm font-bold uppercase tracking-widest text-white mb-6">Tech Stack</h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="skill-pill px-3 py-1.5 rounded-md text-sm text-gray-300">Python</span>
-                        <span class="skill-pill px-3 py-1.5 rounded-md text-sm text-gray-300">FastAPI</span>
-                        <span class="skill-pill px-3 py-1.5 rounded-md text-sm text-gray-300">Docker</span>
-                        <span class="skill-pill px-3 py-1.5 rounded-md text-sm text-gray-300">OpenAI SDK</span>
-                        <span class="skill-pill px-3 py-1.5 rounded-md text-sm text-gray-300">LangChain</span>
-                        <span class="skill-pill px-3 py-1.5 rounded-md text-sm text-gray-300">PostgreSQL</span>
-                        <span class="skill-pill px-3 py-1.5 rounded-md text-sm text-gray-300">Kafka</span>
-                        <span class="skill-pill px-3 py-1.5 rounded-md text-sm text-gray-300">Azure</span>
-                        <span class="skill-pill px-3 py-1.5 rounded-md text-sm text-gray-300">GitHub Actions</span>
-                        <span class="skill-pill px-3 py-1.5 rounded-md text-sm text-gray-300">Microservices</span>
-                    </div>
-                </section>
-
-                <section class="p-6 rounded-2xl bg-white/5 border border-white/10">
-                    <h3 class="text-sm font-bold uppercase tracking-widest text-white mb-6 flex items-center gap-2">
-                        <i data-lucide="graduation-cap" class="w-4 h-4 text-accent"></i> Education
-                    </h3>
-                    <ul class="space-y-6">
-                        <li>
-                            <div class="text-white font-medium">Cloud Native & Agentic AI</div>
-                            <div class="text-xs text-gray-500">PIAIC (2023 - Present)</div>
-                        </li>
-                        <li>
-                            <div class="text-white font-medium">GenAI Healthcare</div>
-                            <div class="text-xs text-gray-500">FJDC.AI (2023 - 2024)</div>
-                        </li>
-                        <li>
-                            <div class="text-white font-medium">Web Development Diploma</div>
-                            <div class="text-xs text-gray-500">Aptech (2021 - 2022)</div>
-                        </li>
-                        <li>
-                            <div class="text-white font-medium">Intermediate (CS)</div>
-                            <div class="text-xs text-gray-500">Allama Iqbal Open University</div>
-                        </li>
-                    </ul>
-                </section>
-
-                <section class="text-center p-6 rounded-2xl bg-gradient-to-b from-blue-900/20 to-transparent border border-blue-500/20">
-                    <h3 class="text-white font-semibold mb-2">Let's Work Together</h3>
-                    <p class="text-sm text-gray-400 mb-4">Open for US/Remote Opportunities.</p>
-                    <a href="mailto:ziaee.pk@gmail.com" class="inline-block w-full py-2.5 rounded-lg bg-accent text-black font-bold hover:bg-white transition-colors">
-                        Hire Me
-                    </a>
-                </section>
-
-            </div>
-        </main>
-        
-        <footer class="mt-24 pt-8 border-t border-white/10 text-center text-sm text-gray-600">
-            <p>&copy; 2025 Hamza Naseem. All rights reserved.</p>
-        </footer>
+      <div class="cred-item">
+        <span class="cred-year">2025</span>
+        <div class="cred-body">
+          <span class="cred-name">Google DeepMind Hackathon</span>
+          <span class="cred-desc">PulseScriptAI — Gemini 3 Global Hackathon · multilingual clinical notes + drug interaction detection</span>
+        </div>
+      </div>
+      <div class="cred-item">
+        <span class="cred-year">—</span>
+        <div class="cred-body">
+          <span class="cred-name">8 Years — Classical Islamic Logic (Mantiq)</span>
+          <span class="cred-desc">Studied Ibn Sina's syllogistic frameworks before I touched a keyboard. That obsession with deterministic reasoning is now my competitive edge in AI.</span>
+        </div>
+      </div>
 
     </div>
+  </section>
 
-    <script>
-        lucide.createIcons();
-    </script>
+  <!-- 04 · ACTIVITY -->
+  <section id="activity">
+    <div class="sh">
+      <span class="sh-label">02 · Activity</span>
+    </div>
+    <p class="sec-sub">What I've been shipping lately — pulled from GitHub.</p>
+
+    <style>
+      .yr-select-wrapper { position: relative; user-select: none; display: flex; align-items: center; gap: 8px; }
+      .yr-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--fg-muted); letter-spacing: 0.05em; text-transform: uppercase; }
+      .yr-select-trigger {
+        display: flex; align-items: center; justify-content: space-between;
+        background: var(--bg); border: 1px solid var(--rule); border-radius: 6px;
+        padding: 4px 10px; font-size: 13px; color: var(--fg); cursor: pointer; width: 74px;
+      }
+      .yr-select-trigger svg { width: 10px; height: 10px; color: var(--fg-muted); }
+      .yr-select-menu {
+        position: absolute; top: 100%; right: 0; margin-top: 4px;
+        background: var(--bg-elevated); border: 1px solid var(--rule-subtle);
+        border-radius: 8px; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1); z-index: 50;
+        width: 110px; padding: 6px; display: none; flex-direction: column;
+      }
+      .yr-select-menu.open { display: flex; }
+      .yr-select-option {
+        padding: 8px 12px; font-size: 14px; color: var(--fg); cursor: pointer;
+        border-radius: 6px; display: flex; align-items: center; justify-content: space-between;
+      }
+      .yr-select-option:hover { background: var(--bg-inset); }
+      .yr-select-option svg { width: 14px; height: 14px; opacity: 0; color: var(--fg); }
+      .yr-select-option.active svg { opacity: 1; }
+    </style>
+
+    <div class="activity-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; margin-top: 24px;">
+      <div class="hmap-tabs" style="margin-bottom: 0;">
+        <div class="hmap-tab active" style="background: var(--bg); border: 1px solid var(--rule); color: var(--fg); font-weight: 500;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0; margin-right: 6px;"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>
+          GitHub
+        </div>
+      </div>
+      
+      <div class="yr-select-wrapper" id="year-dropdown">
+        <span class="yr-label">Year</span>
+        <div class="yr-select-trigger" id="year-trigger">
+          <span id="year-trigger-text">2026</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </div>
+        <div class="yr-select-menu" id="year-menu">
+          <div class="yr-select-option active" data-value="2026">2026 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+          <div class="yr-select-option" data-value="2025">2025 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+          <div class="yr-select-option" data-value="2024">2024 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+          <div class="yr-select-option" data-value="2023">2023 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+          <div class="yr-select-option" data-value="2022">2022 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+          <div class="yr-select-option" data-value="2021">2021 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GITHUB PANEL -->
+    <div id="apanel-gh" style="background: var(--bg-elevated); border: 1px solid var(--rule-subtle); border-radius: 8px; padding: 20px;">
+      <div class="hmap-wrap" style="margin: 0;">
+        <div class="hmap-months" id="hmap-months" style="margin-left: 28px;"></div>
+        <div class="hmap-row">
+          <div class="hmap-days">
+            <span>&nbsp;</span>
+            <span>Mon</span>
+            <span>&nbsp;</span>
+            <span>Wed</span>
+            <span>&nbsp;</span>
+            <span>Fri</span>
+            <span>&nbsp;</span>
+          </div>
+          <div id="hmap-grid">
+            <!-- skeleton while loading -->
+            <div id="hmap-skeleton" style="display:grid;grid-template-columns:repeat(53,11px);grid-template-rows:repeat(7,11px);grid-auto-flow:column;gap:2px;">
+            </div>
+          </div>
+        </div>
+        
+        <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-top: 16px;">
+          <div class="hmap-stat" id="hmap-stat" style="margin: 0; text-align: left;">Loading GitHub data…</div>
+          <div class="hmap-legend" style="margin: 0;">
+            <span>less</span>
+            <div class="hc" style="background:var(--rule-subtle);"></div>
+            <div class="hc" data-l="1"></div>
+            <div class="hc" data-l="2"></div>
+            <div class="hc" data-l="3"></div>
+            <div class="hc" data-l="4"></div>
+            <span>more</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 · WORK -->
+  <section id="work">
+    <div class="sh">
+      <span class="sh-label">03 · Work</span>
+      <span class="sh-count">5</span>
+    </div>
+    <p class="sec-sub">
+      Things I built end-to-end.
+    </p>
+
+    <div class="work-list">
+
+      <a href="https://bytelytic.com" target="_blank" class="work-item" id="proj-bytelytic">
+        <span class="work-date">2022 →</span>
+        <div class="work-mid">
+          <div class="work-logo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+          </div>
+          <span class="work-name">Co-Founder — Bytelytic</span>
+          <span class="work-desc">AI Development Studio · building AI systems for US/UK clients</span>
+        </div>
+        <span class="work-arrow">↗</span>
+      </a>
+
+      <a href="https://github.com/HamzaNasiem/LogicGuard" target="_blank" class="work-item" id="proj-logicguard">
+        <span class="work-date">2026</span>
+        <div class="work-mid">
+          <div class="work-logo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"></path><path d="M18 11.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"></path><line x1="22" y1="6" x2="22" y2="14"></line></svg>
+          </div>
+          <span class="work-name">LogicGuard — Published Research</span>
+          <span class="work-desc">Neuro-symbolic LLM validator · Ibn Sina's syllogistic logic · 100% precision</span>
+        </div>
+        <span class="work-arrow">↗</span>
+      </a>
+
+      <a href="https://codeinplace.stanford.edu" target="_blank" class="work-item" id="proj-stanford">
+        <span class="work-date">2026</span>
+        <div class="work-mid">
+          <div class="work-logo">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;color:var(--fg-muted);">SU</span>
+          </div>
+          <span class="work-name">Stanford University</span>
+          <span class="work-desc">Section Leader · Code in Place</span>
+        </div>
+        <span class="work-arrow">↗</span>
+      </a>
+
+      <a href="https://github.com/HamzaNasiem" target="_blank" class="work-item" id="proj-google">
+        <span class="work-date">2025</span>
+        <div class="work-mid">
+          <div class="work-logo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+          </div>
+          <span class="work-name">Google DeepMind Hackathon</span>
+          <span class="work-desc">PulseScriptAI — Multilingual clinical notes + real-time drug interaction detection</span>
+        </div>
+        <span class="work-arrow">↗</span>
+      </a>
+
+      <a href="#" class="work-item" id="proj-mantiq">
+        <span class="work-date">8 YRS</span>
+        <div class="work-mid">
+          <div class="work-logo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+          </div>
+          <span class="work-name">Classical Islamic Logic (Mantiq)</span>
+          <span class="work-desc">Extensive study of classical philosophy — Ibn Rushd, Al-Farabi, Ibn Sina</span>
+        </div>
+        <span class="work-arrow">↗</span>
+      </a>
+
+    </div>s="work-name">AI Chatbot SaaS</span>
+          <span class="work-desc">FastAPI backend + Next.js frontend + OpenAI SDK + Dockerized</span>
+        </div>
+        <span class="work-arrow">↗</span>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- 03 · EXPERIENCE -->
+  <section id="experience">
+    <div class="sh">
+      <span class="sh-label">04 · Experience</span>
+    </div>
+    <p class="sec-sub">Building AI systems, leading teams, and freelancing — the work that shaped what I know.</p>
+
+    <div class="exp-list">
+
+      <div class="exp-item">
+        <div class="exp-dates">Feb 2022 —<br><span class="exp-now">now</span></div>
+        <div>
+          <div class="exp-title">Co-Founder & Lead AI Engineer at <a href="https://bytelytic.com" target="_blank">Bytelytic</a></div>
+          <div class="exp-desc">Built Bytelytic Clinic OS from scratch — voice AI, Twilio SMS, Google Calendar, React dashboard, Railway deployment. Full SaaS product, end-to-end.</div>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-dates">2026</div>
+        <div>
+          <div class="exp-title">Section Leader at <a href="https://codeinplace.stanford.edu" target="_blank">Stanford Code in Place</a></div>
+          <div class="exp-desc">Selected from thousands of applicants globally. Taught Python fundamentals to 20+ international students. The only Pakistani in my cohort's section leader group.</div>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-dates">Oct 2023 —<br>Apr 2026</div>
+        <div>
+          <div class="exp-title">Agentic & GenAI Developer at Soft Pioneers</div>
+          <div class="exp-desc">Built AI-powered microservices, integrated OpenAI APIs, deployed on Azure using Docker & CI/CD. Designed internal AI tools using LangGraph, LangChain, FastAPI.</div>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-dates">Jan 2021 —<br><span class="exp-now">now</span></div>
+        <div>
+          <div class="exp-title">Backend Developer at <a href="https://upwork.com" target="_blank">Upwork</a> — Freelance</div>
+          <div class="exp-desc">20+ delivered projects — custom APIs, AI integrations, dashboards. FastAPI, Docker, Next.js. US and international clients.</div>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-dates">Jan — Apr 2024</div>
+        <div>
+          <div class="exp-title">Backend Intern at Internee.pk</div>
+          <div class="exp-desc">Built REST APIs, applied unit testing using Postman, FastAPI, and SQLModel.</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 06 · STACK & USES -->
+  <section id="stack">
+    <div class="sh">
+      <span class="sh-label">05 · Stack & Uses</span>
+    </div>
+    <p class="sec-sub">What I ship with. Built up over a few years — mostly stable. I switch slowly and only when something is clearly better.</p>
+
+    <div class="terminal">
+      <div class="term-bar">
+        <div class="term-dots">
+          <div class="td td-r"></div>
+          <div class="td td-y"></div>
+          <div class="td td-g"></div>
+        </div>
+        <span class="term-title">hamza@bytelytic — zsh</span>
+        <span class="term-sz">100×28</span>
+      </div>
+      <div class="term-body">
+        <div class="term-prompt">
+          <span class="t-$">$</span>
+          <span class="t-cmd">hamza --uses</span>
+          <span class="t-arg" id="stab-active">voice-ai</span>
+        </div>
+        <div class="stack-tabs">
+          <div class="stab active" data-p="voice">voice-ai</div>
+          <div class="stab" data-p="backend">backend</div>
+          <div class="stab" data-p="frontend">frontend</div>
+          <div class="stab" data-p="devops">devops</div>
+        </div>
+
+        <div class="spanel active" id="sp-voice">
+          <div class="srow"><span class="t-k">voice</span><span class="t-v">Retell AI · Vapi<span class="t-c">// AI phone agents</span></span></div>
+          <div class="srow"><span class="t-k">llm</span><span class="t-v">OpenAI SDK · OpenRouter · Gemini<span class="t-c">// GPT-4o, Llama, Gemini</span></span></div>
+          <div class="srow"><span class="t-k">agents</span><span class="t-v">LangChain · LangGraph · n8n<span class="t-c">// agentic workflows</span></span></div>
+          <div class="srow"><span class="t-k">sms</span><span class="t-v">Twilio<span class="t-c">// SMS + phone number routing</span></span></div>
+          <div class="srow"><span class="t-k">calendar</span><span class="t-v">Google Calendar API<span class="t-c">// appointment sync</span></span></div>
+          <div class="srow"><span class="t-k">payments</span><span class="t-v">Stripe Checkout + Webhooks<span class="t-c">// billing</span></span></div>
+        </div>
+
+        <div class="spanel" id="sp-backend">
+          <div class="srow"><span class="t-k">lang</span><span class="t-v">Python 3.12 · Node.js<span class="t-c">// primary</span></span></div>
+          <div class="srow"><span class="t-k">api</span><span class="t-v">FastAPI · Express.js<span class="t-c">// REST + async</span></span></div>
+          <div class="srow"><span class="t-k">db</span><span class="t-v">PostgreSQL · SQLAlchemy 2.0 · Supabase<span class="t-c">//</span></span></div>
+          <div class="srow"><span class="t-k">cache</span><span class="t-v">Redis<span class="t-c">// caching + queues + rate limit</span></span></div>
+          <div class="srow"><span class="t-k">queue</span><span class="t-v">Kafka · RabbitMQ<span class="t-c">// event-driven arch</span></span></div>
+          <div class="srow"><span class="t-k">auth</span><span class="t-v">JWT · OAuth2 · Supabase Auth<span class="t-c">// multi-tenant</span></span></div>
+        </div>
+
+        <div class="spanel" id="sp-frontend">
+          <div class="srow"><span class="t-k">framework</span><span class="t-v">React 18 · Next.js<span class="t-c">// primary</span></span></div>
+          <div class="srow"><span class="t-k">lang</span><span class="t-v">TypeScript<span class="t-c">// always</span></span></div>
+          <div class="srow"><span class="t-k">styling</span><span class="t-v">TailwindCSS · shadcn/ui<span class="t-c">// utility-first</span></span></div>
+          <div class="srow"><span class="t-k">data</span><span class="t-v">TanStack Query · Axios<span class="t-c">// server state</span></span></div>
+          <div class="srow"><span class="t-k">charts</span><span class="t-v">Recharts<span class="t-c">// dashboards</span></span></div>
+          <div class="srow"><span class="t-k">forms</span><span class="t-v">React Hook Form + Zod<span class="t-c">// type-safe validation</span></span></div>
+        </div>
+
+        <div class="spanel" id="sp-devops">
+          <div class="srow"><span class="t-k">container</span><span class="t-v">Docker · Kubernetes<span class="t-c">// orchestration</span></span></div>
+          <div class="srow"><span class="t-k">cloud</span><span class="t-v">Azure Container Apps · Railway<span class="t-c">// deployment</span></span></div>
+          <div class="srow"><span class="t-k">frontend</span><span class="t-v">Vercel<span class="t-c">// React/Next.js hosting</span></span></div>
+          <div class="srow"><span class="t-k">ci/cd</span><span class="t-v">GitHub Actions<span class="t-c">// automated test + deploy</span></span></div>
+          <div class="srow"><span class="t-k">monitor</span><span class="t-v">Sentry · structlog<span class="t-c">// errors + structured logs</span></span></div>
+          <div class="srow"><span class="t-k">db-host</span><span class="t-v">Supabase · Railway Postgres<span class="t-c">//</span></span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 07 · WRITING -->
+  <section id="writing">
+    <div class="sh">
+      <span class="sh-label">06 · Writing</span>
+      <span class="sh-count">2</span>
+    </div>
+    <p class="sec-sub">Notes from building. Mostly AI, logic, and engineering-flavored.</p>
+    <div class="wlist">
+
+      <a href="https://hamza-naseem.medium.com/" target="_blank" class="witem" id="writ-logic">
+        <span class="w-date">Mar '26</span>
+        <span class="w-title">From Ancient Logic to Modern AI — The Reliability Gap in LLMs</span>
+        <span class="w-arr">↗</span>
+      </a>
+
+      <a href="https://github.com/HamzaNasiem/LogicGuard" target="_blank" class="witem" id="writ-logicguard">
+        <span class="w-date">2026</span>
+        <span class="w-title">LogicGuard: Deterministic LLM Verification via Ibn Sina's Syllogistic Logic</span>
+        <span class="w-arr">↗</span>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- 08 · OFF THE CLOCK -->
+  <section id="off-clock">
+    <div class="sh">
+      <span class="sh-label">07 · Off the Clock</span>
+    </div>
+    <p style="font-size:14px;color:var(--fg-muted);line-height:1.7;max-width:520px;">
+      Reading classical Islamic philosophy — Ibn Rushd, Al-Farabi, Ibn Sina.
+      Running. Thinking about why AI systems fail where human reasoning doesn't.
+      Building things nobody asked me to build yet.
+    </p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="ft-links">
+      <a href="mailto:ziaee.pk@gmail.com">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+        Email
+      </a>
+      <a href="https://github.com/HamzaNasiem" target="_blank">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+        GitHub
+      </a>
+      <a href="https://linkedin.com/in/hamzanasiem" target="_blank">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+        LinkedIn
+      </a>
+      <a href="https://bytelytic.com" target="_blank">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+        Bytelytic
+      </a>
+      <a href="https://hamza-naseem.medium.com/" target="_blank">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"></path><path d="M18 11.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"></path><line x1="22" y1="6" x2="22" y2="14"></line></svg>
+        Medium
+      </a>
+      <a href="https://github.com/HamzaNasiem/Resume/raw/main/Hamza_Naseem_Resume%20(3).pdf" target="_blank">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+        Résumé
+      </a>
+    </div>
+  </footer>
+
+</main>
+
+<!-- ── COMMAND PALETTE ── -->
+<div class="cmd-wrap" id="cmd-wrap">
+  <div class="cmd-box">
+    <div class="cmd-input-row">
+      <span class="cmd-icon">⌘</span>
+      <input class="cmd-inp" id="cmd-inp" placeholder="Search — jump anywhere..." autocomplete="off">
+    </div>
+    <div class="cmd-items">
+      <a href="mailto:ziaee.pk@gmail.com" class="cmd-item" id="cmd-email">
+        <span class="cmd-item-ic">✉</span>
+        <span>Email Hamza</span>
+        <span class="cmd-item-desc">ziaee.pk@gmail.com</span>
+      </a>
+      <a href="https://linkedin.com/in/hamzanasiem" target="_blank" class="cmd-item" id="cmd-li">
+        <span class="cmd-item-ic">in</span>
+        <span>LinkedIn</span>
+        <span class="cmd-item-desc">linkedin.com/in/hamzanasiem</span>
+      </a>
+      <a href="https://github.com/HamzaNasiem/Resume/raw/main/Hamza_Naseem_Resume%20(3).pdf" target="_blank" class="cmd-item" id="cmd-res">
+        <span class="cmd-item-ic">📄</span>
+        <span>Download Résumé</span>
+      </a>
+      <a href="https://bytelytic.com" target="_blank" class="cmd-item" id="cmd-byl">
+        <span class="cmd-item-ic">🏢</span>
+        <span>Bytelytic — Agency</span>
+        <span class="cmd-item-desc">bytelytic.com</span>
+      </a>
+      <a href="https://dashboard-two-jade-54.vercel.app" target="_blank" class="cmd-item" id="cmd-dashboard">
+        <span class="cmd-item-ic">◈</span>
+        <span>Clinic OS Dashboard</span>
+        <span class="cmd-item-desc">Live demo</span>
+      </a>
+      <a href="#work" class="cmd-item cmd-close-on-click" id="cmd-work">
+        <span class="cmd-item-ic">◻</span>
+        <span>View Work</span>
+      </a>
+    </div>
+    <div class="cmd-footer">
+      <span><kbd>↑↓</kbd> navigate</span>
+      <span><kbd>↵</kbd> open</span>
+      <span><kbd>Esc</kbd> close</span>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ── CLOCK ── */
+function tick() {
+  const now = new Date();
+  const pkt = new Date(now.toLocaleString('en-US', { timeZone: 'Asia/Karachi' }));
+  const pad = n => String(n).padStart(2, '0');
+  document.getElementById('top-clock').textContent =
+    `${pad(pkt.getHours())}:${pad(pkt.getMinutes())}:${pad(pkt.getSeconds())} PKT`;
+}
+tick();
+setInterval(tick, 1000);
+
+/* ── GITHUB HEATMAP (LIVE from GitHub GraphQL API) ── */
+(async function() {
+  const GH_USER = 'HamzaNasiem';
+  const GITHUB_TOKEN = ''; 
+
+  const today = new Date();
+  const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const grid = document.getElementById('hmap-grid');
+  const mEl = document.getElementById('hmap-months');
+  const statEl = document.getElementById('hmap-stat');
+
+  // Inject skeleton animation CSS once
+  if (!document.getElementById('sk-pulse-style')) {
+    const style = document.createElement('style');
+    style.id = 'sk-pulse-style';
+    style.textContent = '@keyframes sk-pulse{0%,100%{opacity:.5}50%{opacity:.15}}';
+    document.head.appendChild(style);
+  }
+
+  async function renderHeatmap(targetYear) {
+    // Show skeleton
+    grid.innerHTML = '';
+    mEl.innerHTML = '';
+    statEl.textContent = 'Loading GitHub data...';
+    grid.style.cssText = 'display:grid;grid-template-columns:repeat(53,11px);grid-template-rows:repeat(7,11px);grid-auto-flow:column;gap:2px;';
+    
+    for (let i = 0; i < 53 * 7; i++) {
+      const s = document.createElement('div');
+      s.className = 'hc';
+      s.style.background = 'var(--rule-subtle)';
+      s.style.animation = `sk-pulse 1.4s ease-in-out ${(i % 7) * 0.05}s infinite`;
+      grid.appendChild(s);
+    }
+
+    let contribMap = {}; 
+    let yearTotal = 0;
+    let fetchOk = false;
+    let startDate = new Date();
+    let endDate = new Date();
+
+    if (targetYear === today.getFullYear()) {
+      startDate.setDate(today.getDate() - 52 * 7);
+      const dow = startDate.getDay();
+      startDate.setDate(startDate.getDate() - (dow === 0 ? 6 : dow - 1));
+      endDate = today;
+    } else {
+      startDate = new Date(targetYear, 0, 1);
+      const dow = startDate.getDay();
+      startDate.setDate(startDate.getDate() - (dow === 0 ? 6 : dow - 1));
+      endDate = new Date(targetYear, 11, 31);
+    }
+
+    try {
+      const query = `
+        query($userName:String!, $from:DateTime!, $to:DateTime!) { 
+          user(login: $userName){
+            contributionsCollection(from: $from, to: $to) {
+              contributionCalendar {
+                totalContributions
+                weeks {
+                  contributionDays {
+                    contributionCount
+                    date
+                  }
+                }
+              }
+            }
+          }
+        }`;
+
+      const res = await fetch('https://api.github.com/graphql', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${GITHUB_TOKEN}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ 
+          query, 
+          variables: { 
+            userName: GH_USER,
+            from: startDate.toISOString(),
+            to: new Date(endDate.getFullYear(), endDate.getMonth(), endDate.getDate(), 23, 59, 59).toISOString()
+          } 
+        })
+      });
+
+      if (!res.ok) throw new Error('GraphQL HTTP ' + res.status);
+      const { data } = await res.json();
+      
+      const calendar = data.user.contributionsCollection.contributionCalendar;
+      yearTotal = calendar.totalContributions;
+      
+      calendar.weeks.forEach(week => {
+        week.contributionDays.forEach(day => {
+          contribMap[day.date] = day.contributionCount;
+        });
+      });
+      fetchOk = true;
+    } catch(e) {
+      console.warn('GitHub GraphQL API failed:', e.message);
+    }
+
+    // Clear skeleton
+    grid.innerHTML = '';
+    
+    const d = new Date(startDate);
+    let lastMonth = -1;
+    const monthPush = [];
+    const totalWeeks = Math.ceil((endDate - startDate) / (7*24*3600*1000));
+
+    for (let w = 0; w < totalWeeks; w++) {
+      const wm = new Date(d).getMonth();
+      if (wm !== lastMonth) { monthPush.push({ w, label: MONTHS[wm] }); lastMonth = wm; }
+      for (let day = 0; day < 7; day++) {
+        const date = new Date(d);
+        const dateStr = date.toISOString().slice(0,10);
+        let count = 0, lv = 0;
+
+        if (date <= endDate) {
+          if (fetchOk && contribMap[dateStr] !== undefined) {
+            count = contribMap[dateStr];
+            lv = count === 0 ? 0 : count < 3 ? 1 : count < 6 ? 2 : count < 10 ? 3 : 4;
+          }
+        }
+
+        const cell = document.createElement('div');
+        cell.className = 'hc';
+        if (date > endDate) cell.style.opacity = '0'; // Hide cells past end date
+        else if (lv > 0) cell.setAttribute('data-l', lv);
+        
+        if (date <= endDate) {
+          cell.title = `${date.toDateString()} · ${count} contribution${count !== 1 ? 's' : ''}`;
+        }
+        grid.appendChild(cell);
+        d.setDate(d.getDate() + 1);
+      }
+    }
+
+    // Month labels
+    mEl.innerHTML = '';
+    monthPush.forEach(({w,label}, i, arr) => {
+      // skip if too close to start
+      if (w === 0 && d.getDate() > 8) return; 
+      const span = document.createElement('span');
+      span.textContent = label;
+      const nw = arr[i+1] ? arr[i+1].w : totalWeeks;
+      span.style.cssText = `font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--fg-muted);display:inline-block;width:${(nw-w)*13}px;overflow:hidden;`;
+      mEl.appendChild(span);
+    });
+
+    statEl.textContent = `${yearTotal} contributions in ${targetYear}`;
+  }
+
+  // Initialize Custom Select
+  const yearTrigger = document.getElementById('year-trigger');
+  const yearMenu = document.getElementById('year-menu');
+  const yearText = document.getElementById('year-trigger-text');
+  const options = document.querySelectorAll('.yr-select-option');
+
+  yearTrigger.addEventListener('click', (e) => {
+    e.stopPropagation();
+    yearMenu.classList.toggle('open');
+  });
+
+  document.addEventListener('click', () => {
+    yearMenu.classList.remove('open');
+  });
+
+  options.forEach(opt => {
+    opt.addEventListener('click', () => {
+      const val = opt.getAttribute('data-value');
+      yearText.textContent = val;
+      options.forEach(o => o.classList.remove('active'));
+      opt.classList.add('active');
+      renderHeatmap(parseInt(val));
+    });
+  });
+
+  const currentYear = today.getFullYear().toString();
+  yearText.textContent = currentYear;
+  options.forEach(o => {
+    if(o.getAttribute('data-value') === currentYear) o.classList.add('active');
+  });
+  
+  renderHeatmap(today.getFullYear());
+})();
+
+/* ── STACK TABS ── */
+document.querySelectorAll('.stab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.stab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.spanel').forEach(p => p.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById('sp-' + tab.dataset.p).classList.add('active');
+    document.getElementById('stab-active').textContent = tab.dataset.p;
+  });
+});
+
+/* ── COMMAND PALETTE ── */
+const overlay = document.getElementById('cmd-wrap');
+const inp     = document.getElementById('cmd-inp');
+
+function openCmd()  { overlay.classList.add('open'); inp.focus(); }
+function closeCmd() { overlay.classList.remove('open'); inp.value = ''; }
+
+document.addEventListener('keydown', e => {
+  const active = document.activeElement;
+  const inInput = active.tagName === 'INPUT' || active.tagName === 'TEXTAREA';
+
+  if (!inInput && !e.ctrlKey && !e.metaKey && (e.key === 'r' || e.key === 'R')) {
+    window.open('https://github.com/HamzaNasiem/Resume/raw/main/Hamza_Naseem_Resume%20(3).pdf', '_blank');
+  }
+  if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+    e.preventDefault();
+    overlay.classList.contains('open') ? closeCmd() : openCmd();
+  }
+  if (e.key === 'Escape') closeCmd();
+});
+
+overlay.addEventListener('click', e => { if (e.target === overlay) closeCmd(); });
+document.querySelectorAll('.cmd-close-on-click').forEach(el => {
+  el.addEventListener('click', closeCmd);
+});
+</script>
 </body>
 </html>
