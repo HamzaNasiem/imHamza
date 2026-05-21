@@ -197,15 +197,18 @@
       margin-bottom: 20px;
       line-height: 1.65;
     }
-    .sec-sub a { 
+    .sec-sub a {
       color: var(--fg);
       text-decoration: underline;
-      text-decoration-color: var(--rule);
+      text-decoration-color: var(--fg-muted);
+      text-decoration-thickness: 1.5px;
       text-underline-offset: 3px;
       transition: all 0.2s ease;
     }
-    .sec-sub a:hover { text-decoration-color: var(--fg); }
-    .sec-sub a:hover { text-decoration: underline; }
+    .sec-sub a:hover { 
+      text-decoration-color: var(--fg); 
+      text-decoration-thickness: 2px;
+    }
 
     /* ── BADGES ── */
     .badge {
@@ -735,8 +738,8 @@
   <div class="hero-name">Hamza<br>Naseem.</div>
 
   <div class="hero-intro">
-    <p>Hi, I'm Hamza. I build <a href="https://bytelytic.com" target="_blank">AI voice agents</a> that answer your clinic's calls 24/7 — booking appointments, sending reminders, and handling patient recall without a human receptionist.</p>
-    <p>I'm drawn to problems where AI can eliminate repetitive human work. I ship systems that generate value while you sleep — and I care deeply about making them <em>deterministically</em> correct, not just probably right.</p>
+    <p>Hi, I'm Hamza. I build <a href="https://bytelytic.com" target="_blank">AI voice agents</a> that answer your clinic's calls 24/7 - booking appointments, sending reminders, and handling patient recall without a human receptionist.</p>
+    <p>I'm drawn to problems where AI can eliminate repetitive human work. I ship systems that generate value while you sleep - and I care deeply about making them <em>deterministically</em> correct, not just probably right.</p>
   </div>
 
   <div class="hero-hints">
@@ -767,7 +770,7 @@
       <div class="cred-item">
         <span class="cred-year">2026</span>
         <div class="cred-body">
-          <span class="cred-name"><a href="https://codeinplace.stanford.edu" target="_blank">Stanford University</a> — Section Leader</span>
+          <span class="cred-name"><a href="https://codeinplace.stanford.edu" target="_blank">Stanford University</a> - Section Leader</span>
           <span class="cred-desc">Code in Place 2026 · selected to teach Python to 20+ global students</span>
         </div>
       </div>
@@ -775,7 +778,7 @@
       <div class="cred-item">
         <span class="cred-year">2026</span>
         <div class="cred-body">
-          <span class="cred-name"><a href="https://github.com/HamzaNasiem/LogicGuard" target="_blank">LogicGuard</a> — Published Research</span>
+          <span class="cred-name"><a href="https://github.com/HamzaNasiem/LogicGuard" target="_blank">LogicGuard</a> - Published Research</span>
           <span class="cred-desc">Neuro-symbolic AI · 100% precision · zero false positives · BFS graph validator on Ibn Sina's syllogistic logic</span>
         </div>
       </div>
@@ -783,7 +786,7 @@
       <div class="cred-item">
         <span class="cred-year">2022</span>
         <div class="cred-body">
-          <span class="cred-name">Co-Founder — <a href="https://bytelytic.com" target="_blank">Bytelytic</a></span>
+          <span class="cred-name">Co-Founder - <a href="https://bytelytic.com" target="_blank">Bytelytic</a></span>
           <span class="cred-desc">AI Development Studio · building AI systems for US/UK clients</span>
         </div>
       </div>
@@ -792,13 +795,13 @@
         <span class="cred-year">2025</span>
         <div class="cred-body">
           <span class="cred-name">Google DeepMind Hackathon</span>
-          <span class="cred-desc">PulseScriptAI — Gemini 3 Global Hackathon · multilingual clinical notes + drug interaction detection</span>
+          <span class="cred-desc">PulseScriptAI - Gemini 3 Global Hackathon · multilingual clinical notes + drug interaction detection</span>
         </div>
       </div>
       <div class="cred-item">
-        <span class="cred-year">—</span>
+        <span class="cred-year">-</span>
         <div class="cred-body">
-          <span class="cred-name">8 Years — Classical Islamic Logic (Mantiq)</span>
+          <span class="cred-name">8 Years - Classical Islamic Logic (Mantiq)</span>
           <span class="cred-desc">Studied Ibn Sina's syllogistic frameworks before I touched a keyboard. That obsession with deterministic reasoning is now my competitive edge in AI.</span>
         </div>
       </div>
@@ -811,7 +814,7 @@
     <div class="sh">
       <span class="sh-label">02 · Activity</span>
     </div>
-    <p class="sec-sub">What I've been shipping lately — pulled from GitHub.</p>
+    <p class="sec-sub">What I've been shipping lately - pulled from GitHub.</p>
 
     <style>
       .yr-select-wrapper { position: relative; user-select: none; display: flex; align-items: center; gap: 8px; }
@@ -921,7 +924,7 @@
               <line x1="4" y1="20" x2="8" y2="4"></line>
             </svg>
           </div>
-          <span class="work-name">Co-Founder — Bytelytic</span>
+          <span class="work-name">Co-Founder - Bytelytic</span>
           <span class="work-desc">AI Development Studio · building AI systems for US/UK clients</span>
         </div>
         <span class="work-arrow">↗</span>
@@ -933,7 +936,7 @@
           <div class="work-logo">
             <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.41-3.38 6.41s-3.38-2.87-3.38-6.41 1.51-6.41 3.38-6.41 3.38 2.87 3.38 6.41zM24 12c0 3.17-.53 5.75-1.19 5.75s-1.19-2.58-1.19-5.75.53-5.75 1.19-5.75S24 8.83 24 12z"/></svg>
           </div>
-          <span class="work-name">LogicGuard — Published Research</span>
+          <span class="work-name">LogicGuard - Published Research</span>
           <span class="work-desc">Neuro-symbolic LLM validator · Ibn Sina's syllogistic logic · 100% precision</span>
         </div>
         <span class="work-arrow">↗</span>
@@ -963,7 +966,7 @@
             </svg>
           </div>
           <span class="work-name">Google DeepMind Hackathon</span>
-          <span class="work-desc">PulseScriptAI — Multilingual clinical notes + real-time drug interaction detection</span>
+          <span class="work-desc">PulseScriptAI - Multilingual clinical notes + real-time drug interaction detection</span>
         </div>
         <span class="work-arrow">↗</span>
       </a>
@@ -979,7 +982,7 @@
             </svg>
           </div>
           <span class="work-name">Classical Islamic Logic (Mantiq)</span>
-          <span class="work-desc">Extensive study of classical philosophy — Ibn Rushd, Al-Farabi, Ibn Sina</span>
+          <span class="work-desc">Extensive study of classical philosophy - Ibn Rushd, Al-Farabi, Ibn Sina</span>
         </div>
         <span class="work-arrow">↗</span>
       </a>
@@ -994,15 +997,15 @@
     <div class="sh">
       <span class="sh-label">04 · Experience</span>
     </div>
-    <p class="sec-sub">Building AI systems, leading teams, and freelancing — the work that shaped what I know.</p>
+    <p class="sec-sub">Building AI systems, leading teams, and freelancing - the work that shaped what I know.</p>
 
     <div class="exp-list">
 
       <div class="exp-item">
-        <div class="exp-dates">Feb 2022 —<br><span class="exp-now">now</span></div>
+        <div class="exp-dates">Feb 2022 -<br><span class="exp-now">now</span></div>
         <div>
           <div class="exp-title">Co-Founder & Lead AI Engineer at <a href="https://bytelytic.com" target="_blank">Bytelytic</a></div>
-          <div class="exp-desc">Built Bytelytic Clinic OS from scratch — voice AI, Twilio SMS, Google Calendar, React dashboard, Railway deployment. Full SaaS product, end-to-end.</div>
+          <div class="exp-desc">Built Bytelytic Clinic OS from scratch - voice AI, Twilio SMS, Google Calendar, React dashboard, Railway deployment. Full SaaS product, end-to-end.</div>
         </div>
       </div>
 
@@ -1015,7 +1018,7 @@
       </div>
 
       <div class="exp-item">
-        <div class="exp-dates">Oct 2023 —<br>Apr 2026</div>
+        <div class="exp-dates">Oct 2023 -<br>Apr 2026</div>
         <div>
           <div class="exp-title">Agentic & GenAI Developer at Soft Pioneers</div>
           <div class="exp-desc">Built AI-powered microservices, integrated OpenAI APIs, deployed on Azure using Docker & CI/CD. Designed internal AI tools using LangGraph, LangChain, FastAPI.</div>
@@ -1023,15 +1026,15 @@
       </div>
 
       <div class="exp-item">
-        <div class="exp-dates">Jan 2021 —<br><span class="exp-now">now</span></div>
+        <div class="exp-dates">Jan 2021 -<br><span class="exp-now">now</span></div>
         <div>
-          <div class="exp-title">Backend Developer at <a href="https://upwork.com" target="_blank">Upwork</a> — Freelance</div>
-          <div class="exp-desc">20+ delivered projects — custom APIs, AI integrations, dashboards. FastAPI, Docker, Next.js. US and international clients.</div>
+          <div class="exp-title">Backend Developer at <a href="https://upwork.com" target="_blank">Upwork</a> - Freelance</div>
+          <div class="exp-desc">20+ delivered projects - custom APIs, AI integrations, dashboards. FastAPI, Docker, Next.js. US and international clients.</div>
         </div>
       </div>
 
       <div class="exp-item">
-        <div class="exp-dates">Jan — Apr 2024</div>
+        <div class="exp-dates">Jan - Apr 2024</div>
         <div>
           <div class="exp-title">Backend Intern at Internee.pk</div>
           <div class="exp-desc">Built REST APIs, applied unit testing using Postman, FastAPI, and SQLModel.</div>
@@ -1046,7 +1049,7 @@
     <div class="sh">
       <span class="sh-label">05 · Stack & Uses</span>
     </div>
-    <p class="sec-sub">What I ship with. Built up over a few years — mostly stable. I switch slowly and only when something is clearly better.</p>
+    <p class="sec-sub">What I ship with. Built up over a few years - mostly stable. I switch slowly and only when something is clearly better.</p>
 
     <div class="terminal">
       <div class="term-bar">
@@ -1055,7 +1058,7 @@
           <div class="td td-y"></div>
           <div class="td td-g"></div>
         </div>
-        <span class="term-title">hamza — zsh</span>
+        <span class="term-title">hamza - zsh</span>
         <span class="term-sz">100×28</span>
       </div>
       <div class="term-body">
@@ -1121,7 +1124,7 @@
 
       <a href="https://hamza-naseem.medium.com/" target="_blank" class="witem" id="writ-logic">
         <span class="w-date">Mar '26</span>
-        <span class="w-title">From Ancient Logic to Modern AI — The Reliability Gap in LLMs</span>
+        <span class="w-title">From Ancient Logic to Modern AI - The Reliability Gap in LLMs</span>
         <span class="w-arr">↗</span>
       </a>
 
@@ -1140,7 +1143,7 @@
       <span class="sh-label">07 · Off the Clock</span>
     </div>
     <p style="font-size:14px;color:var(--fg-muted);line-height:1.7;max-width:520px;">
-      Reading classical Islamic philosophy — Ibn Rushd, Al-Farabi, Ibn Sina.
+      Reading classical Islamic philosophy - Ibn Rushd, Al-Farabi, Ibn Sina.
       Running. Thinking about why AI systems fail where human reasoning doesn't.
       Building things nobody asked me to build yet.
     </p>
@@ -1183,7 +1186,7 @@
   <div class="cmd-box">
     <div class="cmd-input-row">
       <span class="cmd-icon">⌘</span>
-      <input class="cmd-inp" id="cmd-inp" placeholder="Search — jump anywhere..." autocomplete="off">
+      <input class="cmd-inp" id="cmd-inp" placeholder="Search - jump anywhere..." autocomplete="off">
     </div>
     <div class="cmd-items">
       <a href="mailto:ziaee.pk@gmail.com" class="cmd-item" id="cmd-email">
@@ -1202,7 +1205,7 @@
       </a>
       <a href="https://bytelytic.com" target="_blank" class="cmd-item" id="cmd-byl">
         <span class="cmd-item-ic">🏢</span>
-        <span>Bytelytic — Agency</span>
+        <span>Bytelytic - Agency</span>
         <span class="cmd-item-desc">bytelytic.com</span>
       </a>
       <a href="https://dashboard-two-jade-54.vercel.app" target="_blank" class="cmd-item" id="cmd-dashboard">
