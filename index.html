@@ -86,22 +86,26 @@
     .btmbar {
       position: fixed;
       bottom: 0; left: 0; right: 0;
-      height: 36px;
+      height: 48px;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 28px;
+      gap: 32px;
       border-top: 1px solid var(--rule);
       background: var(--bg);
       z-index: 200;
     }
     .btmbar a {
-      font-size: 12px;
+      font-size: 13px;
       color: var(--fg-muted);
       transition: color 0.15s;
       display: flex;
       align-items: center;
-      gap: 5px;
+      gap: 6px;
+    }
+    .btmbar a svg {
+      width: 15px;
+      height: 15px;
     }
     .btmbar a:hover { color: var(--fg); }
 
@@ -109,7 +113,7 @@
     main {
       max-width: var(--col);
       margin: 0 auto;
-      padding: calc(36px + 72px) var(--g) calc(36px + 72px);
+      padding: calc(36px + 72px) var(--g) calc(48px + 72px);
     }
 
     /* ── HERO ── */
