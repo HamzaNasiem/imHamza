@@ -130,8 +130,14 @@
       margin-bottom: 14px;
     }
     .hero-intro p:last-child { margin-bottom: 0; }
-    .hero-intro a { color: var(--blue); }
-    .hero-intro a:hover { text-decoration: underline; }
+    .hero-intro a { 
+      color: var(--fg);
+      text-decoration: underline;
+      text-decoration-color: var(--rule);
+      text-underline-offset: 3px;
+      transition: all 0.2s ease;
+    }
+    .hero-intro a:hover { text-decoration-color: var(--fg); }
     .hero-hints {
       display: flex;
       flex-wrap: wrap;
@@ -187,7 +193,14 @@
       margin-bottom: 20px;
       line-height: 1.65;
     }
-    .sec-sub a { color: var(--blue); }
+    .sec-sub a { 
+      color: var(--fg);
+      text-decoration: underline;
+      text-decoration-color: var(--rule);
+      text-underline-offset: 3px;
+      transition: all 0.2s ease;
+    }
+    .sec-sub a:hover { text-decoration-color: var(--fg); }
     .sec-sub a:hover { text-decoration: underline; }
 
     /* ── BADGES ── */
@@ -281,7 +294,14 @@
     }
     .exp-now { color: var(--green); }
     .exp-title { font-size: 14px; font-weight: 500; color: var(--fg); margin-bottom: 3px; }
-    .exp-title a { color: var(--blue); }
+    .exp-title a { 
+      color: var(--fg);
+      text-decoration: underline;
+      text-decoration-color: var(--rule);
+      text-underline-offset: 3px;
+      transition: all 0.2s ease;
+    }
+    .exp-title a:hover { text-decoration-color: var(--fg); }
     .exp-title a:hover { text-decoration: underline; }
     .exp-desc { font-size: 13px; color: var(--fg-muted); line-height: 1.65; }
 
@@ -380,7 +400,14 @@
     .cred-year { font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--fg-muted); }
     .cred-body { display:flex; align-items:baseline; flex-wrap:wrap; gap:6px; }
     .cred-name { font-size:14px; font-weight:500; color:var(--fg); }
-    .cred-name a { color:var(--blue); }
+    .cred-name a { 
+      color: var(--fg);
+      text-decoration: underline;
+      text-decoration-color: var(--rule);
+      text-underline-offset: 3px;
+      transition: all 0.2s ease;
+    }
+    .cred-name a:hover { text-decoration-color: var(--fg); }
     .cred-name a:hover { text-decoration:underline; }
     .cred-desc { font-size:13px; color:var(--fg-muted); }
 
@@ -444,7 +471,14 @@
     }
     .t-k { color: var(--fg-subtle); }
     .t-v { color: var(--fg); }
-    .t-v a { color: var(--blue); }
+    .t-v a { 
+      color: var(--fg);
+      text-decoration: underline;
+      text-decoration-color: var(--rule);
+      text-underline-offset: 3px;
+      transition: all 0.2s ease;
+    }
+    .t-v a:hover { text-decoration-color: var(--fg); }
     .t-c { color: var(--fg-ghost); margin-left: 6px; }
 
     /* ── LINKEDIN POSTS ── */
@@ -487,7 +521,7 @@
     }
     .li-in-logo {
       margin-left: auto;
-      background: var(--blue);
+      background: var(--fg);
       color: #fff;
       font-size: 12px;
       font-weight: 700;
@@ -505,7 +539,7 @@
     .li-post-tags {
       font-family: 'JetBrains Mono', monospace;
       font-size: 10px;
-      color: var(--blue);
+      color: var(--fg-muted);
       margin-bottom: 12px;
       letter-spacing: 0.01em;
     }
