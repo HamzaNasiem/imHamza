@@ -928,25 +928,6 @@
         </div>
       </div>
 
-      <!-- Live GitHub Stats Strip -->
-      <div id="gh-stats-strip" style="display:flex;gap:0;margin-top:12px;border:1px solid var(--rule-subtle);border-radius:8px;overflow:hidden;">
-        <div style="flex:1;padding:14px 16px;text-align:center;border-right:1px solid var(--rule-subtle);">
-          <div id="gh-repos" style="font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:600;color:var(--fg);">—</div>
-          <div style="font-size:11px;color:var(--fg-muted);margin-top:2px;letter-spacing:0.04em;text-transform:uppercase;">Repos</div>
-        </div>
-        <div style="flex:1;padding:14px 16px;text-align:center;border-right:1px solid var(--rule-subtle);">
-          <div id="gh-stars" style="font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:600;color:var(--fg);">—</div>
-          <div style="font-size:11px;color:var(--fg-muted);margin-top:2px;letter-spacing:0.04em;text-transform:uppercase;">Stars</div>
-        </div>
-        <div style="flex:1;padding:14px 16px;text-align:center;border-right:1px solid var(--rule-subtle);">
-          <div id="gh-followers" style="font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:600;color:var(--fg);">—</div>
-          <div style="font-size:11px;color:var(--fg-muted);margin-top:2px;letter-spacing:0.04em;text-transform:uppercase;">Followers</div>
-        </div>
-        <div style="flex:1;padding:14px 16px;text-align:center;">
-          <div id="gh-streak" style="font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:600;color:var(--fg);">—</div>
-          <div style="font-size:11px;color:var(--fg-muted);margin-top:2px;letter-spacing:0.04em;text-transform:uppercase;">This Year</div>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -1281,26 +1262,8 @@ function tick() {
 tick();
 setInterval(tick, 1000);
 
-/* ── GITHUB LIVE STATS (public REST API, no token needed) ── */
-(async function() {
-  try {
-    const [userRes, reposRes] = await Promise.all([
-      fetch('https://api.github.com/users/HamzaNasiem'),
-      fetch('https://api.github.com/users/HamzaNasiem/repos?per_page=100&type=owner')
-    ]);
-    if (!userRes.ok || !reposRes.ok) throw new Error('API failed');
-    const user = await userRes.json();
-    const repos = await reposRes.json();
-    const totalStars = repos.reduce((sum, r) => sum + (r.stargazers_count || 0), 0);
-    document.getElementById('gh-repos').textContent = user.public_repos ?? '—';
-    document.getElementById('gh-followers').textContent = user.followers ?? '—';
-    document.getElementById('gh-stars').textContent = totalStars;
-  } catch(e) {
-    console.warn('GitHub stats failed:', e.message);
-  }
-})();
 
-/* ── GITHUB HEATMAP (public contributions API, no token needed) ── */
+/* ── GITHUB HEATMAP (GitHub Skyline API, no token needed) ── */
 (async function() {
   const GH_USER = 'HamzaNasiem';
 
@@ -1352,23 +1315,47 @@ setInterval(tick, 1000);
     }
 
     try {
-      // Free public API — no token required
-      const res = await fetch(`https://github-contributions-api.jodan.in/v1/?username=${GH_USER}`);
-      if (!res.ok) throw new Error('API ' + res.status);
+      // GitHub Skyline API — free, no token, returns per-day counts
+      const year = targetYear;
+      const res = await fetch(`https://skyline.github.com/HamzaNasiem/${year}.json`);
+      if (!res.ok) throw new Error('Skyline API ' + res.status);
       const json = await res.json();
 
-      // json.contributions is an array of { date, count }
-      const allContribs = json.contributions || [];
-      allContribs.forEach(({ date, count }) => {
-        const y = parseInt(date.split('-')[0]);
-        if (y === targetYear) {
-          contribMap[date] = count;
-          yearTotal += count;
-        }
+      // Skyline format: json.contributions = [{week:N, days:[{count,color,intensity},...]},...]
+      yearTotal = json.total || 0;
+      (json.contributions || []).forEach(week => {
+        (week.days || []).forEach((day, di) => {
+          // Reconstruct date from week index + day index
+          // Day 0 of week 0 = Jan 1 of year (Sunday)
+          const dayNum = week.week * 7 + di;
+          const d2 = new Date(year, 0, 1 + dayNum);
+          if (d2.getFullYear() === year) {
+            const ds = d2.toISOString().slice(0,10);
+            contribMap[ds] = day.count || 0;
+          }
+        });
       });
       fetchOk = true;
     } catch(e) {
-      console.warn('Contributions API failed:', e.message);
+      console.warn('Skyline API failed, trying events fallback:', e.message);
+      // Fallback: GitHub public events API (last 90 days only)
+      try {
+        const evRes = await fetch(`https://api.github.com/users/HamzaNasiem/events/public?per_page=100`);
+        if (!evRes.ok) throw new Error('events ' + evRes.status);
+        const events = await evRes.json();
+        events.forEach(ev => {
+          if (!ev.created_at) return;
+          const ds = ev.created_at.slice(0,10);
+          const y = parseInt(ds.split('-')[0]);
+          if (y === targetYear) {
+            contribMap[ds] = (contribMap[ds] || 0) + 1;
+            yearTotal++;
+          }
+        });
+        fetchOk = true;
+      } catch(e2) {
+        console.warn('Events fallback also failed:', e2.message);
+      }
     }
 
     // Clear skeleton
