@@ -1315,47 +1315,18 @@ setInterval(tick, 1000);
     }
 
     try {
-      // GitHub Skyline API — free, no token, returns per-day counts
-      const year = targetYear;
-      const res = await fetch(`https://skyline.github.com/HamzaNasiem/${year}.json`);
-      if (!res.ok) throw new Error('Skyline API ' + res.status);
+      // Call our own Vercel serverless function (token is stored securely on Vercel)
+      const res = await fetch(`/api/contributions?year=${targetYear}`);
+      if (!res.ok) throw new Error('API ' + res.status);
       const json = await res.json();
+      if (json.error) throw new Error(json.error);
 
-      // Skyline format: json.contributions = [{week:N, days:[{count,color,intensity},...]},...]
+      // json.contributions = { "2026-01-01": 3, "2026-01-02": 0, ... }
       yearTotal = json.total || 0;
-      (json.contributions || []).forEach(week => {
-        (week.days || []).forEach((day, di) => {
-          // Reconstruct date from week index + day index
-          // Day 0 of week 0 = Jan 1 of year (Sunday)
-          const dayNum = week.week * 7 + di;
-          const d2 = new Date(year, 0, 1 + dayNum);
-          if (d2.getFullYear() === year) {
-            const ds = d2.toISOString().slice(0,10);
-            contribMap[ds] = day.count || 0;
-          }
-        });
-      });
+      contribMap = json.contributions || {};
       fetchOk = true;
     } catch(e) {
-      console.warn('Skyline API failed, trying events fallback:', e.message);
-      // Fallback: GitHub public events API (last 90 days only)
-      try {
-        const evRes = await fetch(`https://api.github.com/users/HamzaNasiem/events/public?per_page=100`);
-        if (!evRes.ok) throw new Error('events ' + evRes.status);
-        const events = await evRes.json();
-        events.forEach(ev => {
-          if (!ev.created_at) return;
-          const ds = ev.created_at.slice(0,10);
-          const y = parseInt(ds.split('-')[0]);
-          if (y === targetYear) {
-            contribMap[ds] = (contribMap[ds] || 0) + 1;
-            yearTotal++;
-          }
-        });
-        fetchOk = true;
-      } catch(e2) {
-        console.warn('Events fallback also failed:', e2.message);
-      }
+      console.warn('Contributions API failed:', e.message);
     }
 
     // Clear skeleton
