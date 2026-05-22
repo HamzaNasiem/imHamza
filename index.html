@@ -915,7 +915,7 @@
         </div>
         
         <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-top: 16px;">
-          <div class="hmap-stat" id="hmap-stat" style="margin: 0; text-align: left;">Loading GitHub data…</div>
+          <div class="hmap-stat" id="hmap-stat" style="margin: 0; text-align: left;">Loading...</div>
           <div class="hmap-legend" style="margin: 0;">
             <span>less</span>
             <div class="hc" style="background:var(--rule-subtle);"></div>
@@ -927,8 +927,29 @@
           </div>
         </div>
       </div>
+
+      <!-- Live GitHub Stats Strip -->
+      <div id="gh-stats-strip" style="display:flex;gap:0;margin-top:12px;border:1px solid var(--rule-subtle);border-radius:8px;overflow:hidden;">
+        <div style="flex:1;padding:14px 16px;text-align:center;border-right:1px solid var(--rule-subtle);">
+          <div id="gh-repos" style="font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:600;color:var(--fg);">—</div>
+          <div style="font-size:11px;color:var(--fg-muted);margin-top:2px;letter-spacing:0.04em;text-transform:uppercase;">Repos</div>
+        </div>
+        <div style="flex:1;padding:14px 16px;text-align:center;border-right:1px solid var(--rule-subtle);">
+          <div id="gh-stars" style="font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:600;color:var(--fg);">—</div>
+          <div style="font-size:11px;color:var(--fg-muted);margin-top:2px;letter-spacing:0.04em;text-transform:uppercase;">Stars</div>
+        </div>
+        <div style="flex:1;padding:14px 16px;text-align:center;border-right:1px solid var(--rule-subtle);">
+          <div id="gh-followers" style="font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:600;color:var(--fg);">—</div>
+          <div style="font-size:11px;color:var(--fg-muted);margin-top:2px;letter-spacing:0.04em;text-transform:uppercase;">Followers</div>
+        </div>
+        <div style="flex:1;padding:14px 16px;text-align:center;">
+          <div id="gh-streak" style="font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:600;color:var(--fg);">—</div>
+          <div style="font-size:11px;color:var(--fg-muted);margin-top:2px;letter-spacing:0.04em;text-transform:uppercase;">This Year</div>
+        </div>
+      </div>
     </div>
   </section>
+
 
   <!-- 02 · WORK -->
   <section id="work">
@@ -1260,10 +1281,28 @@ function tick() {
 tick();
 setInterval(tick, 1000);
 
-/* ── GITHUB HEATMAP (LIVE from GitHub GraphQL API) ── */
+/* ── GITHUB LIVE STATS (public REST API, no token needed) ── */
+(async function() {
+  try {
+    const [userRes, reposRes] = await Promise.all([
+      fetch('https://api.github.com/users/HamzaNasiem'),
+      fetch('https://api.github.com/users/HamzaNasiem/repos?per_page=100&type=owner')
+    ]);
+    if (!userRes.ok || !reposRes.ok) throw new Error('API failed');
+    const user = await userRes.json();
+    const repos = await reposRes.json();
+    const totalStars = repos.reduce((sum, r) => sum + (r.stargazers_count || 0), 0);
+    document.getElementById('gh-repos').textContent = user.public_repos ?? '—';
+    document.getElementById('gh-followers').textContent = user.followers ?? '—';
+    document.getElementById('gh-stars').textContent = totalStars;
+  } catch(e) {
+    console.warn('GitHub stats failed:', e.message);
+  }
+})();
+
+/* ── GITHUB HEATMAP (public contributions API, no token needed) ── */
 (async function() {
   const GH_USER = 'HamzaNasiem';
-  const GITHUB_TOKEN = ''; 
 
   const today = new Date();
   const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
@@ -1313,53 +1352,23 @@ setInterval(tick, 1000);
     }
 
     try {
-      const query = `
-        query($userName:String!, $from:DateTime!, $to:DateTime!) { 
-          user(login: $userName){
-            contributionsCollection(from: $from, to: $to) {
-              contributionCalendar {
-                totalContributions
-                weeks {
-                  contributionDays {
-                    contributionCount
-                    date
-                  }
-                }
-              }
-            }
-          }
-        }`;
+      // Free public API — no token required
+      const res = await fetch(`https://github-contributions-api.jodan.in/v1/?username=${GH_USER}`);
+      if (!res.ok) throw new Error('API ' + res.status);
+      const json = await res.json();
 
-      const res = await fetch('https://api.github.com/graphql', {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${GITHUB_TOKEN}`,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ 
-          query, 
-          variables: { 
-            userName: GH_USER,
-            from: startDate.toISOString(),
-            to: new Date(endDate.getFullYear(), endDate.getMonth(), endDate.getDate(), 23, 59, 59).toISOString()
-          } 
-        })
-      });
-
-      if (!res.ok) throw new Error('GraphQL HTTP ' + res.status);
-      const { data } = await res.json();
-      
-      const calendar = data.user.contributionsCollection.contributionCalendar;
-      yearTotal = calendar.totalContributions;
-      
-      calendar.weeks.forEach(week => {
-        week.contributionDays.forEach(day => {
-          contribMap[day.date] = day.contributionCount;
-        });
+      // json.contributions is an array of { date, count }
+      const allContribs = json.contributions || [];
+      allContribs.forEach(({ date, count }) => {
+        const y = parseInt(date.split('-')[0]);
+        if (y === targetYear) {
+          contribMap[date] = count;
+          yearTotal += count;
+        }
       });
       fetchOk = true;
     } catch(e) {
-      console.warn('GitHub GraphQL API failed:', e.message);
+      console.warn('Contributions API failed:', e.message);
     }
 
     // Clear skeleton
@@ -1411,6 +1420,10 @@ setInterval(tick, 1000);
     });
 
     statEl.textContent = `${yearTotal} contributions in ${targetYear}`;
+    if (targetYear === today.getFullYear()) {
+      const streakEl = document.getElementById('gh-streak');
+      if (streakEl) streakEl.textContent = yearTotal;
+    }
   }
 
   // Initialize Custom Select
