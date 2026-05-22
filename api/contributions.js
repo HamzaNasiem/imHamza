@@ -6,7 +6,7 @@ export default async function handler(req, res) {
 
   const { year } = req.query;
   const targetYear = parseInt(year) || new Date().getFullYear();
-  const token = process.env.GITHUB_TOKEN;
+  const token = (process.env.GITHUB_TOKEN || '').trim();
 
   if (!token) {
     return res.status(500).json({ error: 'GITHUB_TOKEN env variable not set' });
