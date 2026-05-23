@@ -1314,17 +1314,10 @@ setInterval(tick, 1000);
     let startDate = new Date();
     let endDate = new Date();
 
-    if (targetYear === today.getFullYear()) {
-      startDate.setDate(today.getDate() - 52 * 7);
-      const dow = startDate.getDay();
-      startDate.setDate(startDate.getDate() - (dow === 0 ? 6 : dow - 1));
-      endDate = today;
-    } else {
-      startDate = new Date(targetYear, 0, 1);
-      const dow = startDate.getDay();
-      startDate.setDate(startDate.getDate() - (dow === 0 ? 6 : dow - 1));
-      endDate = new Date(targetYear, 11, 31);
-    }
+    startDate = new Date(targetYear, 0, 1);
+    const dow = startDate.getDay();
+    startDate.setDate(startDate.getDate() - (dow === 0 ? 6 : dow - 1)); // start on nearest Monday
+    endDate = new Date(targetYear, 11, 31);
 
     try {
       // Call our own Vercel serverless function (token is stored securely on Vercel)
@@ -1385,7 +1378,7 @@ setInterval(tick, 1000);
       const span = document.createElement('span');
       span.textContent = label;
       const nw = arr[i+1] ? arr[i+1].w : totalWeeks;
-      span.style.cssText = `font-family:'JetBrains Mono',monospace;color:var(--fg-muted);grid-column: ${w + 1} / span ${nw - w};`;
+      span.style.cssText = `font-family:'JetBrains Mono',monospace;color:var(--fg-muted);grid-column: ${w + 1} / span ${nw - w}; overflow:hidden; white-space:nowrap; text-overflow:clip;`;
       mEl.appendChild(span);
     });
 
