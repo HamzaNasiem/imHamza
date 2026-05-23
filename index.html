@@ -1373,11 +1373,11 @@ setInterval(tick, 1000);
     // Month labels
     mEl.innerHTML = '';
     monthPush.forEach(({w,label}, i, arr) => {
-      // skip if too close to start
-      if (w === 0 && d.getDate() > 8) return; 
+      const nw = arr[i+1] ? arr[i+1].w : totalWeeks;
+      // Skip if the month spans less than 2 weeks (prevents overlaps like "DeJan" at the start)
+      if (nw - w < 2) return; 
       const span = document.createElement('span');
       span.textContent = label;
-      const nw = arr[i+1] ? arr[i+1].w : totalWeeks;
       span.style.cssText = `font-family:'JetBrains Mono',monospace;color:var(--fg-muted);grid-column: ${w + 1} / span ${nw - w}; overflow:hidden; white-space:nowrap; text-overflow:clip;`;
       mEl.appendChild(span);
     });
