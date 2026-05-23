@@ -359,7 +359,10 @@
     }
     .hmap-tab.active { background: var(--fg); color: var(--bg); border-color: var(--fg); }
     .hmap-months {
-      display: flex;
+      display: grid;
+      grid-template-columns: repeat(53, minmax(0, 11px));
+      gap: 2px;
+      justify-content: start;
       margin-left: 26px;
       margin-bottom: 4px;
       font-family: 'JetBrains Mono', monospace;
@@ -397,7 +400,7 @@
     }
     @media (max-width: 600px) {
       .hmap-days { display: none; }
-      .hmap-months { margin-left: 0; font-size: 8px; }
+      .hmap-months { margin-left: 0; font-size: 8px; gap: 1px; }
       #hmap-grid { gap: 1px; }
       .hc { border-radius: 1px; }
     }
@@ -1382,7 +1385,7 @@ setInterval(tick, 1000);
       const span = document.createElement('span');
       span.textContent = label;
       const nw = arr[i+1] ? arr[i+1].w : totalWeeks;
-      span.style.cssText = `font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--fg-muted);display:inline-block;width:${(nw-w)*13}px;overflow:hidden;`;
+      span.style.cssText = `font-family:'JetBrains Mono',monospace;color:var(--fg-muted);grid-column: ${w + 1} / span ${nw - w};`;
       mEl.appendChild(span);
     });
 
