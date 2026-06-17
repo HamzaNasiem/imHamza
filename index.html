@@ -9,8 +9,19 @@
   <meta property="og:title" content="Hamza Naseem">
   <meta property="og:description" content="I build AI voice agents that answer your clinic's calls 24/7. Founder of Bytelytic · Stanford Section Leader.">
   <meta property="og:url" content="https://imhamza.com">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://imhamza.com/assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Hamza Naseem — AI Voice Agent Engineer">
+  <meta name="twitter:description" content="Building 24/7 AI voice agents for healthcare & service businesses. Co-Founder at Bytelytic · Stanford Section Leader · Published AI Researcher.">
+  <meta name="twitter:image" content="https://imhamza.com/assets/og-image.png">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://imhamza.com">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon.svg">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Hamza Naseem","url":"https://imhamza.com","jobTitle":"AI Voice Agent Engineer","description":"Building 24/7 autonomous AI receptionists and automation pipelines for healthcare and service businesses.","email":"ziaee.pk@gmail.com","sameAs":["https://linkedin.com/in/hamzanasiem","https://github.com/HamzaNasiem","https://hamza-naseem.medium.com"],"address":{"@type":"PostalAddress","addressLocality":"Karachi","addressCountry":"PK"},"worksFor":{"@type":"Organization","name":"Bytelytic","url":"https://bytelytic.com"}}</script>
+  <script defer data-domain="imhamza.com" src="https://plausible.io/js/script.js"></script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,6 +45,25 @@
       --blue:        #2563eb;
       --col:         760px;
       --g:           24px;
+    }
+
+    /* ── DARK MODE (auto, follows system preference) ── */
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg:          oklch(0.13 0.003 250);
+        --bg-elevated: oklch(0.17 0.003 250);
+        --bg-overlay:  oklch(0.20 0.003 250);
+        --bg-inset:    oklch(0.10 0.003 250);
+        --fg:          oklch(0.95 0.002 250);
+        --fg-muted:    oklch(0.62 0.004 250);
+        --fg-subtle:   oklch(0.50 0.004 250);
+        --fg-faint:    oklch(0.35 0.004 250);
+        --fg-ghost:    oklch(0.26 0.003 250);
+        --rule:        oklch(0.26 0.003 250);
+        --rule-subtle: oklch(0.21 0.003 250);
+        --green:       oklch(0.65 0.15  155);
+        --blue:        #60a5fa;
+      }
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -333,7 +363,7 @@
       transition: all 0.2s ease;
     }
     .exp-title a:hover { text-decoration-color: var(--fg); }
-    .exp-title a:hover { text-decoration: underline; }
+    /* end exp-title hover */
     .exp-desc { font-size: 13px; color: var(--fg-muted); line-height: 1.65; }
 
     /* ── HEATMAP ── */
@@ -451,8 +481,20 @@
       transition: all 0.2s ease;
     }
     .cred-name a:hover { text-decoration-color: var(--fg); }
-    .cred-name a:hover { text-decoration:underline; }
+    /* end cred-name hover */
     .cred-desc { font-size:13px; color:var(--fg-muted); }
+
+    /* ── YEAR SELECTOR ── */
+    .yr-select-wrapper { position: relative; user-select: none; display: flex; align-items: center; gap: 8px; }
+    .yr-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--fg-muted); letter-spacing: 0.05em; text-transform: uppercase; }
+    .yr-select-trigger { display: flex; align-items: center; justify-content: space-between; background: var(--bg); border: 1px solid var(--rule); border-radius: 6px; padding: 4px 10px; font-size: 13px; color: var(--fg); cursor: pointer; width: 74px; }
+    .yr-select-trigger svg { width: 10px; height: 10px; color: var(--fg-muted); }
+    .yr-select-menu { position: absolute; top: 100%; right: 0; margin-top: 4px; background: var(--bg-elevated); border: 1px solid var(--rule-subtle); border-radius: 8px; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1); z-index: 50; width: 110px; padding: 6px; display: none; flex-direction: column; }
+    .yr-select-menu.open { display: flex; }
+    .yr-select-option { padding: 8px 12px; font-size: 14px; color: var(--fg); cursor: pointer; border-radius: 6px; display: flex; align-items: center; justify-content: space-between; }
+    .yr-select-option:hover { background: var(--bg-inset); }
+    .yr-select-option svg { width: 14px; height: 14px; opacity: 0; color: var(--fg); }
+    .yr-select-option.active svg { opacity: 1; }
 
     /* ── TERMINAL / STACK ── */
     .terminal {
@@ -721,11 +763,141 @@
     /* ── RESPONSIVE ── */
     @media (max-width: 620px) {
       .exp-item  { grid-template-columns: 1fr; gap: 2px; }
+      .cred-item { grid-template-columns: 1fr; gap: 2px; }
       .work-item { grid-template-columns: 1fr 16px; }
       .work-date { display: none; }
       .hero-name { font-size: 64px; }
       footer { flex-direction: column; }
       .bt-label { display: none; }
+    }
+
+    /* ── FADE-IN SCROLL ANIMATION ── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── BACK TO TOP ── */
+    .back-top {
+      position: fixed;
+      bottom: 68px;
+      right: 20px;
+      width: 36px;
+      height: 36px;
+      background: var(--fg);
+      color: var(--bg);
+      border: none;
+      border-radius: 50%;
+      font-size: 15px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(6px);
+      transition: opacity 0.2s, transform 0.2s;
+      z-index: 100;
+      font-family: inherit;
+    }
+    .back-top.visible { opacity: 0.75; pointer-events: auto; transform: translateY(0); }
+    .back-top:hover { opacity: 1; }
+
+    /* ── AVAILABLE BADGE ── */
+    .avail-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--green);
+      border: 1px solid var(--green);
+      border-radius: 20px;
+      padding: 4px 12px;
+      margin-bottom: 28px;
+      opacity: 0.85;
+    }
+    .avail-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--green);
+      animation: tb-pulse 2s ease-in-out infinite;
+      flex-shrink: 0;
+    }
+
+    /* ── CTA SECTION ── */
+    .cta-box {
+      background: var(--fg);
+      color: var(--bg);
+      border-radius: 12px;
+      padding: 44px 40px;
+    }
+    .cta-title {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-style: italic;
+      font-size: clamp(28px, 5vw, 42px);
+      line-height: 1.12;
+      margin-bottom: 14px;
+    }
+    .cta-sub {
+      font-size: 14px;
+      opacity: 0.65;
+      margin-bottom: 28px;
+      max-width: 480px;
+      line-height: 1.7;
+    }
+    .cta-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--bg);
+      color: var(--fg);
+      border: none;
+      border-radius: 6px;
+      padding: 10px 20px;
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      font-family: 'Inter', sans-serif;
+      transition: opacity 0.15s;
+    }
+    .cta-btn:hover { opacity: 0.82; }
+    .cta-btn-outline {
+      background: transparent;
+      color: var(--bg);
+      border: 1px solid rgba(255,255,255,0.3);
+    }
+    .cta-btn-outline:hover { background: rgba(255,255,255,0.08); opacity: 1; }
+
+    /* ── TESTIMONIAL ── */
+    .testimonials { margin-top: 20px; display: flex; flex-direction: column; gap: 16px; }
+    .testimonial-card {
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      padding: 22px 24px;
+      background: var(--bg);
+    }
+    .testimonial-quote {
+      font-size: 14px;
+      color: var(--fg-muted);
+      line-height: 1.75;
+      margin-bottom: 14px;
+      font-style: italic;
+    }
+    .testimonial-quote::before { content: '\201C'; }
+    .testimonial-quote::after  { content: '\201D'; }
+    .testimonial-author { font-size: 13px; font-weight: 500; color: var(--fg); }
+    .testimonial-role { font-size: 12px; color: var(--fg-muted); margin-top: 2px; }
+
+    @media (max-width: 620px) {
+      .cta-box { padding: 28px 20px; }
     }
   </style>
 </head>
@@ -771,7 +943,8 @@
 <main>
 
   <!-- HERO -->
-  <div class="hero-name">Hamza<br>Naseem.</div>
+  <div class="avail-badge"><span class="avail-dot"></span>Available for new projects</div>
+  <h1 class="hero-name">Hamza<br>Naseem.</h1>
 
   <div class="hero-intro">
     <p>Hi, I'm Hamza, based in Karachi, building AI systems for businesses globally.</p>
@@ -787,18 +960,10 @@
     <span><kbd>Ctrl</kbd> + <kbd>K</kbd> for everything</span>
   </div>
 
-  <!-- INTRO VIDEO PLACEHOLDER -->
-  <div class="hero-video-container" style="margin-top: 40px; max-width: 640px; border-radius: 8px; overflow: hidden; border: 1px solid var(--rule); background: var(--bg-elevated); aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; position: relative;">
-    <!-- TODO: Replace the content of this div with your actual <video> tag once recorded -->
-    <div style="text-align: center; color: var(--fg-muted);">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 8px; opacity: 0.5;"><polygon points="23 7 16 12 23 17 23 7"></polygon><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>
-      <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px;">Intro Video Placeholder</div>
-      <div style="font-size: 12px; margin-top: 4px; color: var(--fg-ghost);">Replace this block with your &lt;video&gt; tag</div>
-    </div>
-  </div>
+
 
   <!-- 01 · CREDENTIALS -->
-  <section id="credentials">
+  <section id="credentials" class="fade-in">
     <div class="sh">
       <span class="sh-label">01 · Credentials</span>
       <span class="sh-count">5</span>
@@ -809,7 +974,7 @@
       <div class="cred-item">
         <span class="cred-year">2026</span>
         <div style="display: flex; gap: 12px; align-items: start;">
-          <div class="work-logo"><img src="assets/stanford.png" style="width: 18px; height: 18px; object-fit: contain;"></div>
+          <div class="work-logo"><img src="assets/stanford.png" alt="Stanford University logo" style="width: 18px; height: 18px; object-fit: contain;"></div>
           <div class="cred-body" style="flex-direction: column; align-items: start; gap: 2px;">
             <span class="cred-name"><a href="https://codeinplace.stanford.edu" target="_blank">Stanford University</a> - Section Leader</span>
             <span class="cred-desc">Code in Place 2026 · selected to teach Python to 20+ global students</span>
@@ -820,7 +985,7 @@
       <div class="cred-item">
         <span class="cred-year">2026</span>
         <div style="display: flex; gap: 12px; align-items: start;">
-          <div class="work-logo"><img src="assets/research.png" style="width: 18px; height: 18px; object-fit: contain;"></div>
+          <div class="work-logo"><img src="assets/research.png" alt="LogicGuard research paper" style="width: 18px; height: 18px; object-fit: contain;"></div>
           <div class="cred-body" style="flex-direction: column; align-items: start; gap: 2px;">
             <span class="cred-name"><a href="https://github.com/HamzaNasiem/LogicGuard" target="_blank">LogicGuard</a> - Published Research</span>
             <span class="cred-desc">Neuro-symbolic AI · 100% precision · zero false positives · BFS graph validator on Ibn Sina's syllogistic logic</span>
@@ -847,7 +1012,7 @@
       <div class="cred-item">
         <span class="cred-year">2025</span>
         <div style="display: flex; gap: 12px; align-items: start;">
-          <div class="work-logo"><img src="assets/deepmind.png" style="width: 18px; height: 18px; object-fit: contain;"></div>
+          <div class="work-logo"><img src="assets/deepmind.png" alt="Google DeepMind logo" style="width: 18px; height: 18px; object-fit: contain;"></div>
           <div class="cred-body" style="flex-direction: column; align-items: start; gap: 2px;">
             <span class="cred-name">Google DeepMind Hackathon</span>
             <span class="cred-desc">PulseScriptAI - Gemini 3 Global Hackathon · multilingual clinical notes + drug interaction detection</span>
@@ -857,7 +1022,7 @@
       <div class="cred-item">
         <span class="cred-year">-</span>
         <div style="display: flex; gap: 12px; align-items: start;">
-          <div class="work-logo" style="overflow: hidden;"><img src="assets/aristotle.jpg" style="width: 24px; height: 24px; object-fit: cover;"></div>
+          <div class="work-logo" style="overflow: hidden;"><img src="assets/aristotle.jpg" alt="Aristotle illustration" style="width: 24px; height: 24px; object-fit: cover;"></div>
           <div class="cred-body" style="flex-direction: column; align-items: start; gap: 2px;">
             <span class="cred-name">8 Years - Classical Islamic Logic (Mantiq)</span>
             <span class="cred-desc">Studied Ibn Sina's syllogistic frameworks before I touched a keyboard. That obsession with deterministic reasoning is now my competitive edge in AI.</span>
@@ -868,37 +1033,15 @@
     </div>
   </section>
 
-  <!-- 04 · ACTIVITY -->
-  <section id="activity">
+  <!-- 02 · ACTIVITY -->
+  <section id="activity" class="fade-in">
     <div class="sh">
       <span class="sh-label">02 · Activity</span>
     </div>
     <p class="sec-sub">What I've been shipping lately - pulled from GitHub.</p>
 
-    <style>
-      .yr-select-wrapper { position: relative; user-select: none; display: flex; align-items: center; gap: 8px; }
-      .yr-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--fg-muted); letter-spacing: 0.05em; text-transform: uppercase; }
-      .yr-select-trigger {
-        display: flex; align-items: center; justify-content: space-between;
-        background: var(--bg); border: 1px solid var(--rule); border-radius: 6px;
-        padding: 4px 10px; font-size: 13px; color: var(--fg); cursor: pointer; width: 74px;
-      }
-      .yr-select-trigger svg { width: 10px; height: 10px; color: var(--fg-muted); }
-      .yr-select-menu {
-        position: absolute; top: 100%; right: 0; margin-top: 4px;
-        background: var(--bg-elevated); border: 1px solid var(--rule-subtle);
-        border-radius: 8px; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1); z-index: 50;
-        width: 110px; padding: 6px; display: none; flex-direction: column;
-      }
-      .yr-select-menu.open { display: flex; }
-      .yr-select-option {
-        padding: 8px 12px; font-size: 14px; color: var(--fg); cursor: pointer;
-        border-radius: 6px; display: flex; align-items: center; justify-content: space-between;
-      }
-      .yr-select-option:hover { background: var(--bg-inset); }
-      .yr-select-option svg { width: 14px; height: 14px; opacity: 0; color: var(--fg); }
-      .yr-select-option.active svg { opacity: 1; }
-    </style>
+
+
 
     <div class="activity-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; margin-top: 24px;">
       <div class="hmap-tabs" style="margin-bottom: 0;">
@@ -962,8 +1105,8 @@
   </section>
 
 
-  <!-- 02 · WORK -->
-  <section id="work">
+  <!-- 03 · WORK -->
+  <section id="work" class="fade-in">
     <div class="sh">
       <span class="sh-label">03 · Work</span>
       <span class="sh-count">4</span>
@@ -993,7 +1136,7 @@
         <span class="work-date">2026</span>
         <div class="work-mid">
           <div class="work-logo">
-            <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.41-3.38 6.41s-3.38-2.87-3.38-6.41 1.51-6.41 3.38-6.41 3.38 2.87 3.38 6.41zM24 12c0 3.17-.53 5.75-1.19 5.75s-1.19-2.58-1.19-5.75.53-5.75 1.19-5.75S24 8.83 24 12z"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           </div>
           <span class="work-name">LogicGuard</span>
           <span class="work-desc">Neuro-symbolic LLM validator · BFS graph engine · Ibn Sina's syllogistic logic · 100% precision</span>
@@ -1001,31 +1144,29 @@
         <span class="work-arrow">↗</span>
       </a>
 
-      <a href="#" target="_blank" class="work-item" id="proj-nexus">
+      <div class="work-item" id="proj-nexus" style="cursor:default;">
         <span class="work-date">2025</span>
         <div class="work-mid">
-          <div class="work-logo"><img src="assets/nexus.png" style="width: 18px; height: 18px; object-fit: contain;"></div>
+          <div class="work-logo"><img src="assets/nexus.png" alt="Nexus AI Orchestrator" style="width: 18px; height: 18px; object-fit: contain;"></div>
           <span class="work-name">Nexus — AI Orchestrator</span>
           <span class="work-desc">Multi-agent enterprise framework · autonomous workflow engine · LangGraph · Next.js · FastAPI</span>
         </div>
-        <span class="work-arrow">↗</span>
-      </a>
+      </div>
 
-      <a href="#" target="_blank" class="work-item" id="proj-documind">
+      <div class="work-item" id="proj-documind" style="cursor:default;">
         <span class="work-date">2024</span>
         <div class="work-mid">
-          <div class="work-logo"><img src="assets/rag.jpg" style="width: 18px; height: 18px; object-fit: contain;"></div>
+          <div class="work-logo"><img src="assets/rag.jpg" alt="DocuMind RAG Engine" style="width: 18px; height: 18px; object-fit: contain;"></div>
           <span class="work-name">DocuMind — RAG Engine</span>
           <span class="work-desc">Scalable Retrieval-Augmented Generation pipeline · distributed Qdrant vector DB · async Redis workers</span>
         </div>
-        <span class="work-arrow">↗</span>
-      </a>
+      </div>
 
     </div>
   </section>
 
-  <!-- 03 · EXPERIENCE -->
-  <section id="experience">
+  <!-- 04 · EXPERIENCE -->
+  <section id="experience" class="fade-in">
     <div class="sh">
       <span class="sh-label">04 · Experience</span>
     </div>
@@ -1052,7 +1193,7 @@
       <div class="exp-item">
         <div class="exp-dates">2026</div>
         <div style="display: flex; gap: 14px; align-items: start;">
-          <div class="work-logo"><img src="assets/stanford.png" style="width: 18px; height: 18px; object-fit: contain;"></div>
+          <div class="work-logo"><img src="assets/stanford.png" alt="Stanford University logo" style="width: 18px; height: 18px; object-fit: contain;"></div>
           <div>
             <div class="exp-title">Section Leader at <a href="https://codeinplace.stanford.edu" target="_blank">Stanford Code in Place</a></div>
             <div class="exp-desc">Selected from thousands of applicants globally. Taught Python fundamentals to 20+ international students. The only Pakistani in my cohort's section leader group.</div>
@@ -1063,7 +1204,7 @@
       <div class="exp-item">
         <div class="exp-dates">2023</div>
         <div style="display: flex; gap: 14px; align-items: start;">
-          <div class="work-logo"><img src="assets/softpioneers.jpg" style="width: 18px; height: 18px; object-fit: contain;"></div>
+          <div class="work-logo"><img src="assets/softpioneers.jpg" alt="Soft Pioneers logo" style="width: 18px; height: 18px; object-fit: contain;"></div>
           <div>
             <div class="exp-title">Agentic & GenAI Developer at Soft Pioneers</div>
             <div class="exp-desc">Built AI-powered microservices, integrated OpenAI APIs, deployed on Azure using Docker & CI/CD. Designed internal AI tools using LangGraph, LangChain, FastAPI.</div>
@@ -1074,10 +1215,10 @@
       <div class="exp-item">
         <div class="exp-dates">2021</div>
         <div style="display: flex; gap: 14px; align-items: start;">
-          <div class="work-logo" style="overflow: hidden;"><img src="assets/upwork.png" style="width: 24px; height: 24px; object-fit: cover;"></div>
+          <div class="work-logo" style="overflow: hidden;"><img src="assets/upwork.png" alt="Upwork logo" style="width: 24px; height: 24px; object-fit: cover;"></div>
           <div>
             <div class="exp-title">Backend Developer at <a href="https://upwork.com" target="_blank">Upwork</a> - Freelance</div>
-            <div class="exp-desc">20+ delivered projects - custom APIs, AI integrations, dashboards. FastAPI, Docker, Next.js. US and international clients.</div>
+            <div class="exp-desc">20+ delivered projects - custom APIs, AI integrations, dashboards. FastAPI, Docker, Next.js. Global clients across multiple industries.</div>
           </div>
         </div>
       </div>
@@ -1088,7 +1229,7 @@
   </section>
 
   <!-- 06 · STACK & USES -->
-  <section id="stack">
+  <section id="stack" class="fade-in">
     <div class="sh">
       <span class="sh-label">05 · Stack & Uses</span>
     </div>
@@ -1157,7 +1298,7 @@
   </section>
 
   <!-- 07 · WRITING -->
-  <section id="writing">
+  <section id="writing" class="fade-in">
     <div class="sh">
       <span class="sh-label">06 · Writing</span>
       <span class="sh-count">2</span>
@@ -1181,7 +1322,7 @@
   </section>
 
   <!-- 08 · OFF THE CLOCK -->
-  <section id="off-clock">
+  <section id="off-clock" class="fade-in">
     <div class="sh">
       <span class="sh-label">07 · Off the Clock</span>
     </div>
@@ -1190,6 +1331,37 @@
       Running. Thinking about why AI systems fail where human reasoning doesn't.
       Building things nobody asked me to build yet.
     </p>
+  </section>
+
+  <!-- 08 · WORK WITH ME -->
+  <section id="contact" class="fade-in">
+    <div class="sh">
+      <span class="sh-label">08 · Work With Me</span>
+    </div>
+
+    <div class="cta-box">
+      <div class="cta-title">Let’s build something<br>that actually works.</div>
+      <p class="cta-sub">I help businesses automate their operations with AI. If you’re a business owner, practice manager, or founder exploring Voice AI — I’d like to talk.</p>
+      <div class="cta-actions">
+        <a href="mailto:ziaee.pk@gmail.com" class="cta-btn" id="cta-email">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Send Email
+        </a>
+        <a href="https://linkedin.com/in/hamzanasiem" target="_blank" class="cta-btn cta-btn-outline" id="cta-li">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          LinkedIn
+        </a>
+      </div>
+    </div>
+
+    <div class="testimonials">
+      <p class="sec-sub" style="margin-top: 20px; margin-bottom: 0;">What clients say</p>
+      <div class="testimonial-card">
+        <p class="testimonial-quote">Hamza was a valuable part of our team and contributed to multiple projects, including web development and agentic AI solutions. He combines solid technical expertise with strong communication and leadership skills. I always appreciated his willingness to take initiative, solve problems, and support the team whenever needed. It was a pleasure working with him, and I highly recommend him.</p>
+        <div class="testimonial-author">Aiman Shahbaz</div>
+        <div class="testimonial-role">Digital Design Expert · Client, June 2026</div>
+      </div>
+    </div>
   </section>
 
   <!-- FOOTER -->
@@ -1223,6 +1395,9 @@
   </footer>
 
 </main>
+
+<!-- ── BACK TO TOP ── -->
+<button class="back-top" id="back-top" aria-label="Back to top">↑</button>
 
 <!-- ── COMMAND PALETTE ── -->
 <div class="cmd-wrap" id="cmd-wrap">
@@ -1467,6 +1642,24 @@ overlay.addEventListener('click', e => { if (e.target === overlay) closeCmd(); }
 document.querySelectorAll('.cmd-close-on-click').forEach(el => {
   el.addEventListener('click', closeCmd);
 });
+
+/* ── SCROLL FADE-IN ── */
+const fadeObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      fadeObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.08 });
+document.querySelectorAll('.fade-in').forEach(el => fadeObserver.observe(el));
+
+/* ── BACK TO TOP ── */
+const backTopBtn = document.getElementById('back-top');
+window.addEventListener('scroll', () => {
+  backTopBtn.classList.toggle('visible', window.scrollY > 350);
+}, { passive: true });
+backTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 </script>
 </body>
 </html>
