@@ -877,12 +877,42 @@
     .cta-btn-outline:hover { background: rgba(255,255,255,0.08); opacity: 1; }
 
     /* ── TESTIMONIAL ── */
-    .testimonials { margin-top: 20px; display: flex; flex-direction: column; gap: 16px; }
+    .testimonials {
+      margin-top: 16px;
+      display: flex;
+      flex-direction: row;
+      gap: 16px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding-bottom: 16px;
+      scrollbar-width: thin;
+      scrollbar-color: var(--rule) transparent;
+    }
+    .testimonials::-webkit-scrollbar {
+      height: 4px;
+    }
+    .testimonials::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .testimonials::-webkit-scrollbar-thumb {
+      background-color: var(--rule);
+      border-radius: 2px;
+    }
     .testimonial-card {
       border: 1px solid var(--rule);
       border-radius: 8px;
       padding: 22px 24px;
       background: var(--bg);
+      flex: 0 0 85%;
+      max-width: 400px;
+      scroll-snap-align: start;
+      display: flex;
+      flex-direction: column;
+    }
+    @media (min-width: 620px) {
+      .testimonial-card {
+        flex: 0 0 380px;
+      }
     }
     .testimonial-quote {
       font-size: 14px;
@@ -893,7 +923,7 @@
     }
     .testimonial-quote::before { content: '\201C'; }
     .testimonial-quote::after  { content: '\201D'; }
-    .testimonial-author { font-size: 13px; font-weight: 500; color: var(--fg); }
+    .testimonial-author { font-size: 13px; font-weight: 500; color: var(--fg); margin-top: auto; }
     .testimonial-role { font-size: 12px; color: var(--fg-muted); margin-top: 2px; }
 
     @media (max-width: 620px) {
@@ -1364,8 +1394,8 @@
       </div>
     </div>
 
+    <p class="sec-sub" style="margin-top: 32px; margin-bottom: 12px;">What clients say</p>
     <div class="testimonials">
-      <p class="sec-sub" style="margin-top: 20px; margin-bottom: 0;">What clients say</p>
       <div class="testimonial-card">
         <p class="testimonial-quote">Hamza was a valuable part of our team and contributed to multiple projects, including web development and agentic AI solutions. He combines solid technical expertise with strong communication and leadership skills. I always appreciated his willingness to take initiative, solve problems, and support the team whenever needed. It was a pleasure working with him, and I highly recommend him.</p>
         <div class="testimonial-author">Aiman Shahbaz</div>
