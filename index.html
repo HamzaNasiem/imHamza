@@ -1049,7 +1049,9 @@
     document.addEventListener('DOMContentLoaded', () => {
       const video = document.getElementById('hero-video');
       const btn = document.getElementById('unmute-btn');
+      
       if(video && btn) {
+        // Mute/Unmute toggle
         btn.addEventListener('click', () => {
           if(video.muted) {
             video.muted = false;
@@ -1059,6 +1061,19 @@
             btn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg> Unmute`;
           }
         });
+
+        // Intersection Observer for Scroll Play/Pause
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              video.play().catch(e => console.log('Autoplay blocked:', e));
+            } else {
+              video.pause();
+            }
+          });
+        }, { threshold: 0.2 }); // Triggers when 20% of the video is visible
+
+        observer.observe(video);
       }
     });
   </script>
