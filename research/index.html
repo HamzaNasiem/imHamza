@@ -3,26 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hamza Naseem | Research</title>
+  <title>Hamza Naseem | Research & Publications</title>
   <link rel="icon" type="image/svg+xml" href="../favicon.svg">
-  <meta name="description" content="Research projects and AI prototypes built under tight deadlines by Hamza Naseem. Featuring SecurePay AI on AMD MI300X accelerators.">
-  <meta name="keywords" content="Hamza Naseem, Researchs, AMD Instinct, MI300X, ROCm, SecurePay AI, DeepSeek V4, Bytelytic">
-  
+  <meta name="description" content="Published AI research by Hamza Naseem. Featuring LogicGuard — a neuro-symbolic middleware for deterministic hallucination interception in LLMs using Ibn Sina's syllogistic frameworks. 100% precision, zero false positives.">
+  <meta name="keywords" content="Hamza Naseem, Research, LogicGuard, Neuro-Symbolic AI, LLM Hallucination, Ibn Sina, Avicenna, Published Paper, Zenodo, AI Research, Bytelytic">
+
   <!-- Open Graph -->
-  <meta property="og:title" content="Hamza Naseem | Research">
-  <meta property="og:description" content="Research projects and AI prototypes built under tight deadlines by Hamza Naseem.">
+  <meta property="og:title" content="Hamza Naseem | Research & Publications">
+  <meta property="og:description" content="Published AI research by Hamza Naseem — LogicGuard: A neuro-symbolic middleware achieving 100% precision and zero false positives in LLM hallucination interception.">
   <meta property="og:url" content="https://www.imhamza.com/research">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://www.imhamza.com/assets/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Hamza Naseem | Research">
-  <meta name="twitter:description" content="Research projects and AI prototypes built under tight deadlines by Hamza Naseem. Featuring SecurePay AI on AMD MI300X accelerators.">
+  <meta name="twitter:title" content="Hamza Naseem | Research & Publications">
+  <meta name="twitter:description" content="Published AI research by Hamza Naseem — LogicGuard: neuro-symbolic middleware, 100% precision, zero false positives in LLM hallucination interception.">
   <meta name="twitter:image" content="https://www.imhamza.com/assets/og-image.png">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://www.imhamza.com/research">
-  
+
   <script defer data-domain="imhamza.com" src="https://plausible.io/js/script.js"></script>
 
   <!-- Fonts -->
@@ -86,8 +86,8 @@
 
     .hero-intro a,
     .sec-sub a,
-    .hack-title a,
-    .feature-item a {
+    .research-title a,
+    .abstract-body a {
       color: var(--fg);
       font-weight: 600;
       text-decoration: underline;
@@ -98,12 +98,13 @@
     }
     .hero-intro a:hover,
     .sec-sub a:hover,
-    .hack-title a:hover,
-    .feature-item a:hover {
+    .research-title a:hover,
+    .abstract-body a:hover {
       text-decoration-color: var(--fg);
       text-decoration-thickness: 2px;
     }
 
+    /* ── TOP BAR ── */
     .topbar {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -131,6 +132,7 @@
       50%      { opacity: 0.4; }
     }
 
+    /* ── BOTTOM SOCIAL BAR ── */
     .btmbar {
       position: fixed;
       bottom: 0; left: 0; right: 0;
@@ -153,6 +155,10 @@
     }
     .btmbar a svg { width: 15px; height: 15px; }
     .btmbar a:hover { color: var(--fg); }
+    .bt-label { font-size: 12px; }
+    @media (max-width: 620px) {
+      .bt-label { display: none; }
+    }
 
     main {
       max-width: var(--col);
@@ -220,6 +226,7 @@
       line-height: 1.65;
     }
 
+    /* ── BADGE ── */
     .badge {
       font-family: 'JetBrains Mono', monospace;
       font-size: 9px;
@@ -232,25 +239,23 @@
       flex-shrink: 0;
       display: inline-block;
     }
-    .b-submitted { background: rgba(22, 163, 74, 0.07); color: #16a34a; border: 1px solid rgba(22, 163, 74, 0.18); }
-    .b-completed { background: rgba(37, 99, 235, 0.07); color: #2563eb; border: 1px solid rgba(37, 99, 235, 0.18); }
+    .b-published { background: rgba(124, 58, 237, 0.07); color: #7c3aed; border: 1px solid rgba(124, 58, 237, 0.18); }
 
-    .hack-list {
+    /* ── RESEARCH ITEM ── */
+    .research-list {
       display: flex;
       flex-direction: column;
-      gap: 40px;
+      gap: 0;
     }
-    .hack-item {
+    .research-item {
       display: flex;
       flex-direction: column;
-      gap: 12px;
-      padding-bottom: 24px;
+      gap: 16px;
+      padding-bottom: 48px;
       border-bottom: 1px solid var(--rule-subtle);
     }
-    .hack-item:last-child {
-      border-bottom: none;
-    }
-    .hack-meta {
+    .research-item:last-child { border-bottom: none; }
+    .research-meta {
       display: flex;
       align-items: center;
       gap: 12px;
@@ -259,51 +264,102 @@
       color: var(--fg-muted);
       flex-wrap: wrap;
     }
-    .project-title {
+    .research-title {
       font-family: 'Instrument Serif', Georgia, serif;
       font-style: italic;
-      font-size: clamp(28px, 4.5vw, 36px);
-      line-height: 1.1;
+      font-size: clamp(22px, 3.5vw, 28px);
+      line-height: 1.2;
       color: var(--fg);
+      max-width: 680px;
     }
-    .hack-desc {
-      font-size: 14px;
+    .research-authors {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
       color: var(--fg-muted);
-      line-height: 1.7;
     }
-    
-    .features-list {
-      list-style: none;
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 10px;
-      margin: 12px 0;
+
+    /* ── ABSTRACT BOX ── */
+    .abstract-box {
+      background: var(--bg-elevated);
+      border: 1px solid var(--rule-subtle);
+      border-radius: 8px;
+      overflow: hidden;
     }
-    @media (min-width: 640px) {
-      .features-list { grid-template-columns: 1fr 1fr; }
-    }
-    .feature-item {
-      font-size: 13px;
-      color: var(--fg-muted);
+    .abstract-header {
       display: flex;
-      gap: 8px;
-      align-items: flex-start;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 20px;
+      border-bottom: 1px solid var(--rule-subtle);
+      cursor: pointer;
+      user-select: none;
     }
-    .feature-item strong {
+    .abstract-header:hover { background: var(--bg-overlay); }
+    .abstract-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--fg-muted);
+    }
+    .abstract-toggle {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--fg-subtle);
+      transition: transform 0.2s;
+    }
+    .abstract-toggle.open { transform: rotate(180deg); }
+    .abstract-body {
+      padding: 20px;
+      display: none;
+    }
+    .abstract-body.open { display: block; }
+    .abstract-body p {
+      font-size: 14px;
       color: var(--fg);
-      font-weight: 500;
+      line-height: 1.75;
+      margin-bottom: 14px;
     }
-    .feature-check {
-      color: var(--orange);
-      font-weight: bold;
-      flex-shrink: 0;
+    .abstract-body p:last-child { margin-bottom: 0; }
+
+    /* ── RESULTS GRID ── */
+    .results-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 4px;
     }
-    
+    @media (max-width: 560px) {
+      .results-grid { grid-template-columns: 1fr 1fr; }
+    }
+    .result-card {
+      background: var(--bg);
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      padding: 16px;
+      text-align: center;
+    }
+    .result-value {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-size: 28px;
+      color: var(--fg);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .result-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      color: var(--fg-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* ── TECH STACK ── */
     .tech-stack {
       display: flex;
       flex-wrap: wrap;
       gap: 6px;
-      margin: 8px 0;
     }
     .tech-chip {
       font-size: 11px;
@@ -315,12 +371,14 @@
       border-radius: 4px;
     }
 
-    .hack-links {
+    /* ── LINKS ── */
+    .research-links {
       display: flex;
       gap: 16px;
-      margin-top: 8px;
+      flex-wrap: wrap;
+      align-items: center;
     }
-    .hack-link-btn {
+    .research-link-btn {
       font-family: 'JetBrains Mono', monospace;
       font-size: 12px;
       font-weight: 500;
@@ -332,11 +390,12 @@
       padding-bottom: 2px;
       transition: all 0.15s ease;
     }
-    .hack-link-btn:hover {
-      color: var(--orange);
-      border-color: var(--orange);
+    .research-link-btn:hover {
+      color: var(--blue);
+      border-color: var(--blue);
     }
 
+    /* ── UPCOMING BOX ── */
     .upcoming-box {
       border: 1px dashed var(--rule);
       border-radius: 6px;
@@ -388,11 +447,36 @@
 </head>
 <body>
 
+<!-- ── TOP BAR ── -->
 <div class="topbar">
   <div class="tb-center">
     <span class="tb-dot"></span>
     <span id="top-clock">--:--:-- PKT</span>
   </div>
+</div>
+
+<!-- ── BOTTOM SOCIAL BAR ── -->
+<div class="btmbar">
+  <a href="mailto:bytelytic@gmail.com">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+    <span class="bt-label">Email</span>
+  </a>
+  <a href="https://github.com/HamzaNasiem" target="_blank" rel="noopener noreferrer">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>
+    <span class="bt-label">GitHub</span>
+  </a>
+  <a href="https://linkedin.com/in/hamzanasiem" target="_blank" rel="noopener noreferrer">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+    <span class="bt-label">LinkedIn</span>
+  </a>
+  <a href="https://scholar.google.com/citations?hl=en&user=1ZJTh80AAAAJ" target="_blank" rel="noopener noreferrer">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/></svg>
+    <span class="bt-label">Scholar</span>
+  </a>
+  <a href="https://zenodo.org/records/18745460" target="_blank" rel="noopener noreferrer">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+    <span class="bt-label">Zenodo</span>
+  </a>
 </div>
 
 <main>
@@ -401,47 +485,93 @@
   <h1 class="hero-name">Research.</h1>
 
   <div class="hero-intro">
-    <p>A log of systems designed, written, and deployed under tight research constraints.</p>
-    <p>Each entry represents a complete solution—focused on clean engineering architecture, deterministic code pathways, and resolving real-world security or optimization bottlenecks.</p>
+    <p>Academic publications and research contributions in AI systems and neuro-symbolic reasoning.</p>
+    <p>Each paper represents a rigorous investigation—bridging classical logical frameworks with modern AI engineering to solve real reliability problems in production systems.</p>
   </div>
 
-  <section id="researchs">
+  <!-- 01 · Publications -->
+  <section id="publications">
     <div class="sh">
       <h2 class="sh-label">01 · Publications</h2>
-      <span class="sh-count">2</span>
+      <span class="sh-count">1</span>
     </div>
-    <p class="sec-sub">Active projects and past entries submitted to developer researchs.</p>
+    <p class="sec-sub">Peer-reviewed and preprint publications in AI reasoning and neuro-symbolic systems.</p>
 
-    <div class="hack-list">
-      
-      <!-- ENTRY 1: Placeholder Publication -->
-      <div class="hack-item">
-        <div class="hack-meta">
-          <span>February 2026</span>
+    <div class="research-list">
+
+      <!-- LogicGuard Paper -->
+      <div class="research-item">
+        <div class="research-meta">
+          <span>February 23, 2026</span>
           <span>•</span>
           <span>Zenodo (Preprint)</span>
           <span>•</span>
-          <span class="badge b-submitted">Published</span>
+          <span>Hamza Naseem, Moiz Ali</span>
+          <span>•</span>
+          <span class="badge b-published">Published</span>
         </div>
-        
-        <div class="project-title">LogicGuard: A Neuro-Symbolic Middleware for Deterministic Hallucination Interception in Large Language Models Using Aristotelian-Avicennian Syllogistic Frameworks 📄</div>
-        
-        <p class="hack-desc">
-          Large Language Models (LLMs) generate fluent, open-ended text, but lack built-in mechanisms to enforce logically necessary inferences. LogicGuard is a hybrid neuro-symbolic middleware that enforces deterministic logical constraints on LLM outputs by operationalizing the syllogistic framework (Qiyas) developed by Ibn Sina. Evaluated on LLaMA2-7B, Mistral-7B, and LLaMA3.2-3B, LogicGuard achieved 100% precision and specificity with zero false positives.
-        </p>
+
+        <div class="research-title">
+          LogicGuard: A Neuro-Symbolic Middleware for Deterministic Hallucination Interception in Large Language Models Using Aristotelian-Avicennian Syllogistic Frameworks
+        </div>
+
+        <!-- Key Results -->
+        <div class="results-grid">
+          <div class="result-card">
+            <div class="result-value">100%</div>
+            <div class="result-label">Precision</div>
+          </div>
+          <div class="result-card">
+            <div class="result-value">0</div>
+            <div class="result-label">False Positives</div>
+          </div>
+          <div class="result-card">
+            <div class="result-value">525</div>
+            <div class="result-label">Total Evaluations</div>
+          </div>
+        </div>
+
+        <!-- Abstract (collapsible) -->
+        <div class="abstract-box">
+          <div class="abstract-header" id="abstract-toggle" onclick="toggleAbstract()">
+            <span class="abstract-label">Abstract</span>
+            <span class="abstract-toggle" id="abstract-arrow">▼</span>
+          </div>
+          <div class="abstract-body" id="abstract-body">
+            <p>
+              Large Language Models (LLMs) generate fluent, open-ended text, but they have no built-in mechanism to enforce logically necessary inferences. When a model claims "not all squares are rectangles," or assigns mammalian traits to fish, the error is not a factual slip that better retrieval could fix. It is a structural violation of deductive constraints that hold independently of any corpus or prompting strategy.
+            </p>
+            <p>
+              This paper presents LogicGuard, a hybrid neuro-symbolic middleware that enforces deterministic logical constraints on LLM outputs by operationalizing the syllogistic framework (Qiyas) developed by Ibn Sina (Avicenna, 980–1037 CE). LogicGuard classifies each model output into one of four Avicennian epistemic states: Yaqeen (Certainty), Zann (Probability), Shakk (Doubt), and Wahm (Illusion), and intercepts any response that falls into the Wahm state before it reaches the user.
+            </p>
+            <p>
+              The system runs a strict two-stage pipeline. A constrained LLM first acts as a semantic parser, extracting a zero-temperature, JSON-only representation of the query. This structured output is then passed to a Breadth-First Search (BFS) graph validator, which performs all logical reasoning deterministically, with no further LLM involvement at this stage. We evaluated LogicGuard on a 175-query formal syllogism dataset covering biological taxonomy, geometric relations, and physical conditionals, using three structurally different LLMs: LLaMA2-7B, Mistral-7B, and LLaMA3.2-3B. Across all three models and 525 total evaluations, LogicGuard achieved 100% precision and 100% specificity, with zero false positives. Hallucination interception rates reached 88.6%, 100.0%, and 92.6% for the three models respectively. Overall accuracy improved significantly, and an out-of-domain test on the full TruthfulQA benchmark showed a 99.5% non-interference rate, confirming that LogicGuard only activates within its verified competence scope.
+            </p>
+          </div>
+        </div>
 
         <div class="tech-stack">
           <span class="tech-chip">Neuro-Symbolic AI</span>
-          <span class="tech-chip">LLMs</span>
+          <span class="tech-chip">LLaMA2-7B</span>
+          <span class="tech-chip">Mistral-7B</span>
+          <span class="tech-chip">LLaMA3.2-3B</span>
           <span class="tech-chip">BFS Graph Validation</span>
+          <span class="tech-chip">Ibn Sina's Qiyas</span>
+          <span class="tech-chip">TruthfulQA</span>
         </div>
 
-        <div class="hack-links">
-          <a href="/research/logicguard" class="hack-link-btn">
-            View Details & Download ↗
+        <div class="research-links">
+          <a href="/assets/research/LogicGuard_IEEE_Final_Paper.pdf" download class="research-link-btn">
+            Download PDF ↓
           </a>
-          <a href="https://zenodo.org/records/18745460" target="_blank" rel="noopener noreferrer" class="hack-link-btn">
-            Zenodo Link ↗
+          <a href="https://zenodo.org/records/18745460" target="_blank" rel="noopener noreferrer" class="research-link-btn">
+            View on Zenodo ↗
+          </a>
+          <a href="https://github.com/HamzaNasiem/LogicGuard" target="_blank" rel="noopener noreferrer" class="research-link-btn">
+            GitHub Repo ↗
+          </a>
+          <a href="https://scholar.google.com/citations?hl=en&user=1ZJTh80AAAAJ" target="_blank" rel="noopener noreferrer" class="research-link-btn">
+            Google Scholar ↗
           </a>
         </div>
       </div>
@@ -449,14 +579,15 @@
     </div>
   </section>
 
-  <section id="upcoming">
+  <!-- 02 · Pipeline -->
+  <section id="pipeline">
     <div class="sh">
       <h2 class="sh-label">02 · Pipeline</h2>
     </div>
     
     <div class="upcoming-box">
       <div class="upcoming-title">More coming soon</div>
-      <p class="upcoming-desc">Future submissions and optimization projects will be logged here in real-time.</p>
+      <p class="upcoming-desc">Future research papers and academic contributions will be logged here.</p>
     </div>
   </section>
 
@@ -474,29 +605,38 @@
         <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
         LinkedIn
       </a>
+      <a href="https://scholar.google.com/citations?hl=en&user=1ZJTh80AAAAJ" target="_blank" rel="noopener noreferrer">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/></svg>
+        Scholar
+      </a>
     </div>
   </footer>
 </main>
 
 <script>
+  // Clock
   function updateClock() {
     try {
       const now = new Date();
-      const options = {
-        timeZone: 'Asia/Karachi',
-        hour: '2-digit',
-        minute: '2-digit',
-        second: '2-digit',
-        hour12: false
-      };
-      const formatter = new Intl.DateTimeFormat('en-US', options);
-      document.getElementById('top-clock').textContent = formatter.format(now) + ' PKT';
+      const options = { timeZone: 'Asia/Karachi', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
+      document.getElementById('top-clock').textContent = new Intl.DateTimeFormat('en-US', options).format(now) + ' PKT';
     } catch (e) {
       document.getElementById('top-clock').textContent = new Date().toLocaleTimeString() + ' PKT';
     }
   }
   updateClock();
   setInterval(updateClock, 1000);
+
+  // Abstract toggle
+  function toggleAbstract() {
+    const body = document.getElementById('abstract-body');
+    const arrow = document.getElementById('abstract-arrow');
+    body.classList.toggle('open');
+    arrow.classList.toggle('open');
+  }
+  // Open abstract by default
+  document.getElementById('abstract-body').classList.add('open');
+  document.getElementById('abstract-arrow').classList.add('open');
 </script>
 
 </body>

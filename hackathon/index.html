@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hamza Naseem | Hackathons</title>
   <link rel="icon" type="image/svg+xml" href="../favicon.svg">
-  <meta name="description" content="Hackathon projects and AI prototypes built under tight deadlines by Hamza Naseem. Featuring SecurePay AI on AMD MI300X accelerators.">
-  <meta name="keywords" content="Hamza Naseem, Hackathons, AMD Instinct, MI300X, ROCm, SecurePay AI, DeepSeek V4, Bytelytic">
-  
+  <meta name="description" content="Hackathon projects and AI prototypes built under tight deadlines by Hamza Naseem. Featuring CALL-E Healthcare OS, ThermaShift AI, SecurePay AI on AMD MI300X, and PulseScriptAI.">
+  <meta name="keywords" content="Hamza Naseem, Hackathons, CALL-E, ThermaShift AI, FortyGuard, AMD Instinct, MI300X, ROCm, SecurePay AI, DeepSeek V4, Bytelytic">
+
   <!-- Open Graph -->
   <meta property="og:title" content="Hamza Naseem | Hackathons">
   <meta property="og:description" content="Hackathon projects and AI prototypes built under tight deadlines by Hamza Naseem.">
@@ -18,7 +18,7 @@
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Hamza Naseem | Hackathons">
-  <meta name="twitter:description" content="Hackathon projects and AI prototypes built under tight deadlines by Hamza Naseem. Featuring SecurePay AI on AMD MI300X accelerators.">
+  <meta name="twitter:description" content="Hackathon projects and AI prototypes built under tight deadlines by Hamza Naseem. Featuring CALL-E Healthcare OS, ThermaShift AI, SecurePay AI on AMD MI300X.">
   <meta name="twitter:image" content="https://www.imhamza.com/assets/og-image.png">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://www.imhamza.com/hackathon">
@@ -104,6 +104,7 @@
       text-decoration-thickness: 2px;
     }
 
+    /* ── TOP BAR ── */
     .topbar {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -131,6 +132,7 @@
       50%      { opacity: 0.4; }
     }
 
+    /* ── BOTTOM SOCIAL BAR ── */
     .btmbar {
       position: fixed;
       bottom: 0; left: 0; right: 0;
@@ -153,6 +155,10 @@
     }
     .btmbar a svg { width: 15px; height: 15px; }
     .btmbar a:hover { color: var(--fg); }
+    .bt-label { font-size: 12px; }
+    @media (max-width: 620px) {
+      .bt-label { display: none; }
+    }
 
     main {
       max-width: var(--col);
@@ -319,6 +325,8 @@
       display: flex;
       gap: 16px;
       margin-top: 8px;
+      flex-wrap: wrap;
+      align-items: center;
     }
     .hack-link-btn {
       font-family: 'JetBrains Mono', monospace;
@@ -335,6 +343,37 @@
     .hack-link-btn:hover {
       color: var(--orange);
       border-color: var(--orange);
+    }
+
+    /* ── CERTIFICATE ── */
+    .cert-wrap {
+      margin-top: 16px;
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      overflow: hidden;
+      max-width: 560px;
+    }
+    .cert-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      background: var(--bg-elevated);
+      border-bottom: 1px solid var(--rule-subtle);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      color: var(--fg-muted);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .cert-label svg {
+      color: var(--green);
+      flex-shrink: 0;
+    }
+    .cert-wrap img {
+      display: block;
+      width: 100%;
+      height: auto;
     }
 
     .upcoming-box {
@@ -388,11 +427,40 @@
 </head>
 <body>
 
+<!-- ── TOP BAR ── -->
 <div class="topbar">
   <div class="tb-center">
     <span class="tb-dot"></span>
     <span id="top-clock">--:--:-- PKT</span>
   </div>
+</div>
+
+<!-- ── BOTTOM SOCIAL BAR ── -->
+<div class="btmbar">
+  <a href="mailto:bytelytic@gmail.com">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+    <span class="bt-label">Email</span>
+  </a>
+  <a href="https://github.com/HamzaNasiem" target="_blank" rel="noopener noreferrer">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>
+    <span class="bt-label">GitHub</span>
+  </a>
+  <a href="https://linkedin.com/in/hamzanasiem" target="_blank" rel="noopener noreferrer">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+    <span class="bt-label">LinkedIn</span>
+  </a>
+  <a href="https://bytelytic.com" target="_blank" rel="noopener noreferrer">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+    <span class="bt-label">Bytelytic</span>
+  </a>
+  <a href="https://hamza-naseem.medium.com/" target="_blank" rel="noopener noreferrer">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.41-3.38 6.41s-3.38-2.87-3.38-6.41 1.51-6.41 3.38-6.41 3.38 2.87 3.38 6.41zM24 12c0 3.17-.53 5.75-1.19 5.75s-1.19-2.58-1.19-5.75.53-5.75 1.19-5.75S24 8.83 24 12z"/></svg>
+    <span class="bt-label">Medium</span>
+  </a>
+  <a href="https://github.com/HamzaNasiem/Resume/raw/main/Hamza_Naseem_Resume%20(3).pdf" target="_blank" rel="noopener noreferrer">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+    <span class="bt-label">Résumé</span>
+  </a>
 </div>
 
 <main>
@@ -410,7 +478,7 @@
       <h2 class="sh-label">01 · Submissions</h2>
       <span class="sh-count">4</span>
     </div>
-    <p class="sec-sub">Active projects and past entries submitted to developer hackathons.</p>
+    <p class="sec-sub">Active projects and past entries submitted to global developer hackathons.</p>
 
     <div class="hack-list">
 
@@ -510,6 +578,19 @@
           <a href="https://thermashift-ai.vercel.app/" target="_blank" rel="noopener noreferrer" class="hack-link-btn">
             Live Demo ↗
           </a>
+        </div>
+
+        <!-- FortyGuard Certificate of Completion -->
+        <div class="cert-wrap">
+          <div class="cert-label">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
+            Certificate of Demonstrated Excellence · FortyGuard Hackathon'26
+          </div>
+          <img
+            src="../assets/fortyguard-certificate.png"
+            alt="FortyGuard Hackathon'26 Certificate of Completion — ThermaShift AI by Hamza Naseem, August 18-30, 2026"
+            loading="lazy"
+          >
         </div>
       </div>
       
