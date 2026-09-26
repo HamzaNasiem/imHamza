@@ -493,6 +493,16 @@
       margin-top: 10px;
     }
 
+    /* ── ACADEMIC GRID ── */
+    .academic-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    @media (max-width: 640px) {
+      .academic-grid { grid-template-columns: 1fr; }
+    }
+
     /* ── CREDENTIALS ── */
     .creds-list { display: flex; flex-direction: column; }
     .cred-item {
@@ -1016,14 +1026,13 @@
 
   <!-- HERO -->
   <h1 class="hero-name">Hamza<br>Naseem.</h1>
-  <p style="font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--fg-muted); letter-spacing:0.04em; margin-bottom:32px; margin-top:-28px;">AI Developer &nbsp;·&nbsp; Published Researcher &nbsp;·&nbsp; CS Scholar</p>
+  <p style="font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--fg-muted); letter-spacing:0.04em; margin-bottom:32px; margin-top:-28px;">AI Systems Developer &nbsp;·&nbsp; Neuro-Symbolic Researcher &nbsp;·&nbsp; Aspiring CS Scholar</p>
 
   <div class="hero-intro">
-    <p>Hi, I'm Hamza, based in Karachi, building AI systems for businesses globally.</p>
-    <p>I focus on one problem: repetitive work that humans shouldn't have to do. Right now that's mostly <a href="https://dashboard-two-jade-54.vercel.app/signup" target="_blank" rel="noopener noreferrer">voice AI</a> that answers clinic calls, books appointments, and follows up with patients, around the clock.</p>
-    <p>Before I wrote a line of code, I spent years studying classical Islamic logic, Ibn Sina's syllogistic frameworks, specifically. That's not a detour. That's why I think about AI reliability differently than most developers. I don't settle for systems that work <em>most of the time</em>.</p>
-    <p>I co-founded <a href="https://bytelytic.com" target="_blank" rel="noopener noreferrer">Bytelytic</a>. Published research on LLM verification, <a href="https://github.com/HamzaNasiem/LogicGuard" target="_blank" rel="noopener noreferrer">LogicGuard</a>, 100% precision, zero false positives. Selected as a Section Leader at <a href="https://codeinplace.stanford.edu" target="_blank" rel="noopener noreferrer">Stanford Code in Place 2026</a>.</p>
-    <p>Alongside my work, I'm actively pursuing a BSc in Computer Science and aspiring toward a fully funded graduate program in the US. My goal is to contribute to AI safety and neuro-symbolic reasoning research at an institutional level.</p>
+    <p>Hi, I'm Hamza, based in Karachi. I work at the intersection of classical deductive logic and modern artificial intelligence — researching deterministic LLM verification, engineering autonomous voice agents, and preparing for undergraduate studies in Computer Science.</p>
+    <p>Before I wrote a single line of code, I spent eight years studying classical Islamic formal logic (Mantiq) and Ibn Sina's syllogistic frameworks. That immersion in deterministic, deductive reasoning directly shapes how I approach AI safety: I design systems with mathematical precision, rejecting stochastic ambiguity.</p>
+    <p>I authored <a href="/research">LogicGuard</a> (neuro-symbolic LLM verification with 100% precision on benchmark datasets), contributed core healthcare architecture to <a href="https://github.com/CALLE-AI/awesome-phone-call-agents/pull/256" target="_blank" rel="noopener noreferrer">CALLE-AI</a> (PR #256 merged, +2,265 LOC, 79 tests), co-founded <a href="https://bytelytic.com" target="_blank" rel="noopener noreferrer">Bytelytic</a>, and was appointed as a Section Leader at <a href="https://codeinplace.stanford.edu" target="_blank" rel="noopener noreferrer">Stanford Code in Place 2026</a>.</p>
+    <p>Having completed my intermediate coursework at AIOU alongside standardized benchmarks (<strong>SAT 1400 · IELTS 7.0 Band</strong>), I am actively preparing for <strong>Fall 2027 BS Computer Science admissions</strong> — seeking fully funded undergraduate scholarship opportunities in the United States and premier institutions like IBA Karachi.</p>
   </div>
 
   <div class="hero-hints">
@@ -1094,58 +1103,105 @@
 
 
 
-  <!-- 01 · RESEARCH & ACADEMIC GOALS -->
+  <!-- 01 · ACADEMIC STANDING & RESEARCH DIRECTION -->
   <section id="research-goals" class="fade-in">
     <div class="sh">
-      <h2 class="sh-label">01 · Research & Academic Goals</h2>
+      <h2 class="sh-label">01 · Academic Standing & Research Direction</h2>
     </div>
-    <p class="sec-sub">Where I'm going intellectually — and why.</p>
+    <p class="sec-sub">Standardized metrics, academic trajectory, and formal neuro-symbolic research focus.</p>
 
-    <div style="display:grid; grid-template-columns:1fr; gap:20px;">
+    <div style="display:flex; flex-direction:column; gap:20px;">
 
-      <!-- Research Statement -->
-      <div style="background:var(--bg-elevated); border:1px solid var(--rule-subtle); border-radius:8px; padding:24px;">
-        <div style="font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--fg-muted); letter-spacing:0.06em; text-transform:uppercase; margin-bottom:14px;">Research Statement</div>
-        <p style="font-size:14px; color:var(--fg); line-height:1.8; margin-bottom:12px;">
-          My research sits at the intersection of classical logical frameworks and modern AI reliability. The central question I'm investigating: <em>can deterministic, symbol-grounded constraints make LLM outputs formally verifiable?</em>
-        </p>
-        <p style="font-size:14px; color:var(--fg); line-height:1.8; margin-bottom:12px;">
-          <a href="/research" style="font-weight:600; text-decoration:underline; text-decoration-color:var(--fg-muted); text-underline-offset:3px;">LogicGuard</a> was my first answer — a neuro-symbolic middleware using Ibn Sina's syllogistic framework (Qiyas) that achieved 100% precision and zero false positives across 525 evaluations on LLaMA2-7B, Mistral-7B, and LLaMA3.2-3B.
-        </p>
-        <p style="font-size:14px; color:var(--fg-muted); line-height:1.8;">
-          Next direction: extending this approach to multi-agent systems and formal verification of AI reasoning chains in production environments.
-        </p>
+      <!-- Academic Profile Grid -->
+      <div class="academic-grid">
+
+        <!-- Column 1: Academic & Standardized Metrics -->
+        <div style="background:var(--bg-elevated); border:1px solid var(--rule-subtle); border-radius:8px; padding:22px; display:flex; flex-direction:column; justify-content:space-between;">
+          <div>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
+              <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--fg-muted); letter-spacing:0.06em; text-transform:uppercase;">Standardized Metrics &amp; Status</span>
+              <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--green); background:rgba(40,200,64,0.08); border:1px solid rgba(40,200,64,0.2); padding:2px 8px; border-radius:12px;">Fall 2027 Aspirant</span>
+            </div>
+
+            <!-- Scores Row -->
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:18px;">
+              <div style="background:var(--bg-inset); border:1px solid var(--rule-subtle); border-radius:6px; padding:12px;">
+                <div style="font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--fg-muted); text-transform:uppercase;">SAT Score</div>
+                <div style="font-family:'Instrument Serif',serif; font-size:28px; color:var(--fg); line-height:1.2; margin-top:2px;">1400</div>
+                <div style="font-size:11px; color:var(--fg-muted); margin-top:2px;">Top ~7% globally</div>
+              </div>
+              <div style="background:var(--bg-inset); border:1px solid var(--rule-subtle); border-radius:6px; padding:12px;">
+                <div style="font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--fg-muted); text-transform:uppercase;">IELTS Academic</div>
+                <div style="font-family:'Instrument Serif',serif; font-size:28px; color:var(--fg); line-height:1.2; margin-top:2px;">7.0 Band</div>
+                <div style="font-size:11px; color:var(--fg-muted); margin-top:2px;">CEFR C1 · Proficient</div>
+              </div>
+            </div>
+
+            <!-- Education details -->
+            <div style="display:flex; flex-direction:column; gap:10px; font-size:13px;">
+              <div style="display:flex; align-items:baseline; gap:10px;">
+                <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--fg-muted); min-width:68px;">Current</span>
+                <span style="color:var(--fg); line-height:1.5;"><strong>Intermediate (HSSC)</strong> · Allama Iqbal Open University (Pre-Engineering / CS · exams completed)</span>
+              </div>
+              <div style="display:flex; align-items:baseline; gap:10px;">
+                <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--green); min-width:68px;">Target</span>
+                <span style="color:var(--fg); line-height:1.5;"><strong>BS Computer Science (2027)</strong> · Fully Funded US Scholarships / Top Karachi Programs (IBA)</span>
+              </div>
+              <div style="display:flex; align-items:baseline; gap:10px;">
+                <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--fg-muted); min-width:68px;">Advisors</span>
+                <span style="color:var(--fg-muted); line-height:1.5;">Endorsed by academic mentors across Stanford Code in Place, research co-authors, and university faculty.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Column 2: Research Statement & Theoretical Focus -->
+        <div style="background:var(--bg-elevated); border:1px solid var(--rule-subtle); border-radius:8px; padding:22px; display:flex; flex-direction:column; justify-content:space-between;">
+          <div>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
+              <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--fg-muted); letter-spacing:0.06em; text-transform:uppercase;">Research Philosophy</span>
+              <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--fg-muted); background:var(--bg-inset); border:1px solid var(--rule-subtle); padding:2px 8px; border-radius:12px;">Neuro-Symbolic AI</span>
+            </div>
+
+            <p style="font-size:13px; color:var(--fg); line-height:1.7; margin-bottom:12px;">
+              My research addresses the fundamental stochastic fragility of generative AI: <em>Can deterministic logical systems formally constrain probabilistic language models against hallucination?</em>
+            </p>
+            <p style="font-size:13px; color:var(--fg); line-height:1.7; margin-bottom:12px;">
+              <a href="/research" style="font-weight:600; text-decoration:underline; text-decoration-color:var(--fg-muted); text-underline-offset:3px;">LogicGuard</a> is our open-source benchmark preprint (Zenodo) — utilizing Ibn Sina's 11th-century syllogistic framework (Qiyas) through BFS graph engines to achieve <strong>100% precision and zero false positives</strong> across 525 TruthfulQA prompts on LLaMA and Mistral models.
+            </p>
+            <p style="font-size:13px; color:var(--fg-muted); line-height:1.7;">
+              <strong>Next Investigation:</strong> Extending deductive verification to autonomous multi-agent state machines, verifiable EHR workflows, and provable safety contracts.
+            </p>
+          </div>
+        </div>
+
       </div>
 
-      <!-- Academic Goals -->
-      <div style="background:var(--bg-elevated); border:1px solid var(--rule-subtle); border-radius:8px; padding:24px;">
-        <div style="font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--fg-muted); letter-spacing:0.06em; text-transform:uppercase; margin-bottom:16px;">Academic Goals</div>
-        <div style="display:flex; flex-direction:column; gap:12px;">
-          <div style="display:flex; align-items:baseline; gap:12px;">
-            <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--fg-muted); min-width:52px;">Now</span>
-            <span style="font-size:14px; color:var(--fg);">BSc Computer Science — self-directed, in progress</span>
-          </div>
-          <div style="display:flex; align-items:baseline; gap:12px;">
-            <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--green); min-width:52px;">Target</span>
-            <span style="font-size:14px; color:var(--fg);">Fully Funded MS / PhD — USA &nbsp;<span style="color:var(--fg-muted); font-size:13px;">(AI · CS Programs, 2027–2028 intake)</span></span>
-          </div>
-          <div style="display:flex; align-items:baseline; gap:12px;">
-            <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--fg-muted); min-width:52px;">Focus</span>
-            <span style="font-size:14px; color:var(--fg);">Neuro-Symbolic AI &nbsp;·&nbsp; AI Safety &nbsp;·&nbsp; Formal Verification &nbsp;·&nbsp; LLM Reliability</span>
-          </div>
+      <!-- Certifications & Continuous Technical Learning Track -->
+      <div style="background:var(--bg-elevated); border:1px solid var(--rule-subtle); border-radius:8px; padding:18px 22px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; flex-wrap:wrap; gap:8px;">
+          <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--fg-muted); letter-spacing:0.06em; text-transform:uppercase;">Technical Specializations &amp; Certifications (5+ Completed)</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--fg-muted);">Continually Updated</span>
+        </div>
+        <div style="display:flex; flex-wrap:wrap; gap:8px;">
+          <span style="font-family:'JetBrains Mono',monospace; font-size:11px; background:var(--bg-inset); border:1px solid var(--rule-subtle); padding:5px 12px; border-radius:20px; color:var(--fg);">Algorithmic Foundations &amp; Python</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:11px; background:var(--bg-inset); border:1px solid var(--rule-subtle); padding:5px 12px; border-radius:20px; color:var(--fg);">Deep Learning &amp; Neural Architectures</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:11px; background:var(--bg-inset); border:1px solid var(--rule-subtle); padding:5px 12px; border-radius:20px; color:var(--fg);">Agentic Workflows &amp; LangGraph</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:11px; background:var(--bg-inset); border:1px solid var(--rule-subtle); padding:5px 12px; border-radius:20px; color:var(--fg);">HIPAA-Aware Healthcare AI Engineering</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:11px; background:var(--bg-inset); border:1px solid var(--rule-subtle); padding:5px 12px; border-radius:20px; color:var(--fg);">Classical Syllogistic Mantiq (8-Yr Formal)</span>
         </div>
       </div>
 
     </div>
   </section>
 
-  <!-- 02 · CREDENTIALS -->
+  <!-- 02 · CREDENTIALS & HONORS -->
   <section id="credentials" class="fade-in">
     <div class="sh">
-      <h2 class="sh-label">02 · Credentials</h2>
-      <span class="sh-count">5</span>
+      <h2 class="sh-label">02 · Credentials &amp; Honors</h2>
+      <span class="sh-count">8</span>
     </div>
-    <p class="sec-sub">Stanford, published research, and the work that earned the credibility.</p>
+    <p class="sec-sub">Verified academic milestones, global teaching leadership, open-source impact, and research.</p>
     <div class="creds-list">
 
       <div class="cred-item">
@@ -1153,8 +1209,23 @@
         <div style="display: flex; gap: 12px; align-items: start;">
           <div class="work-logo"><img src="assets/stanford.png" alt="Hamza Naseem Stanford University Section Leader logo" style="width: 18px; height: 18px; object-fit: contain;"></div>
           <div class="cred-body" style="flex-direction: column; align-items: start; gap: 2px;">
-            <span class="cred-name"><a href="https://codeinplace.stanford.edu" target="_blank" rel="noopener noreferrer">Stanford University</a> - Section Leader</span>
-            <span class="cred-desc">Code in Place 2026 · selected to teach Python to 20+ global students</span>
+            <span class="cred-name"><a href="https://codeinplace.stanford.edu" target="_blank" rel="noopener noreferrer">Stanford University</a> — Section Leader</span>
+            <span class="cred-desc">Selected through competitive global admissions to teach Python fundamentals, algorithmic reasoning, and problem solving to 20+ international students in Code in Place 2026.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cred-item">
+        <span class="cred-year">2026</span>
+        <div style="display: flex; gap: 12px; align-items: start;">
+          <div class="work-logo" style="border-color: #2a2a2a; background: #0a0a0a;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#28c840" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width: 14px; height: 14px;">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </div>
+          <div class="cred-body" style="flex-direction: column; align-items: start; gap: 2px;">
+            <span class="cred-name"><a href="https://github.com/CALLE-AI/awesome-phone-call-agents/pull/256" target="_blank" rel="noopener noreferrer">CALLE-AI Open Source Ecosystem</a> — Merged Healthcare PR #256</span>
+            <span class="cred-desc">Engineered and merged an autonomous clinical telephone OS (+2,265 LOC, 43 files, 79/79 passing pytest suite, E.164 phone masking, SHA-256 tamper-evident audit ledger) into a prominent global repository with 360+ developers.</span>
           </div>
         </div>
       </div>
@@ -1164,8 +1235,46 @@
         <div style="display: flex; gap: 12px; align-items: start;">
           <div class="work-logo"><img src="assets/research.png" alt="LogicGuard Published AI Research Paper by Hamza Naseem" style="width: 18px; height: 18px; object-fit: contain;"></div>
           <div class="cred-body" style="flex-direction: column; align-items: start; gap: 2px;">
-            <span class="cred-name"><a href="https://github.com/HamzaNasiem/LogicGuard" target="_blank" rel="noopener noreferrer">LogicGuard</a> - Published Research</span>
-            <span class="cred-desc">Neuro-symbolic AI · 100% precision · zero false positives · BFS graph validator on Ibn Sina's syllogistic logic</span>
+            <span class="cred-name"><a href="/research">LogicGuard</a> — Published AI Research Preprint (Zenodo)</span>
+            <span class="cred-desc">Neuro-symbolic research preprint grounding modern LLM verification in classical 11th-century syllogistic logic (Ibn Sina). 100% precision and zero false positives across 525 evaluations.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cred-item">
+        <span class="cred-year">2026</span>
+        <div style="display: flex; gap: 12px; align-items: start;">
+          <div class="work-logo" style="border-color: #2a2a2a; background: #0a0a0a;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 14px; height: 14px;">
+              <circle cx="12" cy="8" r="7"></circle>
+              <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
+            </svg>
+          </div>
+          <div class="cred-body" style="flex-direction: column; align-items: start; gap: 2px;">
+            <span class="cred-name">Standardized Academic Benchmarks — SAT 1400 &amp; IELTS 7.0 Band</span>
+            <span class="cred-desc">High-percentile quantitative and analytical standardized scores (SAT 1400 · IELTS 7.0 Band C1 Proficient) backing upcoming 2027 fully funded undergraduate scholarship applications.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cred-item">
+        <span class="cred-year">2026</span>
+        <div style="display: flex; gap: 12px; align-items: start;">
+          <div class="work-logo" style="overflow: hidden;"><img src="assets/fortyguard-certificate.png" alt="FortyGuard Hackathon 2026 Completion Certificate" style="width: 24px; height: 24px; object-fit: cover;"></div>
+          <div class="cred-body" style="flex-direction: column; align-items: start; gap: 2px;">
+            <span class="cred-name"><a href="/hackathon">FortyGuard Hackathon '26</a> — Official Certificate of Completion</span>
+            <span class="cred-desc">Architected ThermaShift AI using AMD Instinct MI300X accelerators and ROCm stack; awarded official verified credential of completion.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cred-item">
+        <span class="cred-year">2025</span>
+        <div style="display: flex; gap: 12px; align-items: start;">
+          <div class="work-logo"><img src="assets/deepmind.png" alt="Google DeepMind Hackathon Hamza Naseem" style="width: 18px; height: 18px; object-fit: contain;"></div>
+          <div class="cred-body" style="flex-direction: column; align-items: start; gap: 2px;">
+            <span class="cred-name"><a href="/hackathon">Google DeepMind Hackathon &amp; 5+ International Competitions</a></span>
+            <span class="cred-desc">PulseScriptAI on Gemini 3 Global Hackathon, AMD ROCm ACT II Challenge (SecurePay AI), and multiple international hackathons building healthcare and fintech AI.</span>
           </div>
         </div>
       </div>
@@ -1180,29 +1289,19 @@
             </svg>
           </div>
           <div class="cred-body" style="flex-direction: column; align-items: start; gap: 2px;">
-            <span class="cred-name">Co-Founder - <a href="https://bytelytic.com" target="_blank" rel="noopener noreferrer">Bytelytic</a></span>
-            <span class="cred-desc">AI Development Studio · building AI systems for global clients</span>
+            <span class="cred-name">Co-Founder — <a href="https://bytelytic.com" target="_blank" rel="noopener noreferrer">Bytelytic</a></span>
+            <span class="cred-desc">AI systems studio architecting production-grade voice receptionists, EHR synchronization pipelines, and automated intelligence for global practices.</span>
           </div>
         </div>
       </div>
 
       <div class="cred-item">
-        <span class="cred-year">2025</span>
-        <div style="display: flex; gap: 12px; align-items: start;">
-          <div class="work-logo"><img src="assets/deepmind.png" alt="Google DeepMind Hackathon Hamza Naseem" style="width: 18px; height: 18px; object-fit: contain;"></div>
-          <div class="cred-body" style="flex-direction: column; align-items: start; gap: 2px;">
-            <span class="cred-name"><a href="/hackathon">Google DeepMind Hackathon</a></span>
-            <span class="cred-desc">PulseScriptAI - Gemini 3 Global Hackathon · multilingual clinical notes + drug interaction detection</span>
-          </div>
-        </div>
-      </div>
-      <div class="cred-item">
-        <span class="cred-year">-</span>
+        <span class="cred-year">Foundational</span>
         <div style="display: flex; gap: 12px; align-items: start;">
           <div class="work-logo" style="overflow: hidden;"><img src="assets/aristotle.jpg" alt="Classical Islamic Logic Aristotle illustration" style="width: 24px; height: 24px; object-fit: cover;"></div>
           <div class="cred-body" style="flex-direction: column; align-items: start; gap: 2px;">
-            <span class="cred-name">8 Years - Classical Islamic Logic (Mantiq)</span>
-            <span class="cred-desc">Studied Ibn Sina's syllogistic frameworks before I touched a keyboard. That obsession with deterministic reasoning is now my competitive edge in AI.</span>
+            <span class="cred-name">8 Years — Classical Islamic Formal Logic (Mantiq)</span>
+            <span class="cred-desc">Comprehensive immersion in Ibn Sina's and Al-Farabi's deductive syllogistic structures. Translating classical formal reasoning into modern deterministic neuro-symbolic algorithms.</span>
           </div>
         </div>
       </div>
@@ -1285,11 +1384,11 @@
   <!-- 04 · WORK & PROJECTS -->
   <section id="work" class="fade-in">
     <div class="sh">
-      <h2 class="sh-label">04 · Work & Projects</h2>
-      <span class="sh-count">4</span>
+      <h2 class="sh-label">04 · Work &amp; Projects</h2>
+      <span class="sh-count">5</span>
     </div>
     <p class="sec-sub">
-      Production systems, published research, and hackathon submissions — built end-to-end.
+      Production systems, published research, open-source architectures, and hackathon submissions — built end-to-end.
     </p>
 
     <div class="work-list">
@@ -1305,6 +1404,20 @@
           </div>
           <span class="work-name">Bytelytic Clinic OS</span>
           <span class="work-desc">Voice AI receptionist · Twilio SMS · Google Calendar · React dashboard · full SaaS</span>
+        </div>
+        <span class="work-arrow">↗</span>
+      </a>
+
+      <a href="https://github.com/CALLE-AI/awesome-phone-call-agents/pull/256" target="_blank" rel="noopener noreferrer" class="work-item" id="proj-calle-os">
+        <span class="work-date">2026</span>
+        <div class="work-mid">
+          <div class="work-logo" style="border-color: #2a2a2a; background: #0a0a0a;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#28c840" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width: 14px; height: 14px;">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </div>
+          <span class="work-name">CALLE-AI Autonomous Clinic Desk</span>
+          <span class="work-desc">Merged PR #256 · +2,265 LOC · 79 unit tests · E.164 phone masking · SHA-256 tamper-evident ledger</span>
         </div>
         <span class="work-arrow">↗</span>
       </a>
@@ -1330,7 +1443,7 @@
             </svg>
           </div>
           <span class="work-name">Hackathon Projects &amp; Prototypes</span>
-          <span class="work-desc">Submissions to global developer hackathons — featuring SecurePay AI (AMD ACT II)</span>
+          <span class="work-desc">Submissions to global developer hackathons — featuring FortyGuard MI300X &amp; AMD ROCm</span>
         </div>
         <span class="work-arrow">↗</span>
       </a>
@@ -1344,7 +1457,7 @@
             </svg>
           </div>
           <span class="work-name">Academic Research &amp; Publications</span>
-          <span class="work-desc">Published papers and academic contributions in systems architecture and AI</span>
+          <span class="work-desc">Preprints, Zenodo publications, and formal systems architecture papers</span>
         </div>
         <span class="work-arrow">↗</span>
       </a>
@@ -1363,6 +1476,32 @@
     <div class="exp-list">
 
       <div class="exp-item">
+        <div class="exp-dates">2026</div>
+        <div style="display: flex; gap: 14px; align-items: start;">
+          <div class="work-logo"><img src="assets/stanford.png" alt="Hamza Naseem Stanford University Section Leader logo" style="width: 18px; height: 18px; object-fit: contain;"></div>
+          <div>
+            <div class="exp-title">Section Leader at <a href="https://codeinplace.stanford.edu" target="_blank" rel="noopener noreferrer">Stanford Code in Place</a></div>
+            <div class="exp-desc">Selected from thousands of applicants globally. Taught Python fundamentals and algorithmic reasoning to 20+ international students. Sole Pakistani section leader in cohort.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-dates">2026</div>
+        <div style="display: flex; gap: 14px; align-items: start;">
+          <div class="work-logo" style="border-color: #2a2a2a; background: #0a0a0a;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#28c840" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width: 14px; height: 14px;">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </div>
+          <div>
+            <div class="exp-title">Open Source Contributor at <a href="https://github.com/CALLE-AI/awesome-phone-call-agents" target="_blank" rel="noopener noreferrer">CALLE-AI</a></div>
+            <div class="exp-desc">Authored and merged an autonomous clinical telephone operating system (PR #256, +2,265 LOC, 43 files). Enforced E.164 phone validation, SHA-256 tamper-evident ledgers, and 79/79 passing pytest test suite under maintainer review.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-item">
         <div class="exp-dates">2024</div>
         <div style="display: flex; gap: 14px; align-items: start;">
           <div class="work-logo" style="border-color: #2a2a2a; background: #0a0a0a;">
@@ -1372,19 +1511,8 @@
             </svg>
           </div>
           <div>
-            <div class="exp-title">Co-Founder & Lead AI Engineer at <a href="https://bytelytic.com" target="_blank" rel="noopener noreferrer">Bytelytic</a></div>
+            <div class="exp-title">Co-Founder &amp; Lead AI Engineer at <a href="https://bytelytic.com" target="_blank" rel="noopener noreferrer">Bytelytic</a></div>
             <div class="exp-desc">Built Bytelytic Clinic OS from scratch - voice AI, Twilio SMS, Google Calendar, React dashboard, Railway deployment. Full SaaS product, end-to-end.</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="exp-item">
-        <div class="exp-dates">2026</div>
-        <div style="display: flex; gap: 14px; align-items: start;">
-          <div class="work-logo"><img src="assets/stanford.png" alt="Hamza Naseem Stanford University Section Leader logo" style="width: 18px; height: 18px; object-fit: contain;"></div>
-          <div>
-            <div class="exp-title">Section Leader at <a href="https://codeinplace.stanford.edu" target="_blank" rel="noopener noreferrer">Stanford Code in Place</a></div>
-            <div class="exp-desc">Selected from thousands of applicants globally. Taught Python fundamentals to 20+ international students. The only Pakistani in my cohort's section leader group.</div>
           </div>
         </div>
       </div>
@@ -1751,16 +1879,6 @@ setInterval(tick, 1000);
   renderHeatmap(today.getFullYear());
 })();
 
-/* ── STACK TABS ── */
-document.querySelectorAll('.stab').forEach(tab => {
-  tab.addEventListener('click', () => {
-    document.querySelectorAll('.stab').forEach(t => t.classList.remove('active'));
-    document.querySelectorAll('.spanel').forEach(p => p.classList.remove('active'));
-    tab.classList.add('active');
-    document.getElementById('sp-' + tab.dataset.p).classList.add('active');
-    document.getElementById('stab-active').textContent = tab.dataset.p;
-  });
-});
 
 /* ── COMMAND PALETTE ── */
 const overlay = document.getElementById('cmd-wrap');
